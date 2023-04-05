@@ -1,0 +1,12 @@
+C:\WebHunters\FridgeWebHunters\GroupManager\BusinessLogic\bin\Debug\BusinessLogic.dll.config
+C:\WebHunters\FridgeWebHunters\GroupManager\BusinessLogic\bin\Debug\BusinessLogic.dll
+C:\WebHunters\FridgeWebHunters\GroupManager\BusinessLogic\bin\Debug\BusinessLogic.pdb
+C:\WebHunters\FridgeWebHunters\GroupManager\BusinessLogic\bin\Debug\EntityFramework.dll
+C:\WebHunters\FridgeWebHunters\GroupManager\BusinessLogic\bin\Debug\EntityFramework.SqlServer.dll
+C:\WebHunters\FridgeWebHunters\GroupManager\BusinessLogic\bin\Debug\EntityFramework.xml
+C:\WebHunters\FridgeWebHunters\GroupManager\BusinessLogic\bin\Debug\EntityFramework.SqlServer.xml
+C:\WebHunters\FridgeWebHunters\GroupManager\BusinessLogic\obj\Debug\GroupManager.BusinessLogic.csproj.AssemblyReference.cache
+C:\WebHunters\FridgeWebHunters\GroupManager\BusinessLogic\obj\Debug\GroupManager.BusinessLogic.csproj.CoreCompileInputs.cache
+C:\WebHunters\FridgeWebHunters\GroupManager\BusinessLogic\obj\Debug\GroupManager.BusinessLogic.csproj.CopyComplete
+C:\WebHunters\FridgeWebHunters\GroupManager\BusinessLogic\obj\Debug\BusinessLogic.dll
+C:\WebHunters\FridgeWebHunters\GroupManager\BusinessLogic\obj\Debug\BusinessLogic.pdb
