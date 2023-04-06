@@ -9,6 +9,7 @@ namespace GroupManager.Core.Models
 {
     public class Parents
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Lastname { get; set; }
         public string Patronymic { get; set; }

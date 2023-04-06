@@ -1,4 +1,6 @@
-﻿using Caliburn.Micro;
+﻿using BusinessLogic.Repositories;
+using Caliburn.Micro;
+using GroupManager.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,27 +12,12 @@ namespace GroupManager.ViewModels
 {
     public class MainViewModel:PropertyChangedBase
     {
-        string name;
-
-        public string Name
+        IRepository<Group> _groupRepository;
+        public MainViewModel(
+            IRepository<Group> repository)
         {
-            get { return name; }
-            set
-            {
-                name = value;
-                NotifyOfPropertyChange(() => Name);
-                NotifyOfPropertyChange(() => CanSayHello);
-            }
+            _groupRepository = repository;
         }
 
-        public bool CanSayHello
-        {
-            get { return !string.IsNullOrWhiteSpace(Name); }
-        }
-
-        public void SayHello()
-        {
-            MessageBox.Show(string.Format("Hello {0}!", Name)); //Don't do this in real life :)
-        }
     }
 }
