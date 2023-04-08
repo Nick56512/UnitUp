@@ -74,3 +74,4 @@ C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\bin\Debug\GroupM
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\bin\Debug\GroupManager.Core.dll.config
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\bin\Debug\EntityFramework.xml
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\bin\Debug\EntityFramework.SqlServer.xml
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Resources\Themes\DefaultTheme.baml

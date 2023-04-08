@@ -120,6 +120,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\Fonts\Nunito-ExtraBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -127,8 +130,13 @@
   <ItemGroup>
     <Folder Include="Infrastructure\" />
     <Folder Include="Models\" />
+    <Folder Include="Resources\Images\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Resources\Themes\DefaultTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\GroupsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -147,6 +155,12 @@
       <Project>{C49DB5D2-7E32-4C74-95E0-9BD555AA3CF8}</Project>
       <Name>GroupManager.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\fon1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

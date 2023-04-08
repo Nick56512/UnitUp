@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="BanerLabel">
+        <Setter Property="TextElement.FontFamily" Value="Nunito"></Setter>
+        <Setter Property="TextElement.FontSize" Value="30"></Setter>
+        <Setter Property="TextElement.Foreground" Value="#F5F5F5"></Setter>
+    </Style>
+    <Style x:Key="ButtonStyle" TargetType="Button">
+        <Setter Property="FontFamily" Value="PT Sans"></Setter>
+        <Setter Property="FontSize" Value="23"></Setter>
+        <Setter Property="FontWeight" Value="Normal"></Setter>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="Foreground" Value="#FFFFFF"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="10" Padding="3">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="1 1" EndPoint="0 0">
+                                <GradientStop Color="#7284FF" Offset="0.1"></GradientStop>
+                                <GradientStop Color="#A0ABFB" Offset="0.9"></GradientStop>
+                               
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <ContentPresenter Content="{TemplateBinding Content}" 
+                                          ></ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
