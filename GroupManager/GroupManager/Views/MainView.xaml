@@ -7,7 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" MinHeight="640" MinWidth="900" Background="#F0F1FF">
     <UserControl.Resources>
-        <ResourceDictionary Source="/Resources/Themes/DefaultTheme.xaml"></ResourceDictionary>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Themes/DefaultTheme.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/Resources/Themes/Styles/Styles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -17,32 +22,72 @@
             <ColumnDefinition Width="0.14*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.14*"></RowDefinition>
+            <RowDefinition Height="0.3*"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
             <RowDefinition Height="0.14*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Border Grid.ColumnSpan="2" Grid.Column="1" CornerRadius="20" Grid.Row="1">
+        <Border Grid.ColumnSpan="2" Grid.Column="1" CornerRadius="15" Grid.Row="1">
             <Border.Background>
-                <ImageBrush ImageSource="/Views/fon1.jpg"></ImageBrush>
+                <ImageBrush ImageSource="/Resources/Images/baners/fon1.jpg"></ImageBrush>
             </Border.Background>
-            <TextBlock VerticalAlignment="Bottom" Margin="20" Style="{DynamicResource ResourceKey=BanerLabel}">Понеділок, 20 лютого</TextBlock>
+            <TextBlock VerticalAlignment="Bottom" Margin="20" Style="{StaticResource ResourceKey=Header1}">Понеділок, 20 лютого</TextBlock>
         </Border>
         
-        <Border Grid.Column="1" Grid.Row="2" CornerRadius="20" Height="170" VerticalAlignment="Top" Margin="0,20,0,0">
-            <Border.Background>
-                <LinearGradientBrush StartPoint="1 1" EndPoint="0 0">
-                    <GradientStop Color="#7284FF" Offset="0.1"></GradientStop>
-                    <GradientStop Color="#A0ABFB" Offset="0.9"></GradientStop>
-
-                </LinearGradientBrush>
-            </Border.Background>
-            <TextBlock Text="ГРУПИ" Style="{StaticResource ResourceKey=BanerLabel}" Margin="10"></TextBlock>
+        <Border Grid.Column="1" Grid.Row="2" Style="{DynamicResource GroupsListBorder}" Margin="0,40,15,15">
+            <StackPanel>
+                <DockPanel>
+                    <TextBlock Text="ГРУПИ" Margin="15" Style="{StaticResource ResourceKey=Header1}" FontSize="25"></TextBlock>
+                    <Image Source="/Resources/Images/icons/group.png" 
+                       Width="30" 
+                       Height="30" 
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left"
+                       Margin="0,15,0,0"></Image>
+                    <Button Width="25" Height="25" Margin="15" 
+                            VerticalAlignment="Top" 
+                            HorizontalAlignment="Right" 
+                            Background="Transparent" BorderBrush="Transparent"
+                            x:Name="AddGroup">
+                        <Image Source="/Resources/Images/icons/plus.png"
+                     
+                       VerticalAlignment="Top" HorizontalAlignment="Right" ></Image>
+                    </Button>
+                </DockPanel>
+                <ListView Style="{StaticResource GroupsListView}"
+                          BorderBrush="Transparent"
+                          ItemsSource="{Binding Groups,NotifyOnSourceUpdated=True}"
+                          >
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Focusable" Value="false"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <Border Background="Red">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"></ContentPresenter>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <DockPanel>
+                                <TextBlock Text="{Binding Name}"></TextBlock>
+                            </DockPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
         </Border>
-        <Button Style="{DynamicResource ButtonStyle}" Width="171.25" Height="50" VerticalAlignment="Bottom"
-                Grid.Row="2" HorizontalAlignment="Left" Grid.Column="1">
+        <Button Style="{DynamicResource ButtonStyle}" Width="160" Height="50" VerticalAlignment="Bottom"
+                Grid.Row="3" HorizontalAlignment="Left" Grid.Column="1">
             <DockPanel>
-                <Image Width="30" Height="30" VerticalAlignment="Center" Margin="10,0,0,0" Source="/Views/exit.png"></Image>
+                <Image Width="30" Height="30" VerticalAlignment="Center" Margin="10,0,0,0" Source="/Resources/Images/icons/exit.png"></Image>
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Вихід</TextBlock>
             </DockPanel>
         </Button>

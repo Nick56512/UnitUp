@@ -130,10 +130,13 @@
   <ItemGroup>
     <Folder Include="Infrastructure\" />
     <Folder Include="Models\" />
-    <Folder Include="Resources\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Resources\Themes\DefaultTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Themes\Styles\Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -157,10 +160,21 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Views\exit.png" />
+    <Resource Include="Resources\Images\icons\exit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Views\fon1.jpg" />
+    <Resource Include="Resources\Images\baners\fon1.jpg" />
+    <Resource Include="Resources\Images\baners\fon3.jpg" />
+    <Resource Include="Resources\Images\baners\fon4.png" />
+    <Resource Include="Resources\Images\baners\fon5.jpg" />
+    <Resource Include="Resources\Images\baners\fon6.jpg" />
+    <Resource Include="Resources\Images\baners\fon7.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icons\group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icons\plus.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="Header1">
+        <Setter Property="TextElement.FontFamily" Value="Nunito"></Setter>
+        <Setter Property="TextElement.FontSize" Value="30"></Setter>
+        <Setter Property="TextElement.Foreground" Value="#F5F5F5"></Setter>
+    </Style>
+
+    <Style x:Key="GroupsListView" TargetType="ListView">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="FontFamily" Value="PT Sans"></Setter>
+        <Setter Property="FontWeight" Value="Normal"></Setter>
+        <Setter Property="FontSize" Value="25"></Setter>
+    </Style>
+
+   
+    
+</ResourceDictionary>
