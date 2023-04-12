@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:models="clr-namespace:GroupManager.Models" 
              xmlns:local="clr-namespace:GroupManager.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" MinHeight="640" MinWidth="900" Background="#F0F1FF">
@@ -16,10 +17,10 @@
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.14*"></ColumnDefinition>
-            <ColumnDefinition Width="0.6*"></ColumnDefinition>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+            <ColumnDefinition Width="*" MaxWidth="320"></ColumnDefinition>
             <ColumnDefinition ></ColumnDefinition>
-            <ColumnDefinition Width="0.14*"></ColumnDefinition>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.3*"></RowDefinition>
@@ -28,60 +29,90 @@
             <RowDefinition Height="0.2*"></RowDefinition>
             <RowDefinition Height="0.14*"></RowDefinition>
         </Grid.RowDefinitions>
+        <TextBlock Grid.Column="1" Style="{DynamicResource CoursesLabel}">COURSE</TextBlock>
         <Border Grid.ColumnSpan="2" Grid.Column="1" CornerRadius="15" Grid.Row="1">
             <Border.Background>
-                <ImageBrush ImageSource="/Resources/Images/baners/fon1.jpg"></ImageBrush>
+                <ImageBrush ImageSource="/Resources/Images/baners/defaultFon.jpg" Stretch="UniformToFill"></ImageBrush>
             </Border.Background>
-            <TextBlock VerticalAlignment="Bottom" Margin="20" Style="{StaticResource ResourceKey=Header1}">Понеділок, 20 лютого</TextBlock>
+            <TextBlock 
+                x:Name="Date"
+                VerticalAlignment="Bottom" Margin="20" Style="{StaticResource ResourceKey=Header1}">
+                
+            </TextBlock>
         </Border>
         
-        <Border Grid.Column="1" Grid.Row="2" Style="{DynamicResource GroupsListBorder}" Margin="0,40,15,15">
+        <Border Grid.Column="1" Grid.Row="2" Style="{DynamicResource GroupsListBorder}" 
+                Margin="0,40,25,25" Padding="20"
+                Name="GroupsBorder"
+                >
             <StackPanel>
                 <DockPanel>
-                    <TextBlock Text="ГРУПИ" Margin="15" Style="{StaticResource ResourceKey=Header1}" FontSize="25"></TextBlock>
+                    <TextBlock Text="ГРУПИ"  Style="{StaticResource ResourceKey=Header1}" FontSize="25"></TextBlock>
                     <Image Source="/Resources/Images/icons/group.png" 
                        Width="30" 
                        Height="30" 
+                       Margin="6,4,0,0"
                        VerticalAlignment="Top"
                        HorizontalAlignment="Left"
-                       Margin="0,15,0,0"></Image>
-                    <Button Width="25" Height="25" Margin="15" 
-                            VerticalAlignment="Top" 
-                            HorizontalAlignment="Right" 
-                            Background="Transparent" BorderBrush="Transparent"
+                       ></Image>
+                    <Button Width="25" Height="25"
+                            VerticalAlignment="Top"
+                            Margin="0,3,0,0"
+                            HorizontalAlignment="Right"
+                            Style="{DynamicResource TransparentButtonStyle}"
                             x:Name="AddGroup">
-                        <Image Source="/Resources/Images/icons/plus.png"
-                     
-                       VerticalAlignment="Top" HorizontalAlignment="Right" ></Image>
+                        <Image Source="/Resources/Images/icons/plus.png"></Image>
                     </Button>
                 </DockPanel>
-                <ListView Style="{StaticResource GroupsListView}"
-                          BorderBrush="Transparent"
-                          ItemsSource="{Binding Groups,NotifyOnSourceUpdated=True}"
+                <Border CornerRadius="4" 
+                        Visibility="Collapsed"
+                        BorderThickness="2" BorderBrush="Violet" Padding="1" UseLayoutRounding="True">
+                    <TextBox></TextBox>
+                </Border>
+
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <DataGrid ItemsSource="{Binding Groups, NotifyOnSourceUpdated=True}"
+                          Width="{Binding ElementName=GroupsBorder,Path=Width}" 
+                          Height="{Binding ElementName=GroupsBorder,Path=Height}"
+                          ColumnWidth="*"
+                          Name="GroupsDataGrid"
+                          VerticalScrollBarVisibility="Auto"
                           >
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="Focusable" Value="false"/>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate>
-                                        <Border Background="Red">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"></ContentPresenter>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                    
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <DockPanel>
-                                <TextBlock Text="{Binding Name}"></TextBlock>
-                            </DockPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                        <DataGrid.Resources>
+                            <Style TargetType="ScrollBar">
+                                <Style.Triggers>
+                                    <Trigger Property="Orientation" Value="Vertical">
+                                        <Setter Property="Width" Value="50"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                            
+                            Width="0.3*"
+                            Binding="{Binding RelativeSource= {RelativeSource Mode=FindAncestor,
+                            AncestorType={x:Type DataGridRow}},
+                            Converter={StaticResource indexConverter}}"
+                            >
+
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding Path=Name}"></DataGridTextColumn>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Width="25"
+                                            HorizontalAlignment="Right"
+                                            Height="25" Style="{DynamicResource TransparentButtonStyle}">
+                                            <Image Source="/Resources/Images/icons/more.png"></Image>
+                                        </Button>
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </ScrollViewer>
             </StackPanel>
         </Border>
         <Button Style="{DynamicResource ButtonStyle}" Width="160" Height="50" VerticalAlignment="Bottom"

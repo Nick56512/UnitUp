@@ -14,6 +14,99 @@
         <Setter Property="FontSize" Value="25"></Setter>
     </Style>
 
-   
+
+    <Style TargetType="DataGrid">
+        <Setter Property="AutoGenerateColumns" Value="False"></Setter>
+        <Setter Property="GridLinesVisibility" Value="None"></Setter>
+        <Setter Property="CanUserDeleteRows" Value="False"></Setter>
+        <Setter Property="CanUserResizeRows" Value="False"></Setter>
+        <Setter Property="CanUserSortColumns" Value="False"></Setter>
+        <Setter Property="CanUserResizeColumns" Value="False"></Setter>
+        
+        <Setter Property="FontFamily" Value="PT Sans"></Setter>
+        <Setter Property="FontSize" Value="25"></Setter>
+        <Setter Property="FontWeight" Value="Normal"></Setter>
+        
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="CanUserDeleteRows" Value="False"></Setter>
+        <Setter Property="CanUserAddRows" Value="False"></Setter>
+        <Setter Property="IsReadOnly" Value="True"></Setter>
+        <Setter Property="Focusable" Value="False"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+      
+        <Setter Property="HeadersVisibility" Value="None"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="CanUserReorderColumns" Value="False"></Setter>
+
+       
+       
+       
+    </Style>
+
+    <Style TargetType="DataGridCell">
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="Transparent"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     
+    <Style TargetType="DataGridRow">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Margin" Value="0,15,0,0"></Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Transparent"></Setter>
+            </Trigger>
+        </Style.Triggers>
+
+    </Style>
+
+    <Style TargetType="TextBox">
+        <Setter Property="FontSize" Value="17"></Setter>
+        <Setter Property="FontFamily" Value="PT Sans"></Setter>
+        <Setter Property="BorderThickness" Value="1"></Setter>
+    </Style>
+
+  
+
+    
+ 
+    <!--<Style TargetType="{x:Type ListViewItem}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <Border x:Name="ListViewItemBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="ListViewItemBorder" Value="Transparent"/>
+                            <Setter Property="BorderBrush" TargetName="ListViewItemBorder" Value="Transparent"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Selector.IsSelectionActive" Value="False"/>
+                                <Condition Property="IsSelected" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="ListViewItemBorder" Value="Transparent"/>
+                            <Setter Property="BorderBrush" TargetName="ListViewItemBorder" Value="Transparent"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+
+
+
 </ResourceDictionary>

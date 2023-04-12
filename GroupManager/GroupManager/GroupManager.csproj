@@ -88,6 +88,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainBootstrapper.cs" />
+    <Compile Include="Models\IndexConverter.cs" />
     <Compile Include="ViewModels\GroupsViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\GroupsView.xaml.cs">
@@ -129,7 +130,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Infrastructure\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Resources\Themes\DefaultTheme.xaml">
@@ -175,6 +175,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\icons\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\baners\defaultFon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icons\more.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

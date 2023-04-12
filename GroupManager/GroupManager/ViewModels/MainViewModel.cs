@@ -23,14 +23,17 @@ namespace GroupManager.ViewModels
                 NotifyOfPropertyChange(() => Groups);
             }
         }
+        public string Date { get; set; }
         public MainViewModel(
             IRepository<Group> repository)
         {
             _groupRepository = repository;
-            //UploadGroups();
+            UploadGroups();
         }
         private async void UploadGroups()
         {
+            string strDate = DateTime.UtcNow.ToString("dddd, MM MMMM");
+            Date = char.ToUpper(strDate[0]) + strDate.Substring(1);
             Groups=new BindableCollection<Group>(await _groupRepository.GetAllAsync());
         }
 
@@ -47,8 +50,8 @@ namespace GroupManager.ViewModels
         protected override async void OnViewLoaded(object view)
         {
             base.OnViewLoaded(view);
-            Groups = new BindableCollection<Group>(await _groupRepository.GetAllAsync());
-            Groups.Add(new Group { Name = "PV-02" });
+            //Groups = new BindableCollection<Group>(await _groupRepository.GetAllAsync());
+            //Groups.Add(new Group { Name = "PV-02" });
         }
 
     }
