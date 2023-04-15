@@ -23,7 +23,21 @@ namespace GroupManager.ViewModels
                 NotifyOfPropertyChange(() => Groups);
             }
         }
+        string groupName;
+        public string GroupName
+        {
+            set
+            {
+                groupName= value;
+                NotifyOfPropertyChange(() => GroupName);
+            }
+            get
+            {
+                return groupName;
+            }
+        }
         public string Date { get; set; }
+
         public MainViewModel(
             IRepository<Group> repository)
         {
@@ -34,25 +48,34 @@ namespace GroupManager.ViewModels
         {
             string strDate = DateTime.UtcNow.ToString("dddd, MM MMMM");
             Date = char.ToUpper(strDate[0]) + strDate.Substring(1);
-            Groups=new BindableCollection<Group>(await _groupRepository.GetAllAsync());
+            var reverseList = (await _groupRepository.GetAllAsync())
+                .ToArray()
+                .Reverse();
+            Groups=new BindableCollection<Group>(reverseList);
         }
 
         public void AddGroup()
         {
             Group newGroup = new Group
             {
-                Id=Guid.NewGuid(),
-                Name = "Naew",
+                Name = GroupName,
+                Id = Guid.NewGuid(),
             };
+            Groups.Insert(0,newGroup);
             _groupRepository.Add(newGroup);
+            GroupName = "";
+            //Groups = new BindableCollection<Group>(Groups);
         }
+        
 
         protected override async void OnViewLoaded(object view)
         {
             base.OnViewLoaded(view);
-            //Groups = new BindableCollection<Group>(await _groupRepository.GetAllAsync());
-            //Groups.Add(new Group { Name = "PV-02" });
+           
         }
-
+        public void ExitProgram()
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
     }
 }

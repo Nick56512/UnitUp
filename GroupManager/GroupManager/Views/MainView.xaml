@@ -14,6 +14,8 @@
                 <ResourceDictionary Source="/Resources/Themes/Styles/Styles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
+       
+        
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -40,7 +42,7 @@
                 
             </TextBlock>
         </Border>
-        
+
         <Border Grid.Column="1" Grid.Row="2" Style="{DynamicResource GroupsListBorder}" 
                 Margin="0,40,25,25" Padding="20"
                 Name="GroupsBorder"
@@ -55,29 +57,29 @@
                        VerticalAlignment="Top"
                        HorizontalAlignment="Left"
                        ></Image>
-                    <Button Width="25" Height="25"
+                    <ToggleButton Width="25" Height="25"
                             VerticalAlignment="Top"
                             Margin="0,3,0,0"
                             HorizontalAlignment="Right"
-                            Style="{DynamicResource TransparentButtonStyle}"
-                            x:Name="AddGroup">
+                            Template="{DynamicResource TransparentToggleButton}"
+                            x:Name="AddGroupToggleButton">
                         <Image Source="/Resources/Images/icons/plus.png"></Image>
-                    </Button>
+                    </ToggleButton>
                 </DockPanel>
-                <Border CornerRadius="4" 
-                        Visibility="Collapsed"
-                        BorderThickness="2" BorderBrush="Violet" Padding="1" UseLayoutRounding="True">
-                    <TextBox></TextBox>
-                </Border>
-
+                <TextBox Template="{StaticResource DefaultTextBox}" 
+                         x:Name="GroupName" Height="0" Style="{StaticResource AnimatedTextBox}"
+                         KeyDown="GroupName_KeyDown">
+                   
+                </TextBox>
+              
+               
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <DataGrid ItemsSource="{Binding Groups, NotifyOnSourceUpdated=True}"
                           Width="{Binding ElementName=GroupsBorder,Path=Width}" 
                           Height="{Binding ElementName=GroupsBorder,Path=Height}"
                           ColumnWidth="*"
                           Name="GroupsDataGrid"
-                          VerticalScrollBarVisibility="Auto"
-                          >
+                          VerticalScrollBarVisibility="Auto">
                         <DataGrid.Resources>
                             <Style TargetType="ScrollBar">
                                 <Style.Triggers>
@@ -101,11 +103,46 @@
                             <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Width="25"
+                                        <StackPanel>
+                                            <ToggleButton Width="25"
                                             HorizontalAlignment="Right"
-                                            Height="25" Style="{DynamicResource TransparentButtonStyle}">
-                                            <Image Source="/Resources/Images/icons/more.png"></Image>
-                                        </Button>
+                                            Height="25" Template="{DynamicResource TransparentToggleButton}"
+                                            x:Name="Popup_button">
+                                                <Image Source="/Resources/Images/icons/more.png"></Image>
+
+                                            </ToggleButton>
+
+                                            <Popup StaysOpen="True" IsOpen="{Binding IsChecked, ElementName=Popup_button, Mode=TwoWay}" 
+                                                   PlacementTarget="{Binding ElementName=Popup_button}" 
+                                                   AllowsTransparency="True"
+                                                   PopupAnimation="Fade"
+                                                   HorizontalOffset="-28"
+                                                   VerticalOffset="0">
+                                                <ContentControl Style="{DynamicResource Popup_style}">
+                                                    <StackPanel Margin="5 10 5 5" >
+                                                        <Button Background="Transparent"
+                                                                FontFamily="PT Sans" FontSize="15" 
+                                                                HorizontalAlignment="Left">
+                                                            Видалити
+                                                        </Button>
+                                                        <Button Background="Transparent"
+                                                                FontFamily="PT Sans" FontSize="15"
+                                                                HorizontalAlignment="Left">
+                                                            Редагувати
+                                                        </Button>
+                                                        <Button Background="Transparent"
+                                                                FontFamily="PT Sans" FontSize="15"
+                                                                HorizontalAlignment="Left">
+                                                            Передививитися
+                                                        </Button>
+
+                                                    </StackPanel>
+                                                </ContentControl>
+                                            </Popup>
+
+                                        </StackPanel>
+
+
 
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -116,7 +153,7 @@
             </StackPanel>
         </Border>
         <Button Style="{DynamicResource ButtonStyle}" Width="160" Height="50" VerticalAlignment="Bottom"
-                Grid.Row="3" HorizontalAlignment="Left" Grid.Column="1">
+                Grid.Row="3" HorizontalAlignment="Left" Grid.Column="1" x:Name="ExitProgram">
             <DockPanel>
                 <Image Width="30" Height="30" VerticalAlignment="Center" Margin="10,0,0,0" Source="/Resources/Images/icons/exit.png"></Image>
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Вихід</TextBlock>
