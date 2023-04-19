@@ -125,7 +125,29 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="Popup_style" TargetType="ContentControl">
+    <Style TargetType="ToggleButton" x:Key="OpenContextMenuStyle">
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Click">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="ContextMenu.IsOpen">
+                                <DiscreteBooleanKeyFrame KeyTime="0:0:0" Value="True"/>
+                            </BooleanAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+        </Style.Triggers>
+        
+    </Style>
+   
+    
+    
+    
+    
+    
+    <!--<Style x:Key="Popup_style" TargetType="ContentControl">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ContentControl">
@@ -141,7 +163,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style>-->
 
     <!--<Style TargetType="{x:Type ListViewItem}">
         <Setter Property="SnapsToDevicePixels" Value="True"/>

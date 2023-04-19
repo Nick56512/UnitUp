@@ -12,6 +12,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Themes/DefaultTheme.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="/Resources/Themes/Styles/Styles.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/Resources/Themes/Styles/RoundedScrollBar.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
        
@@ -20,14 +21,14 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.1*"></ColumnDefinition>
-            <ColumnDefinition Width="*" MaxWidth="320"></ColumnDefinition>
-            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition Width="0.7*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="0.1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.3*"></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="0.9*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="0.2*"></RowDefinition>
             <RowDefinition Height="0.14*"></RowDefinition>
         </Grid.RowDefinitions>
@@ -46,10 +47,11 @@
         <Border Grid.Column="1" Grid.Row="2" Style="{DynamicResource GroupsListBorder}" 
                 Margin="0,40,25,25" Padding="20"
                 Name="GroupsBorder"
+              
                 >
             <StackPanel>
                 <DockPanel>
-                    <TextBlock Text="ГРУПИ"  Style="{StaticResource ResourceKey=Header1}" FontSize="25"></TextBlock>
+                    <TextBlock Text="ГРУПИ" Style="{StaticResource ResourceKey=Header1}" FontSize="25"></TextBlock>
                     <Image Source="/Resources/Images/icons/group.png" 
                        Width="30" 
                        Height="30" 
@@ -62,19 +64,22 @@
                             Margin="0,3,0,0"
                             HorizontalAlignment="Right"
                             Template="{DynamicResource TransparentToggleButton}"
-                            x:Name="AddGroupToggleButton">
+                            x:Name="AddGroupToggleButton"
+                            Click="AddGroupToggleButton_Click">
                         <Image Source="/Resources/Images/icons/plus.png"></Image>
                     </ToggleButton>
                 </DockPanel>
                 <TextBox Template="{StaticResource DefaultTextBox}" 
                          x:Name="GroupName" Height="0" Style="{StaticResource AnimatedTextBox}"
-                         KeyDown="GroupName_KeyDown">
+                         KeyDown="GroupName_KeyDown"
+                         Panel.ZIndex="1">
                    
                 </TextBox>
               
                
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="120">
                     <DataGrid ItemsSource="{Binding Groups, NotifyOnSourceUpdated=True}"
+                              SelectedItem="{Binding SelectedGroup, NotifyOnSourceUpdated=True}"
                           Width="{Binding ElementName=GroupsBorder,Path=Width}" 
                           Height="{Binding ElementName=GroupsBorder,Path=Height}"
                           ColumnWidth="*"
@@ -91,13 +96,10 @@
                         </DataGrid.Resources>
                         <DataGrid.Columns>
                             <DataGridTextColumn
-                            
                             Width="0.3*"
                             Binding="{Binding RelativeSource= {RelativeSource Mode=FindAncestor,
                             AncestorType={x:Type DataGridRow}},
-                            Converter={StaticResource indexConverter}}"
-                            >
-
+                            Converter={StaticResource indexConverter}}">
                             </DataGridTextColumn>
                             <DataGridTextColumn Binding="{Binding Path=Name}"></DataGridTextColumn>
                             <DataGridTemplateColumn>
@@ -107,43 +109,17 @@
                                             <ToggleButton Width="25"
                                             HorizontalAlignment="Right"
                                             Height="25" Template="{DynamicResource TransparentToggleButton}"
-                                            x:Name="Popup_button">
+                                            Style="{StaticResource OpenContextMenuStyle}">
                                                 <Image Source="/Resources/Images/icons/more.png"></Image>
+                                                <ToggleButton.ContextMenu>
+                                                    <ContextMenu>
+                                                        <MenuItem Header="Видалити" Click="MenuItem_Click"></MenuItem>
+                                                        <MenuItem Header="Редагувати" Click="OpenTextBoxUpdateGroup"></MenuItem>
+                                                    </ContextMenu>
+                                                </ToggleButton.ContextMenu>
 
                                             </ToggleButton>
-
-                                            <Popup StaysOpen="True" IsOpen="{Binding IsChecked, ElementName=Popup_button, Mode=TwoWay}" 
-                                                   PlacementTarget="{Binding ElementName=Popup_button}" 
-                                                   AllowsTransparency="True"
-                                                   PopupAnimation="Fade"
-                                                   HorizontalOffset="-28"
-                                                   VerticalOffset="0">
-                                                <ContentControl Style="{DynamicResource Popup_style}">
-                                                    <StackPanel Margin="5 10 5 5" >
-                                                        <Button Background="Transparent"
-                                                                FontFamily="PT Sans" FontSize="15" 
-                                                                HorizontalAlignment="Left">
-                                                            Видалити
-                                                        </Button>
-                                                        <Button Background="Transparent"
-                                                                FontFamily="PT Sans" FontSize="15"
-                                                                HorizontalAlignment="Left">
-                                                            Редагувати
-                                                        </Button>
-                                                        <Button Background="Transparent"
-                                                                FontFamily="PT Sans" FontSize="15"
-                                                                HorizontalAlignment="Left">
-                                                            Передививитися
-                                                        </Button>
-
-                                                    </StackPanel>
-                                                </ContentControl>
-                                            </Popup>
-
                                         </StackPanel>
-
-
-
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>

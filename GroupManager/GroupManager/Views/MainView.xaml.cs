@@ -34,5 +34,26 @@ namespace GroupManager.Views
                 AddGroupToggleButton.IsChecked = false;
             }
         }
+
+        private void OpenTextBoxUpdateGroup(object sender, RoutedEventArgs e)
+        {
+            var mainViewModel = (DataContext as MainViewModel);
+            mainViewModel.GroupName = mainViewModel.SelectedGroup.Name;
+            AddGroupToggleButton.IsChecked = true;
+        }
+
+        private void AddGroupToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            var mainViewModel = (DataContext as MainViewModel);
+            mainViewModel.GroupName = "";
+            mainViewModel.SelectedGroup = null;
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var mainViewModel = (DataContext as MainViewModel);
+            mainViewModel.RemoveGroup();
+
+        }
     }
 }

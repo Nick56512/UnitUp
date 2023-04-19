@@ -78,3 +78,4 @@ C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Resour
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Resources\Themes\Styles\Styles.baml
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Views\SchellView.g.cs
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Views\SchellView.baml
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Resources\Themes\Styles\RoundedScrollBar.baml

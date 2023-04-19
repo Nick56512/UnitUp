@@ -95,20 +95,63 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+    <Style x:Key="ContextMenuBtn" TargetType="MenuItem">
+        <Setter Property="FontFamily" Value="PT Sans"></Setter>
+        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="FontWeight" Value="Normal"></Setter>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="Foreground" Value="Black"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="ButtonBorder">
+                        <ContentPresenter Content="{TemplateBinding Content}"></ContentPresenter>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="1 1" EndPoint="0 0">
+                                        <GradientStop Color="#7284FF" Offset="0.1"></GradientStop>
+                                        <GradientStop Color="#A0ABFB" Offset="0.9"></GradientStop>
+
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+
+    <ControlTemplate TargetType="ContextMenu" x:Key="CRUDContextMenu">
+        <Border BorderBrush="DarkGray" BorderThickness="1" CornerRadius="10"
+                Padding="10"
+                x:Name="ContextMenuBorder"
+                Background="White">
+            <ContentPresenter Content="{TemplateBinding ContextMenu}"></ContentPresenter>
+        </Border>
+   
+    </ControlTemplate>
+
+
+
+
+
+
+
+
+
+
+
+
     <Style x:Key="GroupsListBorder" TargetType="Border">
         <Setter Property="CornerRadius" Value="15"></Setter>
         <Setter Property="Background">
