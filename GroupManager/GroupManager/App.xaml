@@ -12,7 +12,11 @@
                 </ResourceDictionary>
                 <ResourceDictionary>
                     <models:IndexConverter x:Key="indexConverter"></models:IndexConverter>
+                   
                 </ResourceDictionary>
+                <!--<ResourceDictionary>
+                    <models:CalendarMonthConverter x:Key="MonthConverter"></models:CalendarMonthConverter>
+                </ResourceDictionary>-->
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

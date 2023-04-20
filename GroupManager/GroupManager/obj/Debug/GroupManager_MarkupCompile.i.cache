@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\App.xaml
-6-887462647
+7-708287684
 
-12-1274170798
+14-1557294445
 251982821702
-Resources\Themes\DefaultTheme.xaml;Resources\Themes\Styles\RoundedScrollBar.xaml;Resources\Themes\Styles\Styles.xaml;Views\GroupsView.xaml;Views\MainView.xaml;Views\SchellView.xaml;
+CustomControls\Calendar.xaml;Resources\Themes\DefaultTheme.xaml;Resources\Themes\Styles\RoundedScrollBar.xaml;Resources\Themes\Styles\Styles.xaml;Views\GroupsView.xaml;Views\MainView.xaml;Views\SchellView.xaml;
 
 True
 

@@ -6,12 +6,14 @@
              xmlns:models="clr-namespace:GroupManager.Models" 
              xmlns:local="clr-namespace:GroupManager.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" MinHeight="640" MinWidth="900" Background="#F0F1FF">
+             d:DesignHeight="450" d:DesignWidth="800" MinHeight="640" MinWidth="900" Background="#F0F1FF"
+             Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Themes/DefaultTheme.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="/Resources/Themes/Styles/Styles.xaml"></ResourceDictionary>
+            
                 <ResourceDictionary Source="/Resources/Themes/Styles/RoundedScrollBar.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -20,10 +22,10 @@
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.1*"></ColumnDefinition>
-            <ColumnDefinition Width="0.7*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+            <ColumnDefinition Width="0.14*"></ColumnDefinition>
+            <ColumnDefinition Width="0.4*" MaxWidth="320" ></ColumnDefinition>
+            <ColumnDefinition Width="0.5*" ></ColumnDefinition>
+            <ColumnDefinition Width="0.14*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.3*"></RowDefinition>
@@ -32,7 +34,7 @@
             <RowDefinition Height="0.2*"></RowDefinition>
             <RowDefinition Height="0.14*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="1" Style="{DynamicResource CoursesLabel}">COURSE</TextBlock>
+        <TextBlock Grid.Column="1" Style="{DynamicResource CoursesLabel}">UNITUP</TextBlock>
         <Border Grid.ColumnSpan="2" Grid.Column="1" CornerRadius="15" Grid.Row="1">
             <Border.Background>
                 <ImageBrush ImageSource="/Resources/Images/baners/defaultFon.jpg" Stretch="UniformToFill"></ImageBrush>
@@ -47,7 +49,7 @@
         <Border Grid.Column="1" Grid.Row="2" Style="{DynamicResource GroupsListBorder}" 
                 Margin="0,40,25,25" Padding="20"
                 Name="GroupsBorder"
-              
+                
                 >
             <StackPanel>
                 <DockPanel>
@@ -77,12 +79,12 @@
                 </TextBox>
               
                
-                <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="120">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="140">
                     <DataGrid ItemsSource="{Binding Groups, NotifyOnSourceUpdated=True}"
                               SelectedItem="{Binding SelectedGroup, NotifyOnSourceUpdated=True}"
                           Width="{Binding ElementName=GroupsBorder,Path=Width}" 
                           Height="{Binding ElementName=GroupsBorder,Path=Height}"
-                          ColumnWidth="*"
+                          ColumnWidth="0.5*"
                           Name="GroupsDataGrid"
                           VerticalScrollBarVisibility="Auto">
                         <DataGrid.Resources>
@@ -127,6 +129,11 @@
                     </DataGrid>
                 </ScrollViewer>
             </StackPanel>
+        </Border>
+        <Border Grid.Column="2" Grid.Row="2" Grid.RowSpan="2" 
+                BorderBrush="#8493FD" BorderThickness="1" CornerRadius="15"
+                Margin="0,40,0,0" Padding="20">
+            <ContentControl Content="{Binding CalendarItem}"></ContentControl>
         </Border>
         <Button Style="{DynamicResource ButtonStyle}" Width="160" Height="50" VerticalAlignment="Bottom"
                 Grid.Row="3" HorizontalAlignment="Left" Grid.Column="1" x:Name="ExitProgram">

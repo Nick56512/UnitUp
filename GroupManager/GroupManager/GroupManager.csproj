@@ -87,7 +87,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CustomControls\Calendar.xaml.cs">
+      <DependentUpon>Calendar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainBootstrapper.cs" />
+    <Compile Include="Models\CalendarMonthConverter.cs" />
     <Compile Include="Models\IndexConverter.cs" />
     <Compile Include="ViewModels\GroupsViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -135,6 +139,10 @@
     <Folder Include="Infrastructure\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="CustomControls\Calendar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Themes\DefaultTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

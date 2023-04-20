@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace GroupManager.ViewModels
@@ -15,6 +16,7 @@ namespace GroupManager.ViewModels
     public class MainViewModel:Screen
     {
         IRepository<Group> _groupRepository;
+        public UserControl CalendarItem { get; set; }
         BindableCollection<Group> _groups { get; set; }
         public BindableCollection<Group> Groups
         {
@@ -53,6 +55,7 @@ namespace GroupManager.ViewModels
             string strDate = DateTime.UtcNow.ToString("dddd, MM MMMM");
             Date = char.ToUpper(strDate[0]) + strDate.Substring(1);
             _groupRepository = repository;
+            CalendarItem = new CustomControls.Calendar();
             UploadGroups();
         }
         private async void UploadGroups()
