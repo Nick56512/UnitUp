@@ -12,11 +12,12 @@
                 </ResourceDictionary>
                 <ResourceDictionary>
                     <models:IndexConverter x:Key="indexConverter"></models:IndexConverter>
-                   
                 </ResourceDictionary>
-                <!--<ResourceDictionary>
-                    <models:CalendarMonthConverter x:Key="MonthConverter"></models:CalendarMonthConverter>
-                </ResourceDictionary>-->
+                <ResourceDictionary>
+                    <models:ListViewIndexConverter x:Key="listViewIndexConverter"></models:ListViewIndexConverter>
+                </ResourceDictionary>
+                <ResourceDictionary Source="/Resources/Themes/DefaultTheme.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/Resources/Themes/Styles/Styles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

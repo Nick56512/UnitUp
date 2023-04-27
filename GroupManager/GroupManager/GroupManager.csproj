@@ -93,16 +93,20 @@
     <Compile Include="MainBootstrapper.cs" />
     <Compile Include="Models\CalendarMonthConverter.cs" />
     <Compile Include="Models\IndexConverter.cs" />
+    <Compile Include="Models\ListViewIndexConverter.cs" />
+    <Compile Include="Models\Switcher.cs" />
     <Compile Include="ViewModels\GroupsViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="Views\GroupsView.xaml.cs">
-      <DependentUpon>GroupsView.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="ViewModels\StudentsListViewModel.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SchellView.xaml.cs">
-      <DependentUpon>SchellView.xaml</DependentUpon>
+    <Compile Include="Views\ShellView.xaml.cs">
+      <DependentUpon>ShellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StudentsListView.xaml.cs">
+      <DependentUpon>StudentsListView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -155,15 +159,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GroupsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SchellView.xaml">
+    <Page Include="Views\ShellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StudentsListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -200,6 +204,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\icons\more.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icons\back-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icons\search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

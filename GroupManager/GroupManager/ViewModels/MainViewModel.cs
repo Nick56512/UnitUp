@@ -1,6 +1,7 @@
 ﻿using BusinessLogic.Repositories;
 using Caliburn.Micro;
 using GroupManager.Core.Model;
+using GroupManager.Models;
 using GroupManager.Views;
 using System;
 using System.Collections.Generic;
@@ -111,6 +112,12 @@ namespace GroupManager.ViewModels
             base.OnViewReady(view);
             //MainView shellView = (MainView)view;
             //shellView.CommandBindings.Add(new CommandBinding(ApplicationCommands.Delete,RemoveGroup));
+        }
+        public void GroupClicked()
+        {
+            var studentsList=IoC.Get<StudentsListViewModel>();
+            studentsList.GroupId=SelectedGroup.Id;
+            Switcher.SwitchAsync(studentsList, new System.Threading.CancellationToken());
         }
         protected override void OnViewLoaded(object view)
         {

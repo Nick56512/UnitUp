@@ -18,9 +18,9 @@ namespace GroupManager.Views
     /// <summary>
     /// Interaction logic for SchellView.xaml
     /// </summary>
-    public partial class SchellView : UserControl
+    public partial class ShellView : UserControl
     {
-        public SchellView()
+        public ShellView()
         {
             InitializeComponent();
         }

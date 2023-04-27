@@ -65,12 +65,13 @@
 
        
        
-       
+     
     </Style>
 
     <Style TargetType="DataGridCell">
         <Setter Property="BorderThickness" Value="0"></Setter>
         <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Cursor" Value="Hand"></Setter>
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
                 <Setter Property="Background" Value="Transparent"></Setter>
@@ -146,63 +147,11 @@
         </Style.Triggers>
         
     </Style>
-   
-    
-    
-    
-    
-    
-    <!--<Style x:Key="Popup_style" TargetType="ContentControl">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="ContentControl">
-                    <Grid Width="180" Height="Auto" >
-                        <Path Panel.ZIndex="1" Stroke="Orange" StrokeThickness="0.02" 
-                              Data="M11.3,0 L11.3,0 L168.5,0 A12,12 0 0 1 179.99,12 L179.99,78.5 A12,12 0 0 1 168.5,90 L11.3,90 A12,12 0 0 1 0,78.5 L0,12 A12,12 0 0 1 11.3,0 z "/>
-                        <Border Background="White" CornerRadius="6" BorderThickness="1" BorderBrush="Gray">
-                            <StackPanel>
-                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" />
-                            </StackPanel>
-                        </Border>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>-->
 
-    <!--<Style TargetType="{x:Type ListViewItem}">
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ListViewItem}">
-                    <Border x:Name="ListViewItemBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
-                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsMouseOver" Value="True"/>
-                            </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="ListViewItemBorder" Value="Transparent"/>
-                            <Setter Property="BorderBrush" TargetName="ListViewItemBorder" Value="Transparent"/>
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="Selector.IsSelectionActive" Value="False"/>
-                                <Condition Property="IsSelected" Value="True"/>
-                            </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="ListViewItemBorder" Value="Transparent"/>
-                            <Setter Property="BorderBrush" TargetName="ListViewItemBorder" Value="Transparent"/>
-                        </MultiTrigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>-->
-
-
-
+    <Style x:Key="PlaceholderText" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="FontFamily" Value="PT Sans"></Setter>
+    </Style>
+    
+  
 </ResourceDictionary>

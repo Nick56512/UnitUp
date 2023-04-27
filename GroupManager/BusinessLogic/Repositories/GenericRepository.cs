@@ -12,7 +12,7 @@ namespace BusinessLogic.Repositories
     public class GenericRepository<T> : IRepository<T> where T : class
     {
         DbContext context;
-        DbSet<T> table;
+        protected DbSet<T> table;
         public GenericRepository(DbContext context)
         {
             this.context = context;

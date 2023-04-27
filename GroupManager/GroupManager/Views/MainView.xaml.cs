@@ -61,5 +61,10 @@ namespace GroupManager.Views
         {
            
         }
+
+        private void DataGridTextColumn_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+           
+        }
     }
 }

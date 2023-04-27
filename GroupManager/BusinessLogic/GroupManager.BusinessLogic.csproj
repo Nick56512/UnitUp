@@ -57,6 +57,7 @@
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\GroupRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\IStudentsRepository.cs" />
     <Compile Include="Repositories\ParentsRepository.cs" />
     <Compile Include="Repositories\PrivilegeRepository.cs" />
     <Compile Include="Repositories\StudentRepository.cs" />

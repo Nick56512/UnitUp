@@ -24,8 +24,14 @@ namespace GroupManager
             container.Singleton<IEventAggregator, EventAggregator>();
 
             container.PerRequest<MainViewModel, MainViewModel>();
+            container.PerRequest<ShellViewModel, ShellViewModel>();
+            container.PerRequest<StudentsListViewModel, StudentsListViewModel>();
 
-            container.PerRequest<IRepository<Student>, StudentRepository>();
+
+
+            //container.PerRequest<IRepository<Student>, >();
+            container.PerRequest<IStudentsRepository, StudentRepository>();
+
             container.PerRequest<IRepository<Certificate>, CertificateRepository>();
             container.PerRequest<IRepository<Characteristic>, CharacteristicsRepository>();
 
@@ -42,7 +48,7 @@ namespace GroupManager
         }
         protected override async void OnStartup(object sender, StartupEventArgs e)
         {
-            await DisplayRootViewForAsync<MainViewModel>();
+            await DisplayRootViewForAsync<ShellViewModel>();
         }
 
         protected override object GetInstance(Type service, string key)
