@@ -38,7 +38,11 @@ namespace GroupManager.ViewModels
                 //    .GetStudentsFromGroup(GroupId));
                 Students=new BindableCollection<Student>
                 {
-                    new Student{Name="Вікуся", Lastname="Думініке", Patronymic="Сергіївна"}
+                    new Student{Name="Вікуся", Lastname="Думініке", Patronymic="Сергіївна"},
+                    new Student{Name="Олександр", Lastname="Мітцих", Patronymic="Максимович"},
+                    new Student{Name="Максим", Lastname="Гетьман", Patronymic="Юрійович"},
+                    new Student{Name="Георгій", Lastname="Бистріцький", Patronymic="Олегович"},
+                    
                 };
                 //St
             }

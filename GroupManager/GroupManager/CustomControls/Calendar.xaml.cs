@@ -25,9 +25,7 @@ namespace GroupManager.CustomControls
         public Calendar()
         {
             InitializeComponent();
-            //CultureInfo cultureInfo= new CultureInfo("en-US");
-            //cultureInfo.DateTimeFormat.ShortDatePattern = "MM YYYY";
-            //Thread.CurrentThread.CurrentCulture = cultureInfo;
+          
         }
 
         private void PART_PreviousButton_Click(object sender, RoutedEventArgs e)

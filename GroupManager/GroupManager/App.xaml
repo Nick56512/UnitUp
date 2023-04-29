@@ -16,6 +16,9 @@
                 <ResourceDictionary>
                     <models:ListViewIndexConverter x:Key="listViewIndexConverter"></models:ListViewIndexConverter>
                 </ResourceDictionary>
+                <ResourceDictionary>
+                    <models:WidthConverter x:Key="widthConverter"></models:WidthConverter>
+                </ResourceDictionary>
                 <ResourceDictionary Source="/Resources/Themes/DefaultTheme.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="/Resources/Themes/Styles/Styles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
