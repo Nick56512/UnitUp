@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\App.xaml
-7935523059
+8576376224
 
-19827748658
+20-1844837695
 251982821702
-CustomControls\Calendar.xaml;Resources\Themes\DefaultTheme.xaml;Resources\Themes\Styles\RoundedScrollBar.xaml;Resources\Themes\Styles\Styles.xaml;Views\MainView.xaml;Views\ShellView.xaml;Views\StudentsListView.xaml;
+CustomControls\Calendar.xaml;Resources\Themes\DefaultTheme.xaml;Resources\Themes\Styles\RoundedScrollBar.xaml;Resources\Themes\Styles\Styles.xaml;Views\AboutStudentView.xaml;Views\MainView.xaml;Views\ShellView.xaml;Views\StudentsListView.xaml;
 
 False
 

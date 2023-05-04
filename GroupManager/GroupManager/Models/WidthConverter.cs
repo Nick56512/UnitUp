@@ -12,10 +12,7 @@ namespace GroupManager.Models
     public class WidthConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            //ListViewItem item = value as ListViewItem;
-            //ListView listView = ItemsControl.ItemsControlFromItemContainer(item) as ListView;
-            //double width = (double)value - (double)parameter;
+        { 
             double widthValue = (double)value;
             if(double.TryParse((string)parameter,out var paramWidth)){
                 return widthValue - paramWidth;

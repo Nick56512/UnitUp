@@ -18,7 +18,7 @@ namespace GroupManager.ViewModels
         }
         public void SwitchToMainContent()
         {
-            var mainViewModel=IoC.Get<MainViewModel>();
+            var mainViewModel=IoC.Get<AboutStudentViewModel>();
             Switcher.SwitchAsync(mainViewModel, new CancellationToken());
         }
     }

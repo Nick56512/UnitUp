@@ -45,5 +45,10 @@ namespace GroupManager.Views
             textBlock.Visibility= Visibility.Collapsed;
             searchTextBox.Focus();
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

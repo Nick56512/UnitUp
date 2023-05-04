@@ -131,7 +131,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style TargetType="ToggleButton" x:Key="OpenContextMenuStyle">
+    <Style TargetType="ButtonBase" x:Key="OpenContextMenuStyle">
         <Style.Triggers>
             <EventTrigger RoutedEvent="Click">
                 <EventTrigger.Actions>
@@ -145,14 +145,32 @@
                 </EventTrigger.Actions>
             </EventTrigger>
         </Style.Triggers>
-        
     </Style>
+
+    
+    
+    <ControlTemplate TargetType="ButtonBase" x:Key="TransparentButton">
+        <Border Background="Transparent" BorderBrush="Transparent" Cursor="Hand"
+                Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+            <ContentPresenter Content="{TemplateBinding Content}"></ContentPresenter>
+        </Border>
+    </ControlTemplate>
+    
+    
+    
+    
 
     <Style x:Key="PlaceholderText" TargetType="TextBlock">
         <Setter Property="FontSize" Value="20"></Setter>
         <Setter Property="FontFamily" Value="PT Sans"></Setter>
     </Style>
-    
+
+    <Style x:Key="ListViewItemFocusableTransparent" TargetType="ListViewItem">
+        <Style.Resources>
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Yellow"></SolidColorBrush>
+            <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent"></SolidColorBrush>
+        </Style.Resources>
+    </Style>
     
   
 </ResourceDictionary>

@@ -36,21 +36,12 @@
                                     <Border Cursor="Hand"
                                             CornerRadius="20"
                                             Background="Transparent">
-                                        <VisualStateManager.VisualStateGroups>
+                                        <!--<VisualStateManager.VisualStateGroups>
                                             <VisualStateGroup x:Name="CommonStates">
                                                 <VisualState x:Name="Normal"/>
-                                                <!--<VisualState x:Name="MouseOver">
-                                                    <Storyboard>
-                                                        <ColorAnimation Duration="0" Storyboard.TargetName="path" To="#FF73A9D8" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"/>
-                                                    </Storyboard>
-                                                </VisualState>
-                                                <VisualState x:Name="Disabled">
-                                                    <Storyboard>
-                                                        <DoubleAnimation Duration="0" Storyboard.TargetName="path" To=".5" Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)"/>
-                                                    </Storyboard>
-                                                </VisualState>-->
+                                              
                                             </VisualStateGroup>
-                                        </VisualStateManager.VisualStateGroups>
+                                        </VisualStateManager.VisualStateGroups>-->
                                         <Grid>
                                             <TextBlock 
                                                 FontSize="30"
@@ -121,8 +112,8 @@
                            
                             <Button x:Name="PART_HeaderButton"
                                     Margin="25,0,0,0"
-                                    Grid.Column="0" Focusable="False" FontWeight="Bold" FontSize="20" FontFamily="Nunito" HorizontalAlignment="Left" Grid.Row="0" Template="{StaticResource HeaderButtonTemplate}" VerticalAlignment="Center"/>
-                            <StackPanel Grid.Column="2" Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0,0,25,0">
+                                    Grid.Column="0" Focusable="False" FontWeight="Bold" FontSize="20" FontFamily="Nunito" HorizontalAlignment="Left" Grid.Row="0" Template="{StaticResource HeaderButtonTemplate}" VerticalAlignment="Top"/>
+                            <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="0,0,25,0">
                                 <Button x:Name="PART_PreviousButton" 
                                     Margin="0,0,5,0"
                                     Focusable="False" Height="Auto" Template="{StaticResource PreviousButtonTemplate}" Width="Auto" Click="PART_PreviousButton_Click"/>
@@ -140,13 +131,13 @@
                                     <ColumnDefinition MinWidth="60"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="25"/>
-                                    <RowDefinition Height="20"/>
-                                    <RowDefinition Height="20"/>
-                                    <RowDefinition Height="20"/>
-                                    <RowDefinition Height="20"/>
-                                    <RowDefinition Height="20"/>
-                                    <RowDefinition Height="20"/>
+                                    <RowDefinition Height="23"/>
+                                    <RowDefinition Height="15"/>
+                                    <RowDefinition Height="15"/>
+                                    <RowDefinition Height="15"/>
+                                    <RowDefinition Height="15"/>
+                                    <RowDefinition Height="15"/>
+                                    <RowDefinition Height="15"/>
                                 </Grid.RowDefinitions>
                             </Grid>
                             <Grid x:Name="PART_YearView" Grid.ColumnSpan="3" HorizontalAlignment="Center" Margin="6,-3,7,6" Grid.Row="1" Visibility="Hidden">

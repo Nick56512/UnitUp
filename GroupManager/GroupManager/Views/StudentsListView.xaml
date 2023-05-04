@@ -4,10 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GroupManager.Views"
+             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Background="#F0F1FF">
-    <Grid>
+
+
+
+    <Grid Name="GridLayout">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.2*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -15,14 +20,14 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.14*"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="0.4*"></ColumnDefinition>
+            <ColumnDefinition Width="0.13*"></ColumnDefinition>
+            <ColumnDefinition Width="0.3*"></ColumnDefinition>
             <ColumnDefinition Width="0.1*"></ColumnDefinition>
             <ColumnDefinition Width="0.14*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="1" Style="{DynamicResource CoursesLabel}" HorizontalAlignment="Center">UNITUP</TextBlock>
-        <Button Grid.Column="1" Style="{StaticResource TransparentButtonStyle}"
-                HorizontalAlignment="Left"
+        <Button Grid.Column="0" Template="{StaticResource TransparentButton}"
+                HorizontalAlignment="Right"
                 Width="35" Height="35"
                 x:Name="Back">
             <Image Source="/Resources/Images/icons/back-button.png" ></Image>
@@ -37,7 +42,15 @@
         </Ellipse>
         <Button Panel.ZIndex="1" Grid.Column="2" Width="30" Height="30" Background="Transparent" 
                 BorderBrush="Transparent"
-                HorizontalAlignment="Right">
+                HorizontalAlignment="Right"
+                Template="{StaticResource TransparentButton}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <cal:ActionMessage MethodName="SearchByLastName">
+                        <cal:Parameter Value="{Binding Path=Text, ElementName=searchTextBox}"></cal:Parameter>
+                    </cal:ActionMessage>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             <Image Source="/Resources/Images/icons/search.png"></Image>
         </Button>
         <TextBlock Grid.Column="2" FontSize="20" 
@@ -64,26 +77,42 @@
                 </ControlTemplate>
             </TextBox.Template>
         </TextBox>
-        <TextBlock Grid.Column="1" Grid.Row="1" Style="{DynamicResource CoursesLabel}" 
+        <TextBlock Grid.Column="1" Grid.ColumnSpan="2"  Grid.Row="1" Style="{DynamicResource CoursesLabel}" 
                    FontSize="40"
-                   HorizontalAlignment="Right"
+                   HorizontalAlignment="Left"
                    FontFamily="Nunito"
-                   Margin="30,0,0,0">ГРУПА 42</TextBlock>
+                   Margin="30,0,0,0" Text="{Binding CurrentGroup.Name}"></TextBlock>
+        <Button Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center"
+                Width="35"
+                Height="35"
+                Template="{StaticResource TransparentButton}"
+                x:Name="AddNewStudent">
+          
+            <Image Source="/Resources/Images/icons/plus_black.png"></Image>
+        </Button>
         <ListView Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" 
                   Background="Transparent"
                   BorderThickness="0"
                   ItemsSource="{Binding Students}"
+                  SelectedItem="{Binding SelectedStudent}"
                   x:Name="StudentsList"
-                  Margin="0,0,40,0"
-                  >
+                  Margin="0,0,40,0">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="IsSelected" Value="True"></Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
-                <DataTemplate>
-                  
-                        <Border BorderThickness="0.4" 
+                <DataTemplate x:Name="Template">
+                    <Border BorderThickness="0.4" 
                                 BorderBrush="#7889FF" 
                                 CornerRadius="10" 
                                 Background="White" 
-                                Margin="30,15,0,0"
+                                Margin="30,10,0,0"
                                 Padding="10,10,0,10"
                                 Width="{Binding ElementName=StudentsList,Path=ActualWidth,
                             Converter={StaticResource widthConverter},ConverterParameter=50}">
@@ -98,30 +127,33 @@
                                     </LinearGradientBrush>
                                 </Ellipse.Fill>
                             </Ellipse>
-                            <TextBlock FontFamily="PT Sans" FontSize="30" Margin="20,0,0,0" VerticalAlignment="Center"
+                            <TextBlock FontFamily="/Resources/Fonts/#PT Sans" FontSize="30" Margin="20,0,0,0" VerticalAlignment="Center"
                             Text="{Binding 
                             RelativeSource={RelativeSource AncestorType=ListViewItem, Mode=FindAncestor}
                             ,Converter={StaticResource listViewIndexConverter}}"></TextBlock>
-                            <TextBlock Text="{Binding Name}" FontFamily="PT Sans" FontSize="30"
+                            <TextBlock Text="{Binding Name}" FontFamily="/Resources/Fonts/#PT Sans" FontSize="30"
                                        Margin="30,0,0,0"
                                        Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
-                            <TextBlock Text="{Binding Lastname}" FontFamily="PT Sans" FontSize="30"
+                            <TextBlock Text="{Binding Lastname}" FontFamily="/Resources/Fonts/#PT Sans" FontSize="30"
                                        Margin="15,0,0,0"
                                        Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
                             <TextBlock Text="{Binding Patronymic}" FontFamily="PT Sans" FontSize="30"
                                        Margin="15,0,0,0"
                                        Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
-                            
-                            <Image HorizontalAlignment="Right" VerticalAlignment="Center" 
-                                   Source="/Resources/Images/icons/more_black.png"
-                                   Margin="0,0,20,0"
-                                   Width="30" Height="30"
-                                   ></Image>
+                            <Button Width="30" Height="30" Margin="0,0,20,0" 
+                                    Template="{StaticResource TransparentButton}"
+                                    cal:Message.Attach="DeleteStudent"
+                                    HorizontalAlignment="Right" VerticalAlignment="Center">
+                                <Image Source="/Resources/Images/icons/remove.png"></Image>
+                                
+                            </Button>
                         </DockPanel>
                     </Border>
-                    
+                   
+               
                 </DataTemplate>
             </ListView.ItemTemplate>
+          
         </ListView>
     </Grid>
 </UserControl>

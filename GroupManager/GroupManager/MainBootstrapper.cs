@@ -26,10 +26,10 @@ namespace GroupManager
             container.PerRequest<MainViewModel, MainViewModel>();
             container.PerRequest<ShellViewModel, ShellViewModel>();
             container.PerRequest<StudentsListViewModel, StudentsListViewModel>();
+            container.PerRequest<AboutStudentViewModel, AboutStudentViewModel>();
 
 
-
-            //container.PerRequest<IRepository<Student>, >();
+            container.PerRequest<IRepository<Student>, StudentRepository>();
             container.PerRequest<IStudentsRepository, StudentRepository>();
 
             container.PerRequest<IRepository<Certificate>, CertificateRepository>();

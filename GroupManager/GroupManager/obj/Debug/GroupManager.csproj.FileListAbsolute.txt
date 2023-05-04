@@ -81,3 +81,5 @@ C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Views\
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Views\StudentsListView.baml
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Views\ShellView.g.cs
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Views\ShellView.baml
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Views\AboutStudentView.g.cs
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Views\AboutStudentView.baml

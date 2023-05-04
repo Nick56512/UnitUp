@@ -160,7 +160,6 @@
         <Setter Property="FontSize" Value="25"></Setter>
         <Setter Property="FontWeight" Value="Bold"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
-        <Setter Property="Foreground" Value="#7A8BFF" />
         <Setter Property="HorizontalAlignment" Value="Left"></Setter>
     </Style>
 

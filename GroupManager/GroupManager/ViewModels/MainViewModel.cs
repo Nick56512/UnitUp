@@ -115,9 +115,12 @@ namespace GroupManager.ViewModels
         }
         public void GroupClicked()
         {
-            var studentsList=IoC.Get<StudentsListViewModel>();
-            studentsList.GroupId=SelectedGroup.Id;
-            Switcher.SwitchAsync(studentsList, new System.Threading.CancellationToken());
+            if (SelectedGroup != null)
+            {
+                var studentsList = IoC.Get<StudentsListViewModel>();
+                studentsList.CurrentGroup = SelectedGroup;
+                Switcher.SwitchAsync(studentsList, new System.Threading.CancellationToken());
+            }
         }
         protected override void OnViewLoaded(object view)
         {

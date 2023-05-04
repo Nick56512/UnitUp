@@ -34,6 +34,15 @@
             <RowDefinition Height="0.14*"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="1" Style="{DynamicResource CoursesLabel}">UNITUP</TextBlock>
+        <Ellipse Grid.Column="2" HorizontalAlignment="Right" Width="50" Height="50" VerticalAlignment="Center">
+            <Ellipse.Fill>
+                <LinearGradientBrush StartPoint="1 1" EndPoint="0 0">
+                    <GradientStop Color="#7284FF" Offset="0.1"></GradientStop>
+                    <GradientStop Color="#A0ABFB" Offset="0.9"></GradientStop>
+                </LinearGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+
         <Border Grid.ColumnSpan="2" Grid.Column="1" CornerRadius="15" Grid.Row="1">
             <Border.Background>
                 <ImageBrush ImageSource="/Resources/Images/baners/defaultFon.jpg" Stretch="UniformToFill"></ImageBrush>
@@ -44,6 +53,8 @@
                 
             </TextBlock>
         </Border>
+        
+        
 
         <Border Grid.Column="1" Grid.Row="2" Style="{DynamicResource GroupsListBorder}" 
                 Margin="0,40,25,25" Padding="20"
@@ -136,8 +147,10 @@
         </Border>
         <Border Grid.Column="2" Grid.Row="2" Grid.RowSpan="2" 
                 BorderBrush="#8493FD" BorderThickness="1" CornerRadius="15"
-                Margin="0,40,0,0" Padding="20">
-            <ContentControl Content="{Binding CalendarItem}"></ContentControl>
+                Margin="0,40,0,0" Padding="10">
+            <Border Background="White" BorderBrush="White" CornerRadius="15" Padding="5">
+                <ContentControl  Content="{Binding CalendarItem}"></ContentControl>
+            </Border>
         </Border>
         <Button Style="{DynamicResource ButtonStyle}" Width="160" Height="50" VerticalAlignment="Bottom"
                 Grid.Row="3" HorizontalAlignment="Left" Grid.Column="1" x:Name="ExitProgram">
