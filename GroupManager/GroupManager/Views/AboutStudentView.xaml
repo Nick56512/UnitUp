@@ -23,8 +23,8 @@
         </Grid.RowDefinitions>
         <DockPanel Grid.Column="1" Width="{Binding ActualWidth, ElementName=AvatarImage}">
             <Button Template="{StaticResource TransparentButton}"
-                Width="35" Height="35"
-                x:Name="Back" HorizontalAlignment="Left" >
+                 Width="35" Height="35"
+                 x:Name="Back" HorizontalAlignment="Left" >
                 <Image Source="/Resources/Images/icons/back-button.png" ></Image>
             </Button>
             <TextBlock Foreground="#7A8BFF" Style="{StaticResource CoursesLabel}" HorizontalAlignment="Center">UNITUP</TextBlock>
@@ -111,7 +111,7 @@
             </DockPanel>
             <DockPanel Margin="10">
                 <TextBlock Style="{StaticResource BoldLabel}">Адреса:</TextBlock>
-                <TextBox Style="{StaticResource TransparentTextBox}"></TextBox>
+                <RichTextBox Style="{StaticResource TransparentRichTextBox}" Height="50"></RichTextBox>
             </DockPanel>
             <DockPanel Margin="10">
                 <TextBlock Style="{StaticResource BoldLabel}">№ паспорту:</TextBlock>
@@ -119,6 +119,32 @@
             </DockPanel>
             <DockPanel Margin="10">
                 <TextBlock Style="{StaticResource BoldLabel}">Дата видачі:</TextBlock>
+                <TextBox Style="{StaticResource TransparentTextBox}"></TextBox>
+            </DockPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="3" Grid.Row="1" Grid.RowSpan="2">
+            <DockPanel Margin="10">
+                <TextBlock Style="{StaticResource BoldLabel}">Батьки:</TextBlock>
+                <TextBox Style="{StaticResource TransparentTextBox}"></TextBox>
+            </DockPanel>
+            <DockPanel Margin="10">
+                <TextBlock Style="{StaticResource BoldLabel}">Пільги:</TextBlock>
+                <TextBox Style="{StaticResource TransparentTextBox}"></TextBox>
+            </DockPanel>
+            <DockPanel Margin="10">
+                <TextBlock Style="{StaticResource BoldLabel}">Сер. шк. б.:</TextBlock>
+                <TextBox Style="{StaticResource TransparentTextBox}"></TextBox>
+            </DockPanel>
+            <DockPanel Margin="10">
+                <TextBlock Style="{StaticResource BoldLabel}">Стать:</TextBlock>
+                <TextBox Style="{StaticResource TransparentTextBox}"></TextBox>
+            </DockPanel>
+            <DockPanel Margin="10">
+                <TextBlock Style="{StaticResource BoldLabel}">Село/Місто:</TextBlock>
+                <TextBox Style="{StaticResource TransparentTextBox}"></TextBox>
+            </DockPanel>
+            <DockPanel Margin="10">
+                <TextBlock Style="{StaticResource BoldLabel}">Рік випуску:</TextBlock>
                 <TextBox Style="{StaticResource TransparentTextBox}"></TextBox>
             </DockPanel>
         </StackPanel>

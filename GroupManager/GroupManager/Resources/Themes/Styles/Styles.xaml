@@ -173,12 +173,20 @@
     </Style>
 
     <Style x:Key="BoldLabel" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="FontSize" Value="18"></Setter>
         <Setter Property="FontWeight" Value="Bold"></Setter>
         <Setter Property="FontFamily" Value="/Fonts/#PT Sans"></Setter>
     </Style>
     <Style x:Key="TransparentTextBox" TargetType="TextBox">
-        <Setter Property="BorderThickness" Value="0,0,0,0.5"></Setter>
+        <Setter Property="BorderThickness" Value="0,0,0,0"></Setter>
+        <Setter Property="BorderBrush" Value="Black" ></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="FontFamily" Value="/Fonts/#PT Sans"></Setter>
+        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="Height" Value="Auto"></Setter>
+    </Style>
+    <Style x:Key="TransparentRichTextBox" TargetType="RichTextBox">
+        <Setter Property="BorderThickness" Value="0,0,0,0"></Setter>
         <Setter Property="BorderBrush" Value="Black" ></Setter>
         <Setter Property="Background" Value="Transparent"></Setter>
         <Setter Property="FontFamily" Value="/Fonts/#PT Sans"></Setter>
