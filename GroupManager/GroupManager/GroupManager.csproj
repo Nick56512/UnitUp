@@ -136,6 +136,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\Fonts\PTSans-Bold.ttf" />
     <Resource Include="Resources\Fonts\SF-Pro-Regular.otf" />
     <Resource Include="Resources\Fonts\PTSans-Regular.ttf" />
     <Resource Include="Resources\Fonts\Nunito-ExtraBold.ttf">
@@ -235,6 +236,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\icons\pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icons\next.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
