@@ -178,6 +178,7 @@
         <Setter Property="FontFamily" Value="/Fonts/#PT Sans"></Setter>
     </Style>
     <Style x:Key="TransparentTextBox" TargetType="TextBox">
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
         <Setter Property="BorderThickness" Value="0,0,0,0"></Setter>
         <Setter Property="BorderBrush" Value="Black" ></Setter>
         <Setter Property="Background" Value="Transparent"></Setter>

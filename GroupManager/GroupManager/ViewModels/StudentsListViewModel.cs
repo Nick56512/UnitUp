@@ -45,14 +45,14 @@ namespace GroupManager.ViewModels
             {
                 //Students = new BindableCollection<Student>(_studentsRepository
                 //    .GetStudentsFromGroup(GroupId));
-                Students=new BindableCollection<Student>
-                {
-                    new Student{Name="Вікуся", Lastname="Думініке", Patronymic="Сергіївна"},
-                    new Student{Name="Олександр", Lastname="Мітцих", Patronymic="Максимович"},
-                    new Student{Name="Максим", Lastname="Гетьман", Patronymic="Юрійович"},
-                    new Student{Name="Георгій", Lastname="Бистріцький", Patronymic="Олегович"},
+                //Students=new BindableCollection<Student>
+                //{
+                //    new Student{Name="Вікуся", Lastname="Думініке", Patronymic="Сергіївна"},
+                //    new Student{Name="Олександр", Lastname="Мітцих", Patronymic="Максимович"},
+                //    new Student{Name="Максим", Lastname="Гетьман", Patronymic="Юрійович"},
+                //    new Student{Name="Георгій", Lastname="Бистріцький", Patronymic="Олегович"},
                     
-                };
+                //};
                 //St
             }
         }
@@ -77,6 +77,9 @@ namespace GroupManager.ViewModels
         public void AddNewStudent()
         {
             var aboutStudentViewModel=IoC.Get<AboutStudentViewModel>();
+            aboutStudentViewModel.ViewMode = Mode.Update;
+            aboutStudentViewModel.CurrentGroup = CurrentGroup;
+            //aboutStudentViewModel.CurrentStudent = new Student();
             Switcher.SwitchAsync(aboutStudentViewModel,new System.Threading.CancellationToken());
         }
 

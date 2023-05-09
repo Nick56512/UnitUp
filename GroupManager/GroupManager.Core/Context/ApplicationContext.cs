@@ -13,7 +13,6 @@ namespace GroupManager.Core.Context
     {
         public DbSet<Student> Students { get; set; }
         public DbSet<Certificate> Certificates { get; set; }
-        public DbSet<Characteristic> Characteristics { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Parents> Parents { get; set; }
         public DbSet<Privilege> Privileges { get; set; }

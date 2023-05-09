@@ -21,6 +21,5 @@ namespace GroupManager.Core.Model
         public string Header { get; set; }
         public string Description { get; set; } 
         public Guid StudentId { get; set; }
-        public virtual Student Student { get; set; }
     }
 }

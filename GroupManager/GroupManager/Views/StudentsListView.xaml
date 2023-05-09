@@ -25,7 +25,8 @@
             <ColumnDefinition Width="0.1*"></ColumnDefinition>
             <ColumnDefinition Width="0.14*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="1" Style="{DynamicResource CoursesLabel}" HorizontalAlignment="Center">UNITUP</TextBlock>
+        <TextBlock Grid.Column="1" Style="{DynamicResource CoursesLabel}"
+                   HorizontalAlignment="Center">UNITUP</TextBlock>
         <Button Grid.Column="0" Template="{StaticResource TransparentButton}"
                 HorizontalAlignment="Right"
                 Width="35" Height="35"

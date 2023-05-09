@@ -7,11 +7,6 @@ using System.Threading.Tasks;
 
 namespace GroupManager.Core.Model
 {
-    public enum Gender
-    {
-        Male,
-        Female
-    }
     public enum PlaceType
     {
         City,
@@ -20,26 +15,27 @@ namespace GroupManager.Core.Model
     public class Student
     {
         public Guid Id { get; set; }
+        public string Avatar { get; set; }
         public string Name { get; set; }
         public string Lastname { get; set; }
         public string Patronymic { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public Gender Gender { get; set; }  
+        public string DateOfBirth { get; set; }
+        public string Gender { get; set; }  
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public string PassportNumber { get; set; }
         public string PassportIssueDate { get; set; }
+        public string PassportEndDate { get; set; }
         public string IdentificationCode { get; set; }
         public string Note { get; set; }
         public string PromYear { get; set; }
-        public bool IsHavingManyChildren { get; set; }
+        public string PlaceLiveType { get; set; }
         public bool IsDormitory { get; set; }
-        public double AverageGrade { get; set; }
+        public string AverageGrade { get; set; }
 
 
         public Guid GroupId { get; set; }
         public Group Group { get; set; }
-        public virtual IList<Characteristic> Characteristics { get; set; }
         public virtual IList<Certificate> Certificates { get; set; }
         public IList<Parents> Parents { get; set; }
         public IList<Privilege> Privileges { get; set; }

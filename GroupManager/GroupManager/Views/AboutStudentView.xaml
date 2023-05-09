@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:local="clr-namespace:GroupManager.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
@@ -23,6 +25,7 @@
         </Grid.RowDefinitions>
         <DockPanel Grid.Column="1" Width="{Binding ActualWidth, ElementName=AvatarImage}">
             <Button Template="{StaticResource TransparentButton}"
+                   
                  Width="35" Height="35"
                  x:Name="Back" HorizontalAlignment="Left" >
                 <Image Source="/Resources/Images/icons/back-button.png" ></Image>
@@ -47,13 +50,35 @@
                 x:Name="AvatarImage"
                 >
             <Border.Background>
-                <ImageBrush ImageSource="https://kartinkof.club/uploads/posts/2022-09/1662323039_1-kartinkof-club-p-novie-i-krasivie-kartinki-tyanki-1.jpg"
-                                Stretch="UniformToFill"></ImageBrush>
+                <ImageBrush ImageSource="{Binding CurrentAvatarPath}" Stretch="UniformToFill"></ImageBrush>
             </Border.Background>
         </Border>
         <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Vertical" VerticalAlignment="Top" Margin="0,30,0,0">
-           
+
+            <Button Style="{DynamicResource ButtonStyle}" Height="55" 
+                    Visibility="{Binding UpdateVisibility}"
+                    x:Name="UploadAvatar"
+                Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Width="{Binding ActualWidth, ElementName=AvatarImage}">
+                <DockPanel>
+                    <TextBlock FontSize="23" VerticalAlignment="Center" HorizontalAlignment="Center">Завантажити аватар</TextBlock>
+                </DockPanel>
+            </Button>
+            <Button Style="{DynamicResource ButtonStyle}" Height="55" Margin="0,20,0,0"
+                    Visibility="{Binding UpdateVisibility}"
+                    x:Name="SaveStudent"
+                Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Width="{Binding ActualWidth, ElementName=AvatarImage}">
+                <DockPanel>
+                    <TextBlock VerticalAlignment="Center" FontSize="30" HorizontalAlignment="Center">Зберегти дані</TextBlock>
+                </DockPanel>
+            </Button>
+
+
+
+
+
+
             <Button Style="{DynamicResource ButtonStyle}" Height="55"
+                    Visibility="{Binding ReadonlyVisibility}"
                 Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Width="{Binding ActualWidth, ElementName=AvatarImage}">
                 <DockPanel>
                     <TextBlock FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center">Сертифікати</TextBlock>
@@ -61,13 +86,16 @@
                 </DockPanel>
             </Button>
             <Button Style="{DynamicResource ButtonStyle}" Height="55" Margin="0,20,0,0"
+                    Visibility="{Binding ReadonlyVisibility}"
                 Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Width="{Binding ActualWidth, ElementName=AvatarImage}">
                 <DockPanel>
                     <TextBlock VerticalAlignment="Center" FontSize="30" HorizontalAlignment="Center">Редагувати</TextBlock>
                     <Image Width="30" Height="30" HorizontalAlignment="Right"  VerticalAlignment="Center" Margin="0,0,10,0" Source="/Resources/Images/icons/pencil.png"></Image>
                 </DockPanel>
             </Button>
-            <Button Style="{DynamicResource ButtonStyle}" Height="55" Margin="0,20,0,0"
+            <Button Style="{DynamicResource ButtonStyle}" 
+                    Visibility="{Binding ReadonlyVisibility}"
+                    Height="55" Margin="0,20,0,0"
                 Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Width="{Binding ActualWidth, ElementName=AvatarImage}">
                 <TextBlock VerticalAlignment="Center" FontSize="30" HorizontalAlignment="Center">Характеристика</TextBlock>
             </Button>
@@ -75,7 +103,7 @@
         </StackPanel>
 
         <Button Grid.Row="3" Grid.Column="1" Template="{StaticResource TransparentButton}" HorizontalAlignment="Left"
-                Width="35" Height="35">
+                Width="35" Height="35"  Visibility="{Binding ReadonlyVisibility}">
 
             <Image Source="/Resources/Images/icons/next.png">
                 <Image.LayoutTransform>
@@ -85,41 +113,49 @@
         </Button>
 
         <Button Grid.Row="3" Grid.Column="3" Template="{StaticResource TransparentButton}" HorizontalAlignment="Right"
-                Width="35" Height="35">
+                Width="35" Height="35"  Visibility="{Binding ReadonlyVisibility}">
             <Image Source="/Resources/Images/icons/next.png"></Image>
         </Button>
         <StackPanel Grid.Column="2" Grid.Row="1" Grid.RowSpan="2">
             <DockPanel Margin="10">
                 <TextBlock Style="{StaticResource BoldLabel}">Прізвище:</TextBlock>
-                <TextBox Style="{StaticResource TransparentTextBox}"></TextBox>
+                <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.Lastname}"></TextBox>
             </DockPanel>
             <DockPanel Margin="10">
                 <TextBlock Style="{StaticResource BoldLabel}">Ім'я:</TextBlock>
-                <TextBox Style="{StaticResource TransparentTextBox}"></TextBox>
+                <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.Name}"></TextBox>
             </DockPanel>
             <DockPanel Margin="10">
                 <TextBlock Style="{StaticResource BoldLabel}">По-батькові:</TextBlock>
-                <TextBox Style="{StaticResource TransparentTextBox}"></TextBox>
+                <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.Patronymic}"></TextBox>
             </DockPanel>
             <DockPanel Margin="10">
                 <TextBlock Style="{StaticResource BoldLabel}">Дата народження:</TextBlock>
-                <TextBox Style="{StaticResource TransparentTextBox}"></TextBox>
+                <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.DateOfBirth}"></TextBox>
             </DockPanel>
             <DockPanel Margin="10">
                 <TextBlock Style="{StaticResource BoldLabel}">Телефон:</TextBlock>
-                <TextBox Style="{StaticResource TransparentTextBox}"></TextBox>
+                <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.PhoneNumber}"></TextBox>
             </DockPanel>
             <DockPanel Margin="10">
                 <TextBlock Style="{StaticResource BoldLabel}">Адреса:</TextBlock>
-                <RichTextBox Style="{StaticResource TransparentRichTextBox}" Height="50"></RichTextBox>
+                <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.Address}"></TextBox>
             </DockPanel>
             <DockPanel Margin="10">
                 <TextBlock Style="{StaticResource BoldLabel}">№ паспорту:</TextBlock>
-                <TextBox Style="{StaticResource TransparentTextBox}"></TextBox>
+                <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.PassportNumber}"></TextBox>
             </DockPanel>
             <DockPanel Margin="10">
                 <TextBlock Style="{StaticResource BoldLabel}">Дата видачі:</TextBlock>
-                <TextBox Style="{StaticResource TransparentTextBox}"></TextBox>
+                <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.PassportIssueDate}"></TextBox>
+            </DockPanel>
+            <DockPanel Margin="10">
+                <TextBlock Style="{StaticResource BoldLabel}">Дата закінчення дії паспорта:</TextBlock>
+                <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.PassportEndDate}"></TextBox>
+            </DockPanel>
+            <DockPanel Margin="10">
+                <TextBlock Style="{StaticResource BoldLabel}">Гуртожиток:</TextBlock>
+                <CheckBox VerticalAlignment="Center" IsChecked="{Binding CurrentStudent.IsDormitory}"></CheckBox>
             </DockPanel>
         </StackPanel>
         <StackPanel Grid.Column="3" Grid.Row="1" Grid.RowSpan="2">
@@ -133,19 +169,31 @@
             </DockPanel>
             <DockPanel Margin="10">
                 <TextBlock Style="{StaticResource BoldLabel}">Сер. шк. б.:</TextBlock>
-                <TextBox Style="{StaticResource TransparentTextBox}"></TextBox>
+                <TextBox Style="{StaticResource TransparentTextBox}" 
+                         Text="{Binding CurrentStudent.AverageGrade}"></TextBox>
             </DockPanel>
-            <DockPanel Margin="10">
+            <StackPanel Margin="10" Orientation="Horizontal">
                 <TextBlock Style="{StaticResource BoldLabel}">Стать:</TextBlock>
-                <TextBox Style="{StaticResource TransparentTextBox}"></TextBox>
-            </DockPanel>
-            <DockPanel Margin="10">
+                <ComboBox Margin="5,0,0,0" FontFamily="/Resources/Fonts/#PT Sans"
+                          Width="100"
+                          SelectedValue="{Binding CurrentStudent.Gender}"
+                         >
+                    <ComboBoxItem>Чоловіча</ComboBoxItem>
+                    <ComboBoxItem>Жіноча</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Margin="10" Orientation="Horizontal">
                 <TextBlock Style="{StaticResource BoldLabel}">Село/Місто:</TextBlock>
-                <TextBox Style="{StaticResource TransparentTextBox}"></TextBox>
-            </DockPanel>
+                <ComboBox Margin="5,0,0,0" FontFamily="/Resources/Fonts/#PT Sans"
+                          SelectedItem="{Binding CurrentStudent.City}" Width="90">
+                    <ComboBoxItem>Село</ComboBoxItem>
+                    <ComboBoxItem>Місто</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
             <DockPanel Margin="10">
                 <TextBlock Style="{StaticResource BoldLabel}">Рік випуску:</TextBlock>
-                <TextBox Style="{StaticResource TransparentTextBox}"></TextBox>
+                <TextBox Style="{StaticResource TransparentTextBox}" 
+                         Text="{Binding CurrentStudent.PromYear}"></TextBox>
             </DockPanel>
         </StackPanel>
     </Grid>
