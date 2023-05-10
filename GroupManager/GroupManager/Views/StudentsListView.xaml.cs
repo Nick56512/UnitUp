@@ -1,6 +1,8 @@
-﻿using System;
+﻿using GroupManager.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -49,6 +51,12 @@ namespace GroupManager.Views
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void StudentsList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var dataContext = DataContext as StudentsListViewModel;
+            dataContext.AboutStudent();
         }
     }
 }

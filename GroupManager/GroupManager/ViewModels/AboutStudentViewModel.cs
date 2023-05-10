@@ -72,7 +72,8 @@ namespace GroupManager.ViewModels
             set
             {
                 currentStudent = value;
-                CurrentAvatarPath = currentStudent.Avatar;
+                CurrentAvatarPath =currentStudent.Avatar;
+                NotifyOfPropertyChange(nameof(CurrentStudent));
             } 
         
         }
@@ -152,6 +153,10 @@ namespace GroupManager.ViewModels
                 CurrentStudent.Id = Guid.NewGuid();
                 CurrentStudent.GroupId= CurrentGroup.Id;
                 _studentRepository.Add(CurrentStudent);
+                var backPage = IoC.Get<StudentsListViewModel>();
+                backPage.CurrentGroup= CurrentGroup;
+                Switcher.SwitchAsync(backPage,new System.Threading.CancellationToken());
+
             }
             else _studentRepository.Update(CurrentStudent);
         }

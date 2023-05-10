@@ -26,7 +26,7 @@
             <ColumnDefinition Width="0.14*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="1" Style="{DynamicResource CoursesLabel}"
-                   HorizontalAlignment="Center">UNITUP</TextBlock>
+                   HorizontalAlignment="Center" Foreground="#7284FF">UNITUP</TextBlock>
         <Button Grid.Column="0" Template="{StaticResource TransparentButton}"
                 HorizontalAlignment="Right"
                 Width="35" Height="35"
@@ -82,6 +82,7 @@
                    FontSize="40"
                    HorizontalAlignment="Left"
                    FontFamily="Nunito"
+                   Foreground="#7284FF"
                    Margin="30,0,0,0" Text="{Binding CurrentGroup.Name}"></TextBlock>
         <Button Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center"
                 Width="35"
@@ -97,7 +98,9 @@
                   ItemsSource="{Binding Students}"
                   SelectedItem="{Binding SelectedStudent}"
                   x:Name="StudentsList"
-                  Margin="0,0,40,0">
+                  Margin="0,0,40,0"
+                  MouseDoubleClick="StudentsList_MouseDoubleClick">
+
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Style.Triggers>

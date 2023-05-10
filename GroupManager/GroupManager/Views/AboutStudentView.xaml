@@ -11,11 +11,11 @@
              Background="#F0F1FF">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.3*"></ColumnDefinition>
+            <ColumnDefinition Width="0.4*"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="0.3*"></ColumnDefinition>
+            <ColumnDefinition Width="0.4*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.26*"></RowDefinition>
@@ -68,7 +68,7 @@
                     x:Name="SaveStudent"
                 Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Width="{Binding ActualWidth, ElementName=AvatarImage}">
                 <DockPanel>
-                    <TextBlock VerticalAlignment="Center" FontSize="30" HorizontalAlignment="Center">Зберегти дані</TextBlock>
+                    <TextBlock VerticalAlignment="Center" FontSize="23" HorizontalAlignment="Center">Зберегти дані</TextBlock>
                 </DockPanel>
             </Button>
 
@@ -81,7 +81,7 @@
                     Visibility="{Binding ReadonlyVisibility}"
                 Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Width="{Binding ActualWidth, ElementName=AvatarImage}">
                 <DockPanel>
-                    <TextBlock FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center">Сертифікати</TextBlock>
+                    <TextBlock FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center">Сертифікати</TextBlock>
                     <Image Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Source="/Resources/Images/icons/certificate.png"></Image>
                 </DockPanel>
             </Button>
@@ -89,7 +89,7 @@
                     Visibility="{Binding ReadonlyVisibility}"
                 Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Width="{Binding ActualWidth, ElementName=AvatarImage}">
                 <DockPanel>
-                    <TextBlock VerticalAlignment="Center" FontSize="30" HorizontalAlignment="Center">Редагувати</TextBlock>
+                    <TextBlock VerticalAlignment="Center" FontSize="25" HorizontalAlignment="Center">Редагувати</TextBlock>
                     <Image Width="30" Height="30" HorizontalAlignment="Right"  VerticalAlignment="Center" Margin="0,0,10,0" Source="/Resources/Images/icons/pencil.png"></Image>
                 </DockPanel>
             </Button>
@@ -142,6 +142,10 @@
                 <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.Address}"></TextBox>
             </DockPanel>
             <DockPanel Margin="10">
+                <TextBlock Style="{StaticResource BoldLabel}">Ідентифікаційний код:</TextBlock>
+                <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.IdentificationCode}"></TextBox>
+            </DockPanel>
+            <DockPanel Margin="10">
                 <TextBlock Style="{StaticResource BoldLabel}">№ паспорту:</TextBlock>
                 <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.PassportNumber}"></TextBox>
             </DockPanel>
@@ -159,14 +163,39 @@
             </DockPanel>
         </StackPanel>
         <StackPanel Grid.Column="3" Grid.Row="1" Grid.RowSpan="2">
-            <DockPanel Margin="10">
-                <TextBlock Style="{StaticResource BoldLabel}">Батьки:</TextBlock>
-                <TextBox Style="{StaticResource TransparentTextBox}"></TextBox>
-            </DockPanel>
-            <DockPanel Margin="10">
-                <TextBlock Style="{StaticResource BoldLabel}">Пільги:</TextBlock>
-                <TextBox Style="{StaticResource TransparentTextBox}"></TextBox>
-            </DockPanel>
+            <StackPanel Margin="10" Orientation="Vertical" Visibility="{Binding ReadonlyVisibility}">
+                <DockPanel>
+                    <TextBlock Style="{StaticResource BoldLabel}" VerticalAlignment="Center">Батьки:</TextBlock>
+                    <Button Grid.Column="3" Grid.Row="1" HorizontalAlignment="Right"
+                        Width="25"
+                        Height="25"
+                        Template="{StaticResource TransparentButton}"
+                        x:Name="AddStudentParents">
+                        <Image Source="/Resources/Images/icons/plus_black.png"></Image>
+                    </Button>
+                </DockPanel>
+                <StackPanel Height="0">
+                    <TextBlock FontSize="18" FontFamily="/Resources/Fonts/#PT Sans">ПІБ</TextBlock>
+                    <DockPanel>
+                        <TextBox Template="{StaticResource DefaultTextBox}" 
+                        FontSize="18"></TextBox>
+                    </DockPanel>
+                    <TextBlock FontSize="18" FontFamily="/Resources/Fonts/#PT Sans">Номер телефону</TextBlock>
+                    <DockPanel>
+                        <TextBox Template="{StaticResource DefaultTextBox}" FontSize="18"></TextBox>
+                    </DockPanel>
+                </StackPanel>
+                <ListBox ItemsSource="{Binding CurrentStudent.Parents}" Margin="0,10,0,0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding FullName}"></TextBlock>
+                                <TextBlock Text="{Binding PhoneNumnber}"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
             <DockPanel Margin="10">
                 <TextBlock Style="{StaticResource BoldLabel}">Сер. шк. б.:</TextBlock>
                 <TextBox Style="{StaticResource TransparentTextBox}" 

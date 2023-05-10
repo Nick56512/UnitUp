@@ -43,8 +43,9 @@ namespace GroupManager.ViewModels
         {
             if (CurrentGroup!=null)
             {
-                //Students = new BindableCollection<Student>(_studentsRepository
-                //    .GetStudentsFromGroup(GroupId));
+                Students = new BindableCollection<Student>(_studentsRepository.GetAll()
+                    .Where(x=>x.GroupId==CurrentGroup.Id));
+                   
                 //Students=new BindableCollection<Student>
                 //{
                 //    new Student{Name="Вікуся", Lastname="Думініке", Patronymic="Сергіївна"},
@@ -79,10 +80,16 @@ namespace GroupManager.ViewModels
             var aboutStudentViewModel=IoC.Get<AboutStudentViewModel>();
             aboutStudentViewModel.ViewMode = Mode.Update;
             aboutStudentViewModel.CurrentGroup = CurrentGroup;
-            //aboutStudentViewModel.CurrentStudent = new Student();
             Switcher.SwitchAsync(aboutStudentViewModel,new System.Threading.CancellationToken());
         }
-
+        public void AboutStudent()
+        {
+            var aboutStudentViewModel = IoC.Get<AboutStudentViewModel>();
+            aboutStudentViewModel.ViewMode = Mode.ReadOnly;
+            aboutStudentViewModel.CurrentStudent = SelectedStudent;
+            aboutStudentViewModel.CurrentGroup = CurrentGroup;
+            Switcher.SwitchAsync(aboutStudentViewModel, new System.Threading.CancellationToken());
+        }
 
 
         public void DeleteStudent()
