@@ -38,7 +38,8 @@ namespace GroupManager
             container.PerRequest<IRepository<Group>, GroupRepository>();
             container.PerRequest<IRepository<Parents>, ParentsRepository>();
             container.PerRequest<IRepository<Privilege>, PrivilegeRepository>();
-            container.PerRequest<DbContext, ApplicationContext>();
+
+            container.Singleton<DbContext, ApplicationContext>();
             Initialize();
         }
         protected override void Configure()

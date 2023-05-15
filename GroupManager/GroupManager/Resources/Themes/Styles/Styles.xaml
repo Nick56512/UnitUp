@@ -26,6 +26,20 @@
                               From="170" To="0" 
                               Duration="0:0:0.2" />
     </Storyboard>
+
+
+
+    <Storyboard x:Key="SlideDown2">
+        <DoubleAnimation Storyboard.TargetProperty="(TextBox.Height)"
+                             From="0" To="120"
+                             Duration="0:0:0.2" />
+    </Storyboard>
+
+    <Storyboard x:Key="SlideUp2">
+        <DoubleAnimation Storyboard.TargetProperty="(TextBox.Height)"
+                              From="120" To="0" 
+                              Duration="0:0:0.2" />
+    </Storyboard>
     <!--END ANIMATIONS-->
     
     <!--CALENDAR-->
@@ -192,6 +206,7 @@
         <Setter Property="FontFamily" Value="/Fonts/#PT Sans"></Setter>
     </Style>
     <Style x:Key="TransparentTextBox" TargetType="TextBox">
+        <Setter Property="IsReadOnly" Value="{Binding ReadOnlyTextBoxes}"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
         <Setter Property="BorderThickness" Value="0,0,0,0"></Setter>
         <Setter Property="BorderBrush" Value="Black" ></Setter>
@@ -223,6 +238,25 @@
                 </DataTrigger.EnterActions>
                 <DataTrigger.ExitActions>
                     <BeginStoryboard Storyboard="{StaticResource SlideUp1}" />
+                </DataTrigger.ExitActions>
+            </DataTrigger>
+
+        </Style.Triggers>
+    </Style>
+
+
+
+    <Style x:Key="AnimatedPrivelegesForm" TargetType="StackPanel">
+        <Setter Property="TextBox.FontSize" Value="19"></Setter>
+        <Setter Property="TextBox.FontWeight" Value="Normal"></Setter>
+        <Setter Property="TextBox.FontFamily" Value="PT Sans"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsChecked, ElementName=AddPrivelegesButton}" Value="True">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource SlideDown2}" />
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource SlideUp2}" />
                 </DataTrigger.ExitActions>
             </DataTrigger>
 

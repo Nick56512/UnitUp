@@ -53,7 +53,7 @@ namespace GroupManager.ViewModels
         public MainViewModel(
             IRepository<Group> repository)
         {
-            string strDate = DateTime.UtcNow.ToString("dddd, MM MMMM");
+            string strDate = DateTime.UtcNow.ToString("dddd, dd MMMM");
             Date = char.ToUpper(strDate[0]) + strDate.Substring(1);
             _groupRepository = repository;
             CalendarItem = new CustomControls.Calendar();

@@ -6,6 +6,7 @@ using GroupManager.Models;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,44 @@ namespace GroupManager.ViewModels
     }
     public class AboutStudentViewModel:Screen
     {
+        bool readOnlyTextBoxes;
+        public bool ReadOnlyTextBoxes 
+        { 
+            get=>readOnlyTextBoxes;
+
+            set
+            {
+                readOnlyTextBoxes = value;
+                NotifyOfPropertyChange(() => ReadOnlyTextBoxes);
+            } 
+        }
+
+
+        BindableCollection<string> allPriveleges;
+        public BindableCollection<string> AllPriveleges
+        {
+            get => allPriveleges;
+            set
+            {
+                allPriveleges = value;
+                NotifyOfPropertyChange(() => AllPriveleges);
+            }
+        }
+
+
+
+
+        BindableCollection<string> studentPriveleges;
+        public BindableCollection<string> StudentPriveleges
+        {
+            get => studentPriveleges;
+            set
+            {
+                studentPriveleges = value;
+                NotifyOfPropertyChange(() =>StudentPriveleges);
+            }
+        }
+
         BindableCollection<Parents> parents;
         public BindableCollection<Parents> Parents 
         { 
@@ -76,6 +115,17 @@ namespace GroupManager.ViewModels
                 NotifyOfPropertyChange(nameof(ViewMode));
             }
         }
+        string privilege;
+        public string Privilege
+        {
+            get => privilege;
+            set
+            {
+                privilege = value;
+                NotifyOfPropertyChange(() => Privilege);
+            }
+        }
+
         Parents parent;
         public Parents Parent { 
             get=>parent;
@@ -94,12 +144,15 @@ namespace GroupManager.ViewModels
             {
                 currentStudent = value;
                 CurrentAvatarPath =currentStudent.Avatar;
+                //StudentPriveleges = new BindableCollection<string>
+                //    (currentStudent.Privileges?.Select(x => x.Header));
                 NotifyOfPropertyChange(nameof(CurrentStudent));
             } 
         
         }
         IRepository<Student> _studentRepository;
         IRepository<Parents> _parentsRepository;
+        IRepository<Privilege> _privilegeRepository;
 
         Visibility updateVisibility;
         public Visibility UpdateVisibility
@@ -128,15 +181,22 @@ namespace GroupManager.ViewModels
 
 
         public AboutStudentViewModel(
-            IRepository<Student> _studentRepository, IRepository<Parents> parentsRepository)
+            IRepository<Student> _studentRepository, 
+            IRepository<Parents> parentsRepository,
+            IRepository<Privilege>privelegeRepository)
         {
             this._studentRepository = _studentRepository;
+            this._privilegeRepository = privelegeRepository;
             CurrentStudent = new Student();
             Parent= new Parents();
             string path=Directory.GetCurrentDirectory();
             CurrentAvatarPath = path + "\\StudentsAvatars\\empty.png";
             
             _parentsRepository = parentsRepository;
+
+            AllPriveleges = new BindableCollection<string>
+                (_privilegeRepository.GetAll().Select(x => x.Header));
+            
         }
 
         public void Back()
@@ -171,6 +231,63 @@ namespace GroupManager.ViewModels
             Parent = new Parents();
 
         }
+        public void AddPrivelege()
+        {
+            if(StudentPriveleges is null)
+            {
+                StudentPriveleges = new BindableCollection<string>();
+            }
+            StudentPriveleges.Add(Privilege);
+            var priv = _privilegeRepository.GetAll()
+                .Include(x=>x.Students)
+                .FirstOrDefault(x => x.Header == Privilege);
+            priv.Students.Add(CurrentStudent);
+            CurrentStudent.Privileges.Add(priv);
+            _privilegeRepository.Update(priv);
+            _studentRepository.Update(CurrentStudent);
+            Privilege = "";
+        }
+
+        public void MoveToNext()
+        {
+            var students = _studentRepository.GetAll()
+                .Include(x=>x.Parents)
+                .Include(x=>x.Privileges)
+                .Where(x => x.GroupId == CurrentGroup.Id)
+                .ToArray();
+            int index = Array.FindIndex(students, x => x.Id == CurrentStudent.Id);
+            if (index == students.Length - 1)
+                return;
+            CurrentStudent = students[index + 1];
+            Parents = new BindableCollection<Parents>(
+                CurrentStudent.Parents);
+            StudentPriveleges = new BindableCollection<string>(
+                CurrentStudent.Privileges.Select(x => x.Header)
+                );
+
+
+        }
+        public void MoveToPrevious()
+        {
+            var students = _studentRepository.GetAll()
+                 .Include(x => x.Parents)
+                .Include(x => x.Privileges)
+                .Where(x => x.GroupId == CurrentGroup.Id)
+                .ToArray();
+            int index = Array.FindIndex(students, x => x.Id == CurrentStudent.Id);
+            if (index == 0)
+                return;
+            CurrentStudent = students[index - 1];
+            Parents = new BindableCollection<Parents>(
+              CurrentStudent.Parents);
+            StudentPriveleges = new BindableCollection<string>(
+                CurrentStudent.Privileges.Select(x => x.Header)
+                );
+        }
+
+
+
+
         public void SaveStudent()
         {
             try
@@ -204,6 +321,11 @@ namespace GroupManager.ViewModels
         {
             var createCharacteristic = IoC.Get<CharacteristicFormViewModel>();
             Switcher.SwitchAsync(createCharacteristic, new System.Threading.CancellationToken());
+        }
+        public void OpenEditMode()
+        {
+            ViewMode = Mode.Update;
+            ReadOnlyTextBoxes = false;
         }
     }
 }

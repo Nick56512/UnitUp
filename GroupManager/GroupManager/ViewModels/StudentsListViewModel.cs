@@ -5,6 +5,7 @@ using GroupManager.Core.Models;
 using GroupManager.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,17 +45,9 @@ namespace GroupManager.ViewModels
             if (CurrentGroup!=null)
             {
                 Students = new BindableCollection<Student>(_studentsRepository.GetAll()
+                    .Include(x => x.Privileges)
                     .Where(x=>x.GroupId==CurrentGroup.Id));
-                   
-                //Students=new BindableCollection<Student>
-                //{
-                //    new Student{Name="Вікуся", Lastname="Думініке", Patronymic="Сергіївна"},
-                //    new Student{Name="Олександр", Lastname="Мітцих", Patronymic="Максимович"},
-                //    new Student{Name="Максим", Lastname="Гетьман", Patronymic="Юрійович"},
-                //    new Student{Name="Георгій", Lastname="Бистріцький", Patronymic="Олегович"},
-                    
-                //};
-                //St
+                //var priv = Students[0].Privileges;
             }
         }
         protected override void OnViewReady(object view)
@@ -80,6 +73,7 @@ namespace GroupManager.ViewModels
             var aboutStudentViewModel=IoC.Get<AboutStudentViewModel>();
             aboutStudentViewModel.ViewMode = Mode.Update;
             aboutStudentViewModel.CurrentGroup = CurrentGroup;
+            aboutStudentViewModel.ReadOnlyTextBoxes = false;
             Switcher.SwitchAsync(aboutStudentViewModel,new System.Threading.CancellationToken());
         }
         public void AboutStudent()
@@ -90,9 +84,11 @@ namespace GroupManager.ViewModels
                 aboutStudentViewModel.ViewMode = Mode.ReadOnly;
                 aboutStudentViewModel.CurrentStudent = SelectedStudent;
                 aboutStudentViewModel.CurrentGroup = CurrentGroup;
+                aboutStudentViewModel.StudentPriveleges= new BindableCollection<string>
+                    (SelectedStudent.Privileges.Select(x=>x.Header));
                 aboutStudentViewModel.Parents = new BindableCollection<Parents>(
                         _parentsRepository.GetAll().Where(x => x.StudentId == SelectedStudent.Id));
-
+                aboutStudentViewModel.ReadOnlyTextBoxes = true;
                 Switcher.SwitchAsync(aboutStudentViewModel, new System.Threading.CancellationToken());
             }
         }
@@ -102,23 +98,9 @@ namespace GroupManager.ViewModels
         {
             if (SelectedStudent is null)
                 return;
-            var certificates=_certificateRepository
-                .GetAll().Where(x=>x.StudentId==SelectedStudent.Id);
-            foreach (var cert in certificates)
-            {
-                _certificateRepository.Delete(cert);
-            }
-            var parents= _parentsRepository.GetAll().Where(x => x.StudentId == SelectedStudent.Id);
-            if (parents != null)
-            {
-                foreach (var parent in parents)
-                {
-                    _parentsRepository.Delete(parent);
-                }
-            }
+            
             _studentsRepository.Delete(SelectedStudent);
-            //Students=new BindableCollection<Student>()
-            Students.Remove(SelectedStudent);
+            Students = new BindableCollection<Student>(_studentsRepository.GetAll());
         }
         public void Back()
         {

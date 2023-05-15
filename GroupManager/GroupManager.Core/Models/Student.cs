@@ -30,7 +30,7 @@ namespace GroupManager.Core.Model
         public string Note { get; set; }
         public string PromYear { get; set; }
         public string PlaceLiveType { get; set; }
-        public bool IsDormitory { get; set; }
+        public string Dormitory { get; set; }
         public string AverageGrade { get; set; }
 
 

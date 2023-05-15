@@ -9,7 +9,32 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Background="#F0F1FF">
-
+    <UserControl.Resources>
+        <Style x:Key="_ListBoxItemStyle" TargetType="ListViewItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border Name="_Border"
+                                Padding="2"
+                                
+                                SnapsToDevicePixels="true">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                           
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter TargetName="_Border" Property="Background" Value="Transparent"/>
+                                <Setter Property="Foreground" Value="#7284FF"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="IsSelected" Value="True"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
 
 
     <Grid Name="GridLayout">
@@ -100,17 +125,10 @@
                   x:Name="StudentsList"
                   Margin="0,0,40,0"
                   MouseDoubleClick="StudentsList_MouseDoubleClick"
-                  ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                  ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                  ItemContainerStyle="{StaticResource _ListBoxItemStyle}">
 
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="IsSelected" Value="True"></Setter>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </ListView.ItemContainerStyle>
+         
             <ListView.ItemTemplate>
                 <DataTemplate x:Name="Template">
                     <Border BorderThickness="0.4" 
@@ -121,7 +139,7 @@
                                 Padding="10,10,0,10"
                                 Width="{Binding ElementName=StudentsList,Path=ActualWidth,
                             Converter={StaticResource widthConverter},ConverterParameter=50}">
-                        <DockPanel>
+                        <DockPanel Cursor="Hand">
                            
                             <Ellipse HorizontalAlignment="Left" Width="50" Height="50" VerticalAlignment="Center"
                                      Margin="20,0,0,0">
@@ -154,7 +172,7 @@
                             </Button>
                         </DockPanel>
                     </Border>
-                   
+                  
                
                 </DataTemplate>
             </ListView.ItemTemplate>

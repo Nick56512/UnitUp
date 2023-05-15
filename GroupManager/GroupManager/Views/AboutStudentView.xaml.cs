@@ -33,5 +33,12 @@ namespace GroupManager.Views
             dt.AddParent();
             //ParentsForm.Height= 0;
         }
+
+        private void AddPrivelege_Click(object sender, RoutedEventArgs e)
+        {
+            this.AddPrivelegesButton.IsChecked = false;
+            var dt = DataContext as AboutStudentViewModel;
+            dt.AddPrivelege();
+        }
     }
 }

@@ -89,15 +89,17 @@
                     Visibility="{Binding ReadonlyVisibility}"
                 Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Width="{Binding ActualWidth, ElementName=AvatarImage}">
                 <DockPanel>
-                    <TextBlock FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center">Сертифікати</TextBlock>
+                    <TextBlock FontSize="25" VerticalAlignment="Center" TextAlignment="Right">Сертифікати</TextBlock>
                     <Image Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Source="/Resources/Images/icons/certificate.png"></Image>
                 </DockPanel>
             </Button>
             <Button Style="{DynamicResource ButtonStyle}" Height="55" Margin="0,20,0,0"
                     Visibility="{Binding ReadonlyVisibility}"
+                    x:Name="OpenEditMode" 
                 Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Width="{Binding ActualWidth, ElementName=AvatarImage}">
                 <DockPanel>
-                    <TextBlock VerticalAlignment="Center" FontSize="25" HorizontalAlignment="Center">Редагувати</TextBlock>
+                    <TextBlock VerticalAlignment="Center" FontSize="25" HorizontalAlignment="Center" 
+                               >Редагувати</TextBlock>
                     <Image Width="30" Height="30" HorizontalAlignment="Right"  VerticalAlignment="Center" Margin="0,0,10,0" Source="/Resources/Images/icons/pencil.png"></Image>
                 </DockPanel>
             </Button>
@@ -112,7 +114,8 @@
         </StackPanel>
 
         <Button Grid.Row="3" Grid.Column="1" Template="{StaticResource TransparentButton}" HorizontalAlignment="Left"
-                Width="35" Height="35"  Visibility="{Binding ReadonlyVisibility}">
+                Width="35" Height="35"  Visibility="{Binding ReadonlyVisibility}"
+                x:Name="MoveToPrevious">
 
             <Image Source="/Resources/Images/icons/next.png">
                 <Image.LayoutTransform>
@@ -122,7 +125,8 @@
         </Button>
 
         <Button Grid.Row="3" Grid.Column="3" Template="{StaticResource TransparentButton}" HorizontalAlignment="Right"
-                Width="35" Height="35"  Visibility="{Binding ReadonlyVisibility}">
+                Width="35" Height="35"  Visibility="{Binding ReadonlyVisibility}"
+                x:Name="MoveToNext">
             <Image Source="/Resources/Images/icons/next.png"></Image>
         </Button>
         <StackPanel Grid.Column="2" Grid.Row="1" Grid.RowSpan="2">
@@ -148,7 +152,7 @@
             </DockPanel>
             <DockPanel Margin="10">
                 <TextBlock Style="{StaticResource BoldLabel}">Адреса:</TextBlock>
-                <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.Address}"></TextBox>
+                <TextBox TextWrapping="Wrap" Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.Address}"></TextBox>
             </DockPanel>
             <DockPanel Margin="10">
                 <TextBlock Style="{StaticResource BoldLabel}">Ідент код:</TextBlock>
@@ -166,7 +170,24 @@
                 <TextBlock Style="{StaticResource BoldLabel}">Строк придатн.:</TextBlock>
                 <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.PassportEndDate}"></TextBox>
             </DockPanel>
-           
+            <DockPanel Margin="10">
+                <TextBlock Style="{StaticResource BoldLabel}">Примітки:</TextBlock>
+                <TextBox TextWrapping="Wrap" Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.Note}"></TextBox>
+            </DockPanel>
+
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <TextBlock Style="{StaticResource BoldLabel}">Гуртожиток:</TextBlock>
+                <ComboBox Margin="5,0,0,0" FontFamily="/Resources/Fonts/#PT Sans"
+                          Width="100"
+                          SelectedValuePath="Content"
+                          Style="{StaticResource DarkComboBox}"
+                          SelectedValue="{Binding CurrentStudent.Dormitory}"
+                         >
+                    <ComboBoxItem>Так</ComboBoxItem>
+                    <ComboBoxItem>Ні</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
         </StackPanel>
         <StackPanel Grid.Column="3" Grid.Row="1" Grid.RowSpan="2">
             <StackPanel Margin="10" Orientation="Vertical" Visibility="{Binding ReadonlyVisibility}">
@@ -249,6 +270,48 @@
                     <ComboBoxItem>Місто</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
+
+            <StackPanel Margin="10" Orientation="Vertical" Visibility="{Binding ReadonlyVisibility}">
+                <DockPanel>
+                    <TextBlock Style="{StaticResource BoldLabel}" VerticalAlignment="Center">Пільги:</TextBlock>
+                    <ToggleButton Grid.Column="3" Grid.Row="1" HorizontalAlignment="Right"
+                        x:Name="AddPrivelegesButton"
+                        Width="25"
+                        Height="25"
+                        Template="{StaticResource TransparentButton}"
+                        >
+                        <Image Source="/Resources/Images/icons/plus_black.png"></Image>
+
+                    </ToggleButton>
+                </DockPanel>
+                <StackPanel Height="0" x:Name="PrivilegesForm" Orientation="Vertical" Style="{StaticResource AnimatedPrivelegesForm}">
+                    <TextBlock FontSize="18" FontFamily="/Resources/Fonts/#PT Sans">Пільга:</TextBlock>
+                    <ComboBox Style="{StaticResource DarkComboBox}" HorizontalAlignment="Left" Width="150"
+                              ItemsSource="{Binding AllPriveleges}"
+                              SelectedValue="{Binding Privilege}"
+                              ></ComboBox>
+                    <Button Style="{DynamicResource ButtonStyle}" Height="40" Margin="0,20,0,0"
+                            HorizontalAlignment="Left"
+                            Click="AddPrivelege_Click"
+                            Width="Auto">
+                        <DockPanel>
+                            <TextBlock VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Center">Зберегти</TextBlock>
+                        </DockPanel>
+                    </Button>
+                </StackPanel>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="50">
+                    <ListBox Margin="0,10,0,0"
+                             ItemsSource="{Binding StudentPriveleges}"
+                         Background="Transparent"
+                         FontFamily="/Resources/Fonts/#PT Sans"
+                         FontSize="18"
+                         BorderThickness="0" BorderBrush="Transparent">
+                       
+                    </ListBox>
+                </ScrollViewer>
+            </StackPanel>
+
+
             <DockPanel Margin="10">
                 <TextBlock Style="{StaticResource BoldLabel}">Рік випуску:</TextBlock>
                 <TextBox Style="{StaticResource TransparentTextBox}" 
