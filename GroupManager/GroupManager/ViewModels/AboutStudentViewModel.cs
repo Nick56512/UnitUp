@@ -1,6 +1,7 @@
 ﻿using BusinessLogic.Repositories;
 using Caliburn.Micro;
 using GroupManager.Core.Model;
+using GroupManager.Core.Models;
 using GroupManager.Models;
 using Microsoft.Win32;
 using System;
@@ -21,6 +22,17 @@ namespace GroupManager.ViewModels
     }
     public class AboutStudentViewModel:Screen
     {
+        BindableCollection<Parents> parents;
+        public BindableCollection<Parents> Parents 
+        { 
+            get=>parents;
+            set
+            {
+                parents=value;
+                NotifyOfPropertyChange(()=>Parents);
+            } 
+        
+        }
         string currentAvatarPath;
         public string CurrentAvatarPath 
         {
@@ -64,6 +76,15 @@ namespace GroupManager.ViewModels
                 NotifyOfPropertyChange(nameof(ViewMode));
             }
         }
+        Parents parent;
+        public Parents Parent { 
+            get=>parent;
+            set
+            {
+                parent=value;
+                NotifyOfPropertyChange(()=>Parent);
+            }
+        }
         public Group CurrentGroup { get; set; }
 
         Student currentStudent;
@@ -78,7 +99,7 @@ namespace GroupManager.ViewModels
         
         }
         IRepository<Student> _studentRepository;
-
+        IRepository<Parents> _parentsRepository;
 
         Visibility updateVisibility;
         public Visibility UpdateVisibility
@@ -107,10 +128,15 @@ namespace GroupManager.ViewModels
 
 
         public AboutStudentViewModel(
-            IRepository<Student> _studentRepository)
+            IRepository<Student> _studentRepository, IRepository<Parents> parentsRepository)
         {
             this._studentRepository = _studentRepository;
             CurrentStudent = new Student();
+            Parent= new Parents();
+            string path=Directory.GetCurrentDirectory();
+            CurrentAvatarPath = path + "\\StudentsAvatars\\empty.png";
+            
+            _parentsRepository = parentsRepository;
         }
 
         public void Back()
@@ -132,6 +158,19 @@ namespace GroupManager.ViewModels
                 }
             }
         }
+        public void AddParent()
+        {
+            if (Parents is null)
+            {
+                Parents=new BindableCollection<Parents>();
+            }
+            Parent.Id=Guid.NewGuid();
+            Parent.StudentId = CurrentStudent.Id;
+            _parentsRepository.Add(Parent);
+            Parents.Add(Parent);
+            Parent = new Parents();
+
+        }
         public void SaveStudent()
         {
             try
@@ -143,7 +182,8 @@ namespace GroupManager.ViewModels
                         File.Delete(CurrentStudent.Avatar);
                     }
                     string path = Path.GetFileName(CurrentAvatarPath);
-                    CurrentStudent.Avatar = $"StudentsAvatars/{path}";
+                    string str=Directory.GetCurrentDirectory();
+                    CurrentStudent.Avatar = $"{str}/StudentsAvatars/{path}";
                     File.Copy(CurrentAvatarPath, CurrentStudent.Avatar);
                 }
             }
@@ -159,6 +199,11 @@ namespace GroupManager.ViewModels
 
             }
             else _studentRepository.Update(CurrentStudent);
+        }
+        public void CreateCharacteristic()
+        {
+            var createCharacteristic = IoC.Get<CharacteristicFormViewModel>();
+            Switcher.SwitchAsync(createCharacteristic, new System.Threading.CancellationToken());
         }
     }
 }

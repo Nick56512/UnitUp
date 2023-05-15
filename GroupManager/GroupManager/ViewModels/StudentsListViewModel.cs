@@ -84,11 +84,17 @@ namespace GroupManager.ViewModels
         }
         public void AboutStudent()
         {
-            var aboutStudentViewModel = IoC.Get<AboutStudentViewModel>();
-            aboutStudentViewModel.ViewMode = Mode.ReadOnly;
-            aboutStudentViewModel.CurrentStudent = SelectedStudent;
-            aboutStudentViewModel.CurrentGroup = CurrentGroup;
-            Switcher.SwitchAsync(aboutStudentViewModel, new System.Threading.CancellationToken());
+            if (SelectedStudent != null)
+            {
+                var aboutStudentViewModel = IoC.Get<AboutStudentViewModel>();
+                aboutStudentViewModel.ViewMode = Mode.ReadOnly;
+                aboutStudentViewModel.CurrentStudent = SelectedStudent;
+                aboutStudentViewModel.CurrentGroup = CurrentGroup;
+                aboutStudentViewModel.Parents = new BindableCollection<Parents>(
+                        _parentsRepository.GetAll().Where(x => x.StudentId == SelectedStudent.Id));
+
+                Switcher.SwitchAsync(aboutStudentViewModel, new System.Threading.CancellationToken());
+            }
         }
 
 
@@ -102,7 +108,7 @@ namespace GroupManager.ViewModels
             {
                 _certificateRepository.Delete(cert);
             }
-            var parents=SelectedStudent.Parents;
+            var parents= _parentsRepository.GetAll().Where(x => x.StudentId == SelectedStudent.Id);
             if (parents != null)
             {
                 foreach (var parent in parents)
@@ -110,7 +116,7 @@ namespace GroupManager.ViewModels
                     _parentsRepository.Delete(parent);
                 }
             }
-            //_studentsRepository.Delete(SelectedStudent);
+            _studentsRepository.Delete(SelectedStudent);
             //Students=new BindableCollection<Student>()
             Students.Remove(SelectedStudent);
         }

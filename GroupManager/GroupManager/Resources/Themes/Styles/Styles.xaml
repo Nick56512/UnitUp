@@ -13,6 +13,19 @@
                               From="30" To="0" 
                               Duration="0:0:0.2" />
     </Storyboard>
+
+
+    <Storyboard x:Key="SlideDown1">
+        <DoubleAnimation Storyboard.TargetProperty="(TextBox.Height)"
+                             From="0" To="170"
+                             Duration="0:0:0.2" />
+    </Storyboard>
+
+    <Storyboard x:Key="SlideUp1">
+        <DoubleAnimation Storyboard.TargetProperty="(TextBox.Height)"
+                              From="170" To="0" 
+                              Duration="0:0:0.2" />
+    </Storyboard>
     <!--END ANIMATIONS-->
     
     <!--CALENDAR-->
@@ -186,6 +199,7 @@
         <Setter Property="FontFamily" Value="/Fonts/#PT Sans"></Setter>
         <Setter Property="FontSize" Value="18"></Setter>
         <Setter Property="Height" Value="Auto"></Setter>
+        <Setter Property="Margin" Value="5,0,0,0"></Setter>
     </Style>
     <Style x:Key="TransparentRichTextBox" TargetType="RichTextBox">
         <Setter Property="BorderThickness" Value="0,0,0,0"></Setter>
@@ -195,6 +209,25 @@
         <Setter Property="FontSize" Value="20"></Setter>
         <Setter Property="Height" Value="Auto"></Setter>
     </Style>
-    
-  
+
+
+
+    <Style x:Key="AnimatedParentsForm" TargetType="StackPanel">
+        <Setter Property="TextBox.FontSize" Value="19"></Setter>
+        <Setter Property="TextBox.FontWeight" Value="Normal"></Setter>
+        <Setter Property="TextBox.FontFamily" Value="PT Sans"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsChecked, ElementName=AddStudentParents}" Value="True">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource SlideDown1}" />
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource SlideUp1}" />
+                </DataTrigger.ExitActions>
+            </DataTrigger>
+
+        </Style.Triggers>
+    </Style>
+
+
 </ResourceDictionary>

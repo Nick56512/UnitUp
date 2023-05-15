@@ -1,4 +1,6 @@
-﻿using Caliburn.Micro;
+﻿using BusinessLogic.Repositories;
+using Caliburn.Micro;
+using GroupManager.Core.Model;
 using GroupManager.Models;
 using System;
 using System.Collections.Generic;
@@ -20,6 +22,10 @@ namespace GroupManager.ViewModels
         {
             var mainViewModel=IoC.Get<MainViewModel>();
             Switcher.SwitchAsync(mainViewModel, new CancellationToken());
+        }
+        public static IRepository<Student> GetStudentRepository()
+        {
+            return IoC.Get<StudentRepository>();
         }
     }
 }

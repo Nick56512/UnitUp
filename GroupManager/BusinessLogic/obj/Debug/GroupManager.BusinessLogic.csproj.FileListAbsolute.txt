@@ -25,3 +25,15 @@ C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\BusinessLogic\obj\Debug\Group
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\BusinessLogic\obj\Debug\GroupManager.BusinessLogic.csproj.CopyComplete
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\BusinessLogic\obj\Debug\BusinessLogic.dll
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\BusinessLogic\obj\Debug\BusinessLogic.pdb
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\BusinessLogic\bin\Debug\Caliburn.Micro.Core.dll
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\BusinessLogic\bin\Debug\Caliburn.Micro.Platform.Core.dll
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\BusinessLogic\bin\Debug\Caliburn.Micro.Platform.dll
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\BusinessLogic\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\BusinessLogic\bin\Debug\Caliburn.Micro.Core.pdb
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\BusinessLogic\bin\Debug\Caliburn.Micro.Core.xml
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\BusinessLogic\bin\Debug\Caliburn.Micro.Platform.pdb
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\BusinessLogic\bin\Debug\Caliburn.Micro.Platform.xml
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\BusinessLogic\bin\Debug\Caliburn.Micro.Platform.Core.pdb
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\BusinessLogic\bin\Debug\Caliburn.Micro.Platform.Core.xml
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\BusinessLogic\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\BusinessLogic\bin\Debug\Microsoft.Xaml.Behaviors.xml

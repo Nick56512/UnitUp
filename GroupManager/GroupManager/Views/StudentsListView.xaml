@@ -99,7 +99,8 @@
                   SelectedItem="{Binding SelectedStudent}"
                   x:Name="StudentsList"
                   Margin="0,0,40,0"
-                  MouseDoubleClick="StudentsList_MouseDoubleClick">
+                  MouseDoubleClick="StudentsList_MouseDoubleClick"
+                  ScrollViewer.HorizontalScrollBarVisibility="Hidden">
 
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
@@ -135,10 +136,10 @@
                             Text="{Binding 
                             RelativeSource={RelativeSource AncestorType=ListViewItem, Mode=FindAncestor}
                             ,Converter={StaticResource listViewIndexConverter}}"></TextBlock>
-                            <TextBlock Text="{Binding Name}" FontFamily="/Resources/Fonts/#PT Sans" FontSize="30"
+                            <TextBlock Text="{Binding Lastname}" FontFamily="/Resources/Fonts/#PT Sans" FontSize="30"
                                        Margin="30,0,0,0"
                                        Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
-                            <TextBlock Text="{Binding Lastname}" FontFamily="/Resources/Fonts/#PT Sans" FontSize="30"
+                            <TextBlock Text="{Binding Name}" FontFamily="/Resources/Fonts/#PT Sans" FontSize="30"
                                        Margin="15,0,0,0"
                                        Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
                             <TextBlock Text="{Binding Patronymic}" FontFamily="PT Sans" FontSize="30"

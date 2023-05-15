@@ -83,3 +83,7 @@ C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Views\
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Views\ShellView.baml
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Views\AboutStudentView.g.cs
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Views\AboutStudentView.baml
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Resources\Themes\Styles\RoundedScrollBarBlack.baml
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Resources\Themes\Styles\ComboBoxStyles.baml
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Views\CharacteristicFormView.g.cs
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Views\CharacteristicFormView.baml

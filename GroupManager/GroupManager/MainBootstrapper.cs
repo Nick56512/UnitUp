@@ -27,7 +27,7 @@ namespace GroupManager
             container.PerRequest<ShellViewModel, ShellViewModel>();
             container.PerRequest<StudentsListViewModel, StudentsListViewModel>();
             container.PerRequest<AboutStudentViewModel, AboutStudentViewModel>();
-
+            container.PerRequest<CharacteristicFormViewModel, CharacteristicFormViewModel>();
 
             container.PerRequest<IRepository<Student>, StudentRepository>();
             container.PerRequest<IStudentsRepository, StudentRepository>();
@@ -65,6 +65,5 @@ namespace GroupManager
         {
             container.BuildUp(instance);
         }
-
     }
 }

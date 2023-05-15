@@ -9,13 +9,21 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Background="#F0F1FF">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Themes/Styles/RoundedScrollBarBlack.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/Resources/Themes/Styles/ComboBoxStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.4*"></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="0.4*"></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.26*"></RowDefinition>
@@ -96,8 +104,9 @@
             <Button Style="{DynamicResource ButtonStyle}" 
                     Visibility="{Binding ReadonlyVisibility}"
                     Height="55" Margin="0,20,0,0"
+                    x:Name="CreateCharacteristic"
                 Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Width="{Binding ActualWidth, ElementName=AvatarImage}">
-                <TextBlock VerticalAlignment="Center" FontSize="30" HorizontalAlignment="Center">Характеристика</TextBlock>
+                <TextBlock VerticalAlignment="Center" FontSize="23" HorizontalAlignment="Center">Характеристика</TextBlock>
             </Button>
 
         </StackPanel>
@@ -142,8 +151,8 @@
                 <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.Address}"></TextBox>
             </DockPanel>
             <DockPanel Margin="10">
-                <TextBlock Style="{StaticResource BoldLabel}">Ідентифікаційний код:</TextBlock>
-                <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.IdentificationCode}"></TextBox>
+                <TextBlock Style="{StaticResource BoldLabel}">Ідент код:</TextBlock>
+                <TextBox Style="{StaticResource TransparentTextBox}" TextWrapping="WrapWithOverflow" Text="{Binding CurrentStudent.IdentificationCode}"></TextBox>
             </DockPanel>
             <DockPanel Margin="10">
                 <TextBlock Style="{StaticResource BoldLabel}">№ паспорту:</TextBlock>
@@ -154,47 +163,62 @@
                 <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.PassportIssueDate}"></TextBox>
             </DockPanel>
             <DockPanel Margin="10">
-                <TextBlock Style="{StaticResource BoldLabel}">Дата закінчення дії паспорта:</TextBlock>
+                <TextBlock Style="{StaticResource BoldLabel}">Строк придатн.:</TextBlock>
                 <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.PassportEndDate}"></TextBox>
             </DockPanel>
-            <DockPanel Margin="10">
-                <TextBlock Style="{StaticResource BoldLabel}">Гуртожиток:</TextBlock>
-                <CheckBox VerticalAlignment="Center" IsChecked="{Binding CurrentStudent.IsDormitory}"></CheckBox>
-            </DockPanel>
+           
         </StackPanel>
         <StackPanel Grid.Column="3" Grid.Row="1" Grid.RowSpan="2">
             <StackPanel Margin="10" Orientation="Vertical" Visibility="{Binding ReadonlyVisibility}">
                 <DockPanel>
                     <TextBlock Style="{StaticResource BoldLabel}" VerticalAlignment="Center">Батьки:</TextBlock>
-                    <Button Grid.Column="3" Grid.Row="1" HorizontalAlignment="Right"
+                    <ToggleButton Grid.Column="3" Grid.Row="1" HorizontalAlignment="Right"
+                                  
                         Width="25"
                         Height="25"
                         Template="{StaticResource TransparentButton}"
                         x:Name="AddStudentParents">
                         <Image Source="/Resources/Images/icons/plus_black.png"></Image>
-                    </Button>
+                       
+                    </ToggleButton>
                 </DockPanel>
-                <StackPanel Height="0">
+                <StackPanel Height="0" Style="{StaticResource AnimatedParentsForm}" 
+                            x:Name="ParentsForm">
                     <TextBlock FontSize="18" FontFamily="/Resources/Fonts/#PT Sans">ПІБ</TextBlock>
                     <DockPanel>
                         <TextBox Template="{StaticResource DefaultTextBox}" 
-                        FontSize="18"></TextBox>
+                        FontSize="18" Text="{Binding Parent.FullName}"></TextBox>
                     </DockPanel>
                     <TextBlock FontSize="18" FontFamily="/Resources/Fonts/#PT Sans">Номер телефону</TextBlock>
                     <DockPanel>
-                        <TextBox Template="{StaticResource DefaultTextBox}" FontSize="18"></TextBox>
+                        <TextBox Template="{StaticResource DefaultTextBox}" FontSize="18"
+                                 Text="{Binding Parent.PhoneNumber}"></TextBox>
                     </DockPanel>
+                    <Button Style="{DynamicResource ButtonStyle}" Height="40" Margin="0,20,0,0"
+                        HorizontalAlignment="Center"
+                        Click="AddParent_Click"
+                        Width="Auto">
+                        <DockPanel>
+                            <TextBlock VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Center">Зберегти</TextBlock>
+                        </DockPanel>
+                    </Button>
                 </StackPanel>
-                <ListBox ItemsSource="{Binding CurrentStudent.Parents}" Margin="0,10,0,0">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding FullName}"></TextBlock>
-                                <TextBlock Text="{Binding PhoneNumnber}"></TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="140">
+                    <ListBox ItemsSource="{Binding Parents}" Margin="0,10,0,0"
+                         Background="Transparent"
+                         FontFamily="/Resources/Fonts/#PT Sans"
+                         FontSize="18"
+                         BorderThickness="0" BorderBrush="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding FullName}"></TextBlock>
+                                    <TextBlock Text="{Binding PhoneNumber}"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </ScrollViewer>
             </StackPanel>
             <DockPanel Margin="10">
                 <TextBlock Style="{StaticResource BoldLabel}">Сер. шк. б.:</TextBlock>
@@ -205,6 +229,8 @@
                 <TextBlock Style="{StaticResource BoldLabel}">Стать:</TextBlock>
                 <ComboBox Margin="5,0,0,0" FontFamily="/Resources/Fonts/#PT Sans"
                           Width="100"
+                          SelectedValuePath="Content"
+                          Style="{StaticResource DarkComboBox}"
                           SelectedValue="{Binding CurrentStudent.Gender}"
                          >
                     <ComboBoxItem>Чоловіча</ComboBoxItem>
@@ -214,7 +240,11 @@
             <StackPanel Margin="10" Orientation="Horizontal">
                 <TextBlock Style="{StaticResource BoldLabel}">Село/Місто:</TextBlock>
                 <ComboBox Margin="5,0,0,0" FontFamily="/Resources/Fonts/#PT Sans"
-                          SelectedItem="{Binding CurrentStudent.City}" Width="90">
+                          Width="100"
+                          SelectedValuePath="Content"
+                          Style="{StaticResource DarkComboBox}"
+                          SelectedValue="{Binding CurrentStudent.PlaceLiveType}"
+                         >
                     <ComboBoxItem>Село</ComboBoxItem>
                     <ComboBoxItem>Місто</ComboBoxItem>
                 </ComboBox>

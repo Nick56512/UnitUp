@@ -36,6 +36,7 @@ namespace BusinessLogic.Repositories
         public T Delete(T entity)
         {
             table.Remove(entity);
+            context.SaveChanges();
             return entity;
         }
 

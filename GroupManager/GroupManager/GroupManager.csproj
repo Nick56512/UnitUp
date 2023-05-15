@@ -97,11 +97,15 @@
     <Compile Include="Models\Switcher.cs" />
     <Compile Include="Models\WidthConverter.cs" />
     <Compile Include="ViewModels\AboutStudentViewModel.cs" />
+    <Compile Include="ViewModels\CharacteristicFormViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\StudentsListViewModel.cs" />
     <Compile Include="Views\AboutStudentView.xaml.cs">
       <DependentUpon>AboutStudentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CharacteristicFormView.xaml.cs">
+      <DependentUpon>CharacteristicFormView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -158,7 +162,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\Themes\Styles\ComboBoxStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Themes\Styles\RoundedScrollBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Themes\Styles\RoundedScrollBarBlack.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -167,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AboutStudentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CharacteristicFormView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

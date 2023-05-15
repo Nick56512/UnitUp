@@ -13,6 +13,7 @@ namespace GroupManager.Core.Models
         public string FullName { get; set; }
         public string PhoneNumber { get; set; }
 
-        public virtual IList<Student> Students { get; set; }
+        public Guid StudentId { get; set; }
+        public virtual Student Student { get; set; }
     }
 }

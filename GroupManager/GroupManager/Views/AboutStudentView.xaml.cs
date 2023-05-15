@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GroupManager.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,14 @@ namespace GroupManager.Views
         public AboutStudentView()
         {
             InitializeComponent();
+        }
+
+        private void AddParent_Click(object sender, RoutedEventArgs e)
+        {
+            this.AddStudentParents.IsChecked = false;
+            var dt = DataContext as AboutStudentViewModel;
+            dt.AddParent();
+            //ParentsForm.Height= 0;
         }
     }
 }
