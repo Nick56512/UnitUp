@@ -13,8 +13,20 @@ namespace GroupManager.ViewModels
 {
     public class CharacteristicFormViewModel:Screen
     {
+        CharacteristicModel characteristic;
+        public CharacteristicModel CharacteristicModel
+        {
+            get => characteristic;
+            set
+            {
+                characteristic= value;
+                NotifyOfPropertyChange(() => CharacteristicModel);
+            }
+        }
         public Group CurrentGroup { get; set; }
         public Student CurrentStudent { get; set; }
+
+
         IRepository<Student> _studRepos;
         IRepository<Parents> _parentsRepos;
 
@@ -25,6 +37,7 @@ namespace GroupManager.ViewModels
         {
             this._studRepos = _studRepository;
             this._parentsRepos = _parRepository;
+            CharacteristicModel=new CharacteristicModel();
         }
         public void Back()
         {

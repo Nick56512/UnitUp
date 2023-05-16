@@ -114,7 +114,7 @@
         </StackPanel>
         <Button Style="{DynamicResource ButtonStyle}" Height="55" 
                     Visibility="{Binding UpdateVisibility}"
-                    x:Name="UploadAvatar"
+                    x:Name="CreateCharacteristic"
                 Grid.Row="5" HorizontalAlignment="Center" Grid.Column="3">
             <DockPanel>
                 <TextBlock FontSize="23" VerticalAlignment="Center" HorizontalAlignment="Center">Сформувати</TextBlock>

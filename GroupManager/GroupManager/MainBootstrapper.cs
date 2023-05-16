@@ -3,6 +3,7 @@ using Caliburn.Micro;
 using GroupManager.Core.Context;
 using GroupManager.Core.Model;
 using GroupManager.Core.Models;
+using GroupManager.Models;
 using GroupManager.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,7 @@ namespace GroupManager
             container.PerRequest<IRepository<Group>, GroupRepository>();
             container.PerRequest<IRepository<Parents>, ParentsRepository>();
             container.PerRequest<IRepository<Privilege>, PrivilegeRepository>();
+            container.PerRequest<CharacteristicManager, CharacteristicManager>();
 
 
 
