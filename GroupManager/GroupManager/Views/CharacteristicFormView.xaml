@@ -17,15 +17,17 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="0.3*"></RowDefinition>
             <RowDefinition Height="110"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.8*"></RowDefinition>
             <RowDefinition Height="110"></RowDefinition>
+            <RowDefinition Height="0.3*"></RowDefinition>
         </Grid.RowDefinitions>
        
             <Button Template="{StaticResource TransparentButton}"
                  Grid.Column="1"
-                    VerticalAlignment="Center"
+                 VerticalAlignment="Center"
+                 x:Name="Back"
                  Width="35" Height="35"
-                 x:Name="Back" HorizontalAlignment="Left" >
+                 HorizontalAlignment="Left" >
                 <Image Source="/Resources/Images/icons/back-button.png" ></Image>
             </Button>
         <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#7A8BFF" Style="{StaticResource CoursesLabel}">UNITUP</TextBlock>
@@ -88,7 +90,29 @@
 
         </TextBox>
 
+        <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Orientation="Vertical">
+            <TextBlock 
+                Margin="0,40,0,0"
+                Style="{StaticResource BoldLabel}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"
+                   TextAlignment="Center"
+                   TextWrapping="Wrap"
+                   Grid.ColumnSpan="3">
+            Навчається у Відокремленому структурному підрозіділі “Полтавський політехнічний фаховий коледж Національного технічного університету “Харківський політехнічний інститут” з
 
+            </TextBlock>
+            <TextBox Template="{StaticResource DefaultTextBox}" Margin="0,0,40,0" HorizontalAlignment="Center" 
+                     Width="400"
+                 Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" 
+                 Height="35">
+
+            </TextBox>
+        </StackPanel>
+
+        <Button Grid.Row="4" Grid.Column="3" Template="{StaticResource TransparentButton}" HorizontalAlignment="Right"
+                Width="35" Height="35"  Visibility="{Binding ReadonlyVisibility}"
+                x:Name="MoveToNext" Margin="0,0,40,0">
+            <Image Source="/Resources/Images/icons/next.png"></Image>
+        </Button>
 
 
 

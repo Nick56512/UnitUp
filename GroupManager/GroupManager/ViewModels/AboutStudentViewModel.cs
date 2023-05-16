@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -241,6 +242,8 @@ namespace GroupManager.ViewModels
             var priv = _privilegeRepository.GetAll()
                 .Include(x=>x.Students)
                 .FirstOrDefault(x => x.Header == Privilege);
+            if (priv is null)
+                return;
             priv.Students.Add(CurrentStudent);
             CurrentStudent.Privileges.Add(priv);
             _privilegeRepository.Update(priv);
@@ -308,18 +311,24 @@ namespace GroupManager.ViewModels
             if (CurrentStudent.Id == Guid.Empty)
             {
                 CurrentStudent.Id = Guid.NewGuid();
-                CurrentStudent.GroupId= CurrentGroup.Id;
+                CurrentStudent.GroupId = CurrentGroup.Id;
                 _studentRepository.Add(CurrentStudent);
                 var backPage = IoC.Get<StudentsListViewModel>();
-                backPage.CurrentGroup= CurrentGroup;
-                Switcher.SwitchAsync(backPage,new System.Threading.CancellationToken());
+                backPage.CurrentGroup = CurrentGroup;
+                Switcher.SwitchAsync(backPage, new System.Threading.CancellationToken());
 
             }
-            else _studentRepository.Update(CurrentStudent);
+            else {
+                _studentRepository.Update(CurrentStudent);
+                ViewMode = Mode.ReadOnly;
+                ReadOnlyTextBoxes = true;
+            }
         }
         public void CreateCharacteristic()
         {
             var createCharacteristic = IoC.Get<CharacteristicFormViewModel>();
+            createCharacteristic.CurrentGroup = CurrentGroup;
+            createCharacteristic.CurrentStudent = CurrentStudent;
             Switcher.SwitchAsync(createCharacteristic, new System.Threading.CancellationToken());
         }
         public void OpenEditMode()

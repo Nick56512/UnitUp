@@ -28,6 +28,7 @@ namespace GroupManager
             container.PerRequest<StudentsListViewModel, StudentsListViewModel>();
             container.PerRequest<AboutStudentViewModel, AboutStudentViewModel>();
             container.PerRequest<CharacteristicFormViewModel, CharacteristicFormViewModel>();
+            container.PerRequest<RadioCharacteristicFormViewModel,RadioCharacteristicFormViewModel>();
 
             container.PerRequest<IRepository<Student>, StudentRepository>();
             container.PerRequest<IStudentsRepository, StudentRepository>();
@@ -38,6 +39,8 @@ namespace GroupManager
             container.PerRequest<IRepository<Group>, GroupRepository>();
             container.PerRequest<IRepository<Parents>, ParentsRepository>();
             container.PerRequest<IRepository<Privilege>, PrivilegeRepository>();
+
+
 
             container.Singleton<DbContext, ApplicationContext>();
             Initialize();
