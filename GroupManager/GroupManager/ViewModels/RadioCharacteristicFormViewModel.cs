@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using GroupManager.Models;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +19,17 @@ namespace GroupManager.ViewModels
         public void Back()
         {
             var res = IoC.Get<CharacteristicFormViewModel>();
+            res.CharacteristicModel= CharacteristicModel;
             Switcher.SwitchAsync(res, new System.Threading.CancellationToken());
         }
         public void CreateCharacteristic()
         {
-            manager.CreateCharacteristic(CharacteristicModel);
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Doc file (.doc)|*.doc";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                manager.CreateCharacteristic(CharacteristicModel,saveFileDialog.FileName);
+            }
         }
     }
 }

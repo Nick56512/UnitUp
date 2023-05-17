@@ -15,8 +15,8 @@
             <ColumnDefinition Width="0.5*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.2*"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="230"></RowDefinition>
             <RowDefinition Height="100"></RowDefinition>
             <RowDefinition Height="130"></RowDefinition>
@@ -40,34 +40,34 @@
                 </LinearGradientBrush>
             </Ellipse.Fill>
         </Ellipse>
-        <TextBlock Grid.ColumnSpan="5" Grid.Row="1" HorizontalAlignment="Center" FontFamily="/Resources/Fonts/#Nunito" FontSize="25">Характеристика для військкомату</TextBlock>
+        <TextBlock VerticalAlignment="Top" Grid.ColumnSpan="5" Grid.Row="1" HorizontalAlignment="Center" FontFamily="/Resources/Fonts/#Nunito" FontSize="25">Характеристика для військкомату</TextBlock>
        
         <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Vertical">
             <TextBlock Style="{StaticResource BoldLabel}" TextWrapping="Wrap">
             Студент зарекоментував себе, як
             </TextBlock>
-            <CheckBox Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="наполегливий"></CheckBox>
-            <CheckBox Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="доброзичливий"></CheckBox>
-            <CheckBox Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="вихований"></CheckBox>
-            <CheckBox Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="дружелюбний"></CheckBox>
-            <CheckBox Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="старанний"></CheckBox>
-            <CheckBox Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="відповідальний"></CheckBox>
+            <CheckBox Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="наполегливий"></CheckBox>
+            <CheckBox Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="доброзичливий"></CheckBox>
+            <CheckBox Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="вихований"></CheckBox>
+            <CheckBox Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="дружелюбний"></CheckBox>
+            <CheckBox Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="старанний"></CheckBox>
+            <CheckBox Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="відповідальний"></CheckBox>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Vertical">
             <TextBlock Style="{StaticResource BoldLabel}" TextWrapping="Wrap">
                 Фізично
             </TextBlock>
-            <RadioButton Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="розвинутий"></RadioButton>
-            <RadioButton Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="слабкий"></RadioButton>
+            <RadioButton Checked="RadioButton_Checked" Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="розвинутий"></RadioButton>
+            <RadioButton Checked="RadioButton_Checked" Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="слабкий"></RadioButton>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="2" Orientation="Vertical">
             <TextBlock Style="{StaticResource BoldLabel}" TextWrapping="Wrap">
                 Почуття колетивізми
             </TextBlock>
-            <RadioButton Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="присутнє"></RadioButton>
-            <RadioButton Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="відсутнє"></RadioButton>
+            <RadioButton Checked="RadioButton_Checked_1"  Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="присутнє"></RadioButton>
+            <RadioButton Checked="RadioButton_Checked_1" Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="відсутнє"></RadioButton>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Vertical">

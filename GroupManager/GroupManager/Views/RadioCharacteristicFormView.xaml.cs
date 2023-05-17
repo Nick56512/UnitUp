@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GroupManager.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,43 @@ namespace GroupManager.Views
         public RadioCharacteristicFormView()
         {
             InitializeComponent();
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            var check=sender as CheckBox;
+           
+            var dt = (DataContext as RadioCharacteristicFormViewModel);
+            dt.CharacteristicModel.StudentRecomendations.Add(check.Content.ToString());
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            var check = sender as CheckBox;
+
+            var dt = (DataContext as RadioCharacteristicFormViewModel);
+            dt.CharacteristicModel.StudentRecomendations.Remove(check.Content.ToString());
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            var check = sender as RadioButton;
+
+            var dt = (DataContext as RadioCharacteristicFormViewModel);
+            dt.CharacteristicModel.PhysicalCharacteristic="Фізично "+check.Content.ToString();
+        }
+
+        private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
+        {
+            var check = sender as RadioButton;
+
+            var dt = (DataContext as RadioCharacteristicFormViewModel);
+            string str= check.Content.ToString();
+            if (str == "має")
+            {
+                dt.CharacteristicModel.Collective = "Підтримує дружні стосунки із студентами групи, має друзів";
+            }
+            else dt.CharacteristicModel.Collective = "Не підтримує дружні стосунки із студентами групи, не має друзів";
         }
     }
 }

@@ -10,3 +10,15 @@ C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager.Core\obj\Debug\G
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager.Core\obj\Debug\GroupManager.Core.csproj.CopyComplete
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager.Core\obj\Debug\GroupManager.Core.dll
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager.Core\obj\Debug\GroupManager.Core.pdb
+E:\UniyUp\UnitUp\GroupManager\GroupManager.Core\bin\Debug\GroupManager.Core.dll.config
+E:\UniyUp\UnitUp\GroupManager\GroupManager.Core\bin\Debug\GroupManager.Core.dll
+E:\UniyUp\UnitUp\GroupManager\GroupManager.Core\bin\Debug\GroupManager.Core.pdb
+E:\UniyUp\UnitUp\GroupManager\GroupManager.Core\bin\Debug\EntityFramework.dll
+E:\UniyUp\UnitUp\GroupManager\GroupManager.Core\bin\Debug\EntityFramework.SqlServer.dll
+E:\UniyUp\UnitUp\GroupManager\GroupManager.Core\bin\Debug\EntityFramework.xml
+E:\UniyUp\UnitUp\GroupManager\GroupManager.Core\bin\Debug\EntityFramework.SqlServer.xml
+E:\UniyUp\UnitUp\GroupManager\GroupManager.Core\obj\Debug\GroupManager.Core.csproj.AssemblyReference.cache
+E:\UniyUp\UnitUp\GroupManager\GroupManager.Core\obj\Debug\GroupManager.Core.csproj.CoreCompileInputs.cache
+E:\UniyUp\UnitUp\GroupManager\GroupManager.Core\obj\Debug\GroupManager.Core.csproj.CopyComplete
+E:\UniyUp\UnitUp\GroupManager\GroupManager.Core\obj\Debug\GroupManager.Core.dll
+E:\UniyUp\UnitUp\GroupManager\GroupManager.Core\obj\Debug\GroupManager.Core.pdb

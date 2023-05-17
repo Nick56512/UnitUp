@@ -37,7 +37,7 @@ namespace GroupManager.ViewModels
         }
         public void SwitchToMainContent()
         {
-            var mainViewModel=IoC.Get<RadioCharacteristicFormViewModel>();
+            var mainViewModel=IoC.Get<MainViewModel>();
             Switcher.SwitchAsync(mainViewModel, new CancellationToken());
         }
         public static IRepository<Student> GetStudentRepository()

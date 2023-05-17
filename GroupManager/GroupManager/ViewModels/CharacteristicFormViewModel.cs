@@ -55,6 +55,7 @@ namespace GroupManager.ViewModels
         public void MoveToNext()
         {
             var radio = IoC.Get<RadioCharacteristicFormViewModel>();
+            radio.CharacteristicModel = CharacteristicModel;
             Switcher.SwitchAsync(radio, new System.Threading.CancellationToken());
         }
     }
