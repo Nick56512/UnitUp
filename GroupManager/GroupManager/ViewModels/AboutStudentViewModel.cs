@@ -299,7 +299,7 @@ namespace GroupManager.ViewModels
                 {
                     if (!string.IsNullOrEmpty(CurrentStudent.Avatar))
                     {
-                        File.Delete(CurrentStudent.Avatar);
+                       // File.Delete(CurrentStudent.Avatar);
                     }
                     string path = Path.GetFileName(CurrentAvatarPath);
                     string str=Directory.GetCurrentDirectory();

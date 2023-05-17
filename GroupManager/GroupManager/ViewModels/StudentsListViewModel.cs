@@ -56,17 +56,26 @@ namespace GroupManager.ViewModels
             UploadStudents();
         }
 
-        public bool CanSearchByLastName(string lastname)
-        {
-            return !string.IsNullOrEmpty(lastname);
-        }
+        //public bool CanSearchByLastName(string lastname)
+        //{
+        //    return //!string.IsNullOrEmpty(lastname);
+        //}
 
         public async void SearchByLastName(string lastname)
         {
-            Students = new BindableCollection<Student>(
-                    (await _studentsRepository.GetAllAsync())
-                    .Where(x=>x.Lastname.ToLower().Contains(lastname.ToLower()))
-                );
+            if (lastname == String.Empty)
+            {
+                Students = new BindableCollection<Student>(
+                        (await _studentsRepository.GetAllAsync()));
+                       
+            }
+            else
+            {
+                Students = new BindableCollection<Student>(
+                        (await _studentsRepository.GetAllAsync())
+                        .Where(x => x.Lastname.ToLower().Contains(lastname.ToLower()))
+                    );
+            }
         }
         public void AddNewStudent()
         {
@@ -98,9 +107,16 @@ namespace GroupManager.ViewModels
         {
             if (SelectedStudent is null)
                 return;
+            var req = IoC.Get<DeleteRequestViewModel>();
+            req.CurrentStudent = SelectedStudent;
+            req.CurrentGroup = CurrentGroup;
+            Switcher.SwitchAsync(req,new System.Threading.CancellationToken());
+
+            //if (SelectedStudent is null)
+            //    return;
             
-            _studentsRepository.Delete(SelectedStudent);
-            Students = new BindableCollection<Student>(_studentsRepository.GetAll());
+            //_studentsRepository.Delete(SelectedStudent);
+            //Students = new BindableCollection<Student>(_studentsRepository.GetAll());
         }
         public void Back()
         {

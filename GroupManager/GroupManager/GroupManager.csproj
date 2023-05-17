@@ -104,6 +104,7 @@
     <Compile Include="Models\WidthConverter.cs" />
     <Compile Include="ViewModels\AboutStudentViewModel.cs" />
     <Compile Include="ViewModels\CharacteristicFormViewModel.cs" />
+    <Compile Include="ViewModels\DeleteRequestViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RadioCharacteristicFormViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
@@ -113,6 +114,9 @@
     </Compile>
     <Compile Include="Views\CharacteristicFormView.xaml.cs">
       <DependentUpon>CharacteristicFormView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DeleteRequestView.xaml.cs">
+      <DependentUpon>DeleteRequestView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -193,6 +197,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CharacteristicFormView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DeleteRequestView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

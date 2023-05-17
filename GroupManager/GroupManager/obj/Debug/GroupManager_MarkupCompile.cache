@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\UniyUp\UnitUp\GroupManager\GroupManager\obj\Debug\
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\
 GroupManager
 none
 false
 DEBUG;TRACE
-E:\UniyUp\UnitUp\GroupManager\GroupManager\App.xaml
-12802903482
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\App.xaml
+13-1480512529
 
-251577416885
-26-1752050281
-CustomControls\Calendar.xaml;Resources\Themes\DefaultTheme.xaml;Resources\Themes\Styles\ComboBoxStyles.xaml;Resources\Themes\Styles\RoundedScrollBar.xaml;Resources\Themes\Styles\RoundedScrollBarBlack.xaml;Resources\Themes\Styles\Styles.xaml;Views\AboutStudentView.xaml;Views\CharacteristicFormView.xaml;Views\MainView.xaml;Views\RadioCharacteristicFormView.xaml;Views\ShellView.xaml;Views\StudentsListView.xaml;
+27957701121
+26-1482122420
+CustomControls\Calendar.xaml;Resources\Themes\DefaultTheme.xaml;Resources\Themes\Styles\ComboBoxStyles.xaml;Resources\Themes\Styles\RoundedScrollBar.xaml;Resources\Themes\Styles\RoundedScrollBarBlack.xaml;Resources\Themes\Styles\Styles.xaml;Views\AboutStudentView.xaml;Views\CharacteristicFormView.xaml;Views\DeleteRequestView.xaml;Views\MainView.xaml;Views\RadioCharacteristicFormView.xaml;Views\ShellView.xaml;Views\StudentsListView.xaml;
 
 False
 

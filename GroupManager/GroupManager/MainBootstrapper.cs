@@ -30,6 +30,7 @@ namespace GroupManager
             container.PerRequest<AboutStudentViewModel, AboutStudentViewModel>();
             container.PerRequest<CharacteristicFormViewModel, CharacteristicFormViewModel>();
             container.PerRequest<RadioCharacteristicFormViewModel,RadioCharacteristicFormViewModel>();
+            container.PerRequest<DeleteRequestViewModel,DeleteRequestViewModel>();
 
             container.PerRequest<IRepository<Student>, StudentRepository>();
             container.PerRequest<IStudentsRepository, StudentRepository>();
