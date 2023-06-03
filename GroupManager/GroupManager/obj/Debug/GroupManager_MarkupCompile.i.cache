@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\App.xaml
-13-1480512529
+16596713507
 
-28-1124387497
+34-1244185397
 26-1482122420
-CustomControls\Calendar.xaml;Resources\Themes\DefaultTheme.xaml;Resources\Themes\Styles\ComboBoxStyles.xaml;Resources\Themes\Styles\RoundedScrollBar.xaml;Resources\Themes\Styles\RoundedScrollBarBlack.xaml;Resources\Themes\Styles\Styles.xaml;Views\AboutStudentView.xaml;Views\CharacteristicFormView.xaml;Views\DeleteRequestView.xaml;Views\MainView.xaml;Views\RadioCharacteristicFormView.xaml;Views\ShellView.xaml;Views\StudentsListView.xaml;
+CustomControls\Calendar.xaml;Resources\Themes\DefaultTheme.xaml;Resources\Themes\Styles\ComboBoxStyles.xaml;Resources\Themes\Styles\RoundedScrollBar.xaml;Resources\Themes\Styles\RoundedScrollBarBlack.xaml;Resources\Themes\Styles\Styles.xaml;Views\AboutStudentView.xaml;Views\AboutCertificateView.xaml;Views\CharacteristicFormView.xaml;Views\DeleteRequestCertificateView.xaml;Views\DeleteRequestView.xaml;Views\ListCertificatesView.xaml;Views\MainView.xaml;Views\RadioCharacteristicFormView.xaml;Views\ShellView.xaml;Views\StudentsListView.xaml;
 
 True
 
