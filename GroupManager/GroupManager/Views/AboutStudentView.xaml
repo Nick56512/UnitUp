@@ -87,6 +87,7 @@
 
             <Button Style="{DynamicResource ButtonStyle}" Height="55"
                     Visibility="{Binding ReadonlyVisibility}"
+                    x:Name="OpenCertificatesPage"
                 Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Width="{Binding ActualWidth, ElementName=AvatarImage}">
                 <DockPanel>
                     <TextBlock FontSize="25" VerticalAlignment="Center" TextAlignment="Right">Сертифікати</TextBlock>

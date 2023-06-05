@@ -2,7 +2,11 @@
 FE:\UniyUp\UnitUp\GroupManager\GroupManager\App.xaml;;
 FE:\UniyUp\UnitUp\GroupManager\GroupManager\CustomControls\Calendar.xaml;;
 FE:\UniyUp\UnitUp\GroupManager\GroupManager\Views\AboutStudentView.xaml;;
+FE:\UniyUp\UnitUp\GroupManager\GroupManager\Views\AboutCertificateView.xaml;;
 FE:\UniyUp\UnitUp\GroupManager\GroupManager\Views\CharacteristicFormView.xaml;;
+FE:\UniyUp\UnitUp\GroupManager\GroupManager\Views\DeleteRequestCertificateView.xaml;;
+FE:\UniyUp\UnitUp\GroupManager\GroupManager\Views\DeleteRequestView.xaml;;
+FE:\UniyUp\UnitUp\GroupManager\GroupManager\Views\ListCertificatesView.xaml;;
 FE:\UniyUp\UnitUp\GroupManager\GroupManager\Views\MainView.xaml;;
 FE:\UniyUp\UnitUp\GroupManager\GroupManager\Views\RadioCharacteristicFormView.xaml;;
 FE:\UniyUp\UnitUp\GroupManager\GroupManager\Views\ShellView.xaml;;

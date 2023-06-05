@@ -6,6 +6,14 @@
              xmlns:local="clr-namespace:GroupManager.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="#F0F1FF">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Themes/Styles/RoundedScrollBar.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.5*"></ColumnDefinition>
@@ -74,23 +82,23 @@
             <TextBlock Style="{StaticResource BoldLabel}" TextWrapping="Wrap">
                 Поведінка, загалом
             </TextBlock>
-            <RadioButton Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="адекватна"></RadioButton>
-            <RadioButton Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="не адекватна"></RadioButton>
+            <RadioButton Margin="0,5,0,0" Checked="RadioButton_Checked_2" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="адекватна"></RadioButton>
+            <RadioButton Margin="0,5,0,0" Checked="RadioButton_Checked_2" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="не адекватна"></RadioButton>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="2" Orientation="Vertical">
             <TextBlock Style="{StaticResource BoldLabel}" TextWrapping="Wrap">
                 Приводи в поліцію
             </TextBlock>
-            <RadioButton Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="є"></RadioButton>
-            <RadioButton Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="відсутні"></RadioButton>
+            <RadioButton Margin="0,5,0,0" Checked="RadioButton_Checked_3" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="є"></RadioButton>
+            <RadioButton Margin="0,5,0,0" Checked="RadioButton_Checked_3" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="відсутні"></RadioButton>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="3" Orientation="Vertical">
             <TextBlock Style="{StaticResource BoldLabel}" TextWrapping="Wrap">
                За час навчання в коледжі доган порушення внутрішнього розпорядку
             </TextBlock>
-            <RadioButton Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="мав"></RadioButton>
+            <RadioButton Margin="0,5,0,0" Checked="RadioButton_Checked_4"  VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="мав"></RadioButton>
             <RadioButton Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="не мав"></RadioButton>
         </StackPanel>
 
@@ -98,8 +106,8 @@
             <TextBlock Style="{StaticResource BoldLabel}" TextWrapping="Wrap">
                До зловживання алкоголю, наркотиків та девіантної поведінки
             </TextBlock>
-            <RadioButton Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="схильний"></RadioButton>
-            <RadioButton Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="не схильний"></RadioButton>
+            <RadioButton Margin="0,5,0,0" Checked="RadioButton_Checked_5" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="схильний"></RadioButton>
+            <RadioButton Margin="0,5,0,0" Checked="RadioButton_Checked_5" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="не схильний"></RadioButton>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="3" Orientation="Vertical">
@@ -107,10 +115,10 @@
                До служби в Збройних Силах України відноситься
             </TextBlock>
           
-            <RadioButton Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="посередньо"></RadioButton>
-            <RadioButton Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="негативно"></RadioButton>
-            <RadioButton Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="неохоче"></RadioButton>
-            <RadioButton Margin="0,5,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="позитивно"></RadioButton>
+            <RadioButton Margin="0,5,0,0" Checked="RadioButton_Checked_6" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="посередньо"></RadioButton>
+            <RadioButton Margin="0,5,0,0" Checked="RadioButton_Checked_6" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="негативно"></RadioButton>
+            <RadioButton Margin="0,5,0,0" Checked="RadioButton_Checked_6" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="неохоче"></RadioButton>
+            <RadioButton Margin="0,5,0,0" Checked="RadioButton_Checked_6" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="позитивно"></RadioButton>
         </StackPanel>
         <Button Style="{DynamicResource ButtonStyle}" Height="55" 
                     Visibility="{Binding UpdateVisibility}"

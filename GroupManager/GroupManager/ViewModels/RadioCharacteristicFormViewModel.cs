@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using GroupManager.Core.Model;
 using GroupManager.Models;
 using Microsoft.Win32;
 using System;
@@ -11,6 +12,8 @@ namespace GroupManager.ViewModels
 {
     public class RadioCharacteristicFormViewModel
     {
+        public Group CurrentGroup { get; set; }
+        public Student CurrentStudent { get; set; }
         public CharacteristicModel CharacteristicModel { get; set; }
         CharacteristicManager manager;
         public RadioCharacteristicFormViewModel(CharacteristicManager manager) { 
@@ -20,6 +23,8 @@ namespace GroupManager.ViewModels
         {
             var res = IoC.Get<CharacteristicFormViewModel>();
             res.CharacteristicModel= CharacteristicModel;
+            res.CurrentGroup= CurrentGroup;
+            res.CurrentStudent= CurrentStudent;
             Switcher.SwitchAsync(res, new System.Threading.CancellationToken());
         }
         public void CreateCharacteristic()

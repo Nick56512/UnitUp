@@ -35,8 +35,6 @@ namespace GroupManager.ViewModels
                 NotifyOfPropertyChange(() => ReadOnlyTextBoxes);
             } 
         }
-
-
         BindableCollection<string> allPriveleges;
         public BindableCollection<string> AllPriveleges
         {
@@ -47,10 +45,6 @@ namespace GroupManager.ViewModels
                 NotifyOfPropertyChange(() => AllPriveleges);
             }
         }
-
-
-
-
         BindableCollection<string> studentPriveleges;
         public BindableCollection<string> StudentPriveleges
         {
@@ -299,7 +293,7 @@ namespace GroupManager.ViewModels
                 {
                     if (!string.IsNullOrEmpty(CurrentStudent.Avatar))
                     {
-                        File.Delete(CurrentStudent.Avatar);
+                       // File.Delete(CurrentStudent.Avatar);
                     }
                     string path = Path.GetFileName(CurrentAvatarPath);
                     string str=Directory.GetCurrentDirectory();
@@ -335,6 +329,14 @@ namespace GroupManager.ViewModels
         {
             ViewMode = Mode.Update;
             ReadOnlyTextBoxes = false;
+        }
+
+        public void OpenCertificatesPage()
+        {
+            var certificatePage = IoC.Get<ListCertificatesViewModel>();
+            certificatePage.CurrentGroup = CurrentGroup;
+            certificatePage.CurrentStudent= CurrentStudent;
+            Switcher.SwitchAsync(certificatePage, new System.Threading.CancellationToken());
         }
     }
 }

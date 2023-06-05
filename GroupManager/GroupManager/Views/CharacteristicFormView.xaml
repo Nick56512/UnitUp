@@ -108,17 +108,17 @@
 
         <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Orientation="Vertical">
             <TextBlock 
-                Margin="0,40,0,0"
-                Style="{StaticResource BoldLabel}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"
-                   TextAlignment="Center"
-                   TextWrapping="Wrap"
-                   Grid.ColumnSpan="3">
+                Margin="0,140,0,0"
+                Style="{StaticResource BoldLabel}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom"
+                TextAlignment="Center"
+                TextWrapping="Wrap"
+                Grid.ColumnSpan="3">
             Навчається у Відокремленому структурному підрозіділі “Полтавський політехнічний фаховий коледж Національного технічного університету “Харківський політехнічний інститут” з
 
             </TextBlock>
             <TextBox Template="{StaticResource DefaultTextBox}" Margin="0,0,40,0" HorizontalAlignment="Center" 
                      Width="400"
-                     VerticalAlignment="Center"
+                     VerticalAlignment="Bottom"
                      Text="{Binding CharacteristicModel.StartStudyDate}"
                  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" 
                  Height="35">
