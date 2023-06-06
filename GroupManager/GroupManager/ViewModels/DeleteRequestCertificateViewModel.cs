@@ -1,6 +1,7 @@
 ﻿using BusinessLogic.Repositories;
 using Caliburn.Micro;
 using GroupManager.Core.Model;
+using GroupManager.Core.Models;
 using GroupManager.Models;
 using System;
 using System.Collections.Generic;
@@ -17,10 +18,14 @@ namespace GroupManager.ViewModels
         public Certificate Certificate { get; set; }
         IRepository<Student> studentRepository;
         IRepository<Certificate> certificateRepo;
-        public DeleteRequestCertificateViewModel(IRepository<Student> _student,IRepository<Certificate>_certificateRepository)
+        IRepository<Parents> parentsRepository;
+        public DeleteRequestCertificateViewModel(IRepository<Student> _student,
+            IRepository<Certificate>_certificateRepository,
+            IRepository<Parents> parentsRepository)
         {
             this.studentRepository = _student;
             this.certificateRepo = _certificateRepository;
+            this.parentsRepository = parentsRepository;
         }
         public void DeleteCertificate()
         {
@@ -32,10 +37,16 @@ namespace GroupManager.ViewModels
         }
         public void ReturnBack()
         {
-            var certificatePage = IoC.Get<ListCertificatesViewModel>();
-            certificatePage.CurrentGroup = CurrentGroup;
-            certificatePage.CurrentStudent = CurrentStudent;
-            Switcher.SwitchAsync(certificatePage, new System.Threading.CancellationToken());
+            var aboutStudentViewModel = IoC.Get<AboutStudentViewModel>();
+            aboutStudentViewModel.ViewMode = Mode.ReadOnly;
+            aboutStudentViewModel.CurrentStudent = CurrentStudent;
+            aboutStudentViewModel.CurrentGroup = CurrentGroup;
+            aboutStudentViewModel.StudentPriveleges = new BindableCollection<string>
+                (CurrentStudent.Privileges.Select(x => x.Header));
+            aboutStudentViewModel.Parents = new BindableCollection<Parents>(
+                    parentsRepository.GetAll().Where(x => x.StudentId == CurrentStudent.Id));
+            aboutStudentViewModel.ReadOnlyTextBoxes = true;
+            Switcher.SwitchAsync(aboutStudentViewModel, new System.Threading.CancellationToken());
         }
     }
 }

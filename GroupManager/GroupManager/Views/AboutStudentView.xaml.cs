@@ -40,5 +40,11 @@ namespace GroupManager.Views
             var dt = DataContext as AboutStudentViewModel;
             dt.AddPrivelege();
         }
+
+        private void StudentsList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var dataContext = DataContext as StudentsListViewModel;
+            dataContext.AboutStudent();
+        }
     }
 }

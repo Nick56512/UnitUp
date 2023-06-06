@@ -302,6 +302,21 @@
   <ItemGroup>
     <Resource Include="Resources\Images\icons\next.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icons\medal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icons\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icons\next2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icons\edit2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icons\data.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

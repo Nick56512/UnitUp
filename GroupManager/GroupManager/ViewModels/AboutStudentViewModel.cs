@@ -173,7 +173,20 @@ namespace GroupManager.ViewModels
 
 
 
+        BindableCollection<Certificate> _certificates;
+        public BindableCollection<Certificate> Certificates
+        {
+            get => _certificates;
 
+            set
+            {
+                _certificates = value;
+                NotifyOfPropertyChange(() => Certificates);
+            }
+
+        }
+
+        public Certificate CurrentCertificate { get; set; }
 
         public AboutStudentViewModel(
             IRepository<Student> _studentRepository, 
@@ -191,8 +204,48 @@ namespace GroupManager.ViewModels
 
             AllPriveleges = new BindableCollection<string>
                 (_privilegeRepository.GetAll().Select(x => x.Header));
+
+            //UploadCertificates();
             
         }
+        protected override void OnViewReady(object view)
+        {
+            base.OnViewReady(view);
+            UploadCertificates();
+        }
+
+
+
+        public void DeleteCertificate()
+        {
+            if (CurrentCertificate is null)
+                return;
+            var reqPage = IoC.Get<DeleteRequestCertificateViewModel>();
+            reqPage.CurrentStudent = CurrentStudent;
+            reqPage.CurrentGroup = CurrentGroup;
+            reqPage.Certificate = CurrentCertificate;
+            Switcher.SwitchAsync(reqPage, new System.Threading.CancellationToken());
+        }
+
+
+        private void UploadCertificates()
+        {
+            if (CurrentStudent != null)
+            {
+                Certificates = new BindableCollection<Certificate>(
+                    _studentRepository.GetAll()
+                    .Include(x => x.Certificates)
+                    .Where(x => x.Id == CurrentStudent.Id).First()?.Certificates);
+
+               
+            }
+        }
+
+
+
+
+
+
 
         public void Back()
         {

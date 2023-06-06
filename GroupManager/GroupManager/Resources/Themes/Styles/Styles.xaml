@@ -323,4 +323,17 @@
         </ControlTemplate>
 
 
+
+
+    <ControlTemplate x:Key="DefaultTab" TargetType="TabItem">
+        <Border
+            x:Name="border"
+            BorderThickness="0"
+            Background="Transparent"
+           >
+            <ContentPresenter Content="{TemplateBinding Content}"></ContentPresenter>
+        </Border>
+    </ControlTemplate>
+
+
 </ResourceDictionary>
