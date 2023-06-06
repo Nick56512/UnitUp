@@ -12,9 +12,14 @@ DEBUG;TRACE
 E:\UniyUp\UnitUp\GroupManager\GroupManager\App.xaml
 16596713507
 
+<<<<<<< Updated upstream
 33837903221
 26-1752050281
+=======
+34-1244185397
+26-1482122420
+>>>>>>> Stashed changes
 CustomControls\Calendar.xaml;Resources\Themes\DefaultTheme.xaml;Resources\Themes\Styles\ComboBoxStyles.xaml;Resources\Themes\Styles\RoundedScrollBar.xaml;Resources\Themes\Styles\RoundedScrollBarBlack.xaml;Resources\Themes\Styles\Styles.xaml;Views\AboutStudentView.xaml;Views\AboutCertificateView.xaml;Views\CharacteristicFormView.xaml;Views\DeleteRequestCertificateView.xaml;Views\DeleteRequestView.xaml;Views\ListCertificatesView.xaml;Views\MainView.xaml;Views\RadioCharacteristicFormView.xaml;Views\ShellView.xaml;Views\StudentsListView.xaml;
 
-False
+True
 
