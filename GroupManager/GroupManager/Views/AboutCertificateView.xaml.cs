@@ -18,9 +18,9 @@ namespace GroupManager.Views
     /// <summary>
     /// Interaction logic for AddCertificateView.xaml
     /// </summary>
-    public partial class AddCertificateView : UserControl
+    public partial class AboutCertificateView : UserControl
     {
-        public AddCertificateView()
+        public AboutCertificateView()
         {
             InitializeComponent();
         }

@@ -10,7 +10,7 @@ namespace GroupManager.Core.Model
     {
         public Guid Id { get; set; }
         public string Publisher { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         public string Institution { get; set; }
         public string Header { get; set; }
         public string Description { get; set; }

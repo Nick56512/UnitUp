@@ -21,6 +21,7 @@ namespace GroupManager.Views
     /// </summary>
     public partial class AboutStudentView : UserControl
     {
+        int previousIndex = -1;
         public AboutStudentView()
         {
             InitializeComponent();
@@ -45,6 +46,60 @@ namespace GroupManager.Views
         {
             var dataContext = DataContext as StudentsListViewModel;
             dataContext.AboutStudent();
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                var item = (mainTab.SelectedItem as TabItem);
+                if (item != null)
+                {
+                    var dc = (DataContext as AboutStudentViewModel);
+                    int index = mainTab.SelectedIndex;
+                    if (index != previousIndex)
+                    {
+                        if (index == 0)
+                        {
+                            dc.AddCertificate = Visibility.Collapsed;
+                            if (dc.ViewMode == Mode.Update)
+                            {
+                                dc.ReadonlyVisibility = Visibility.Collapsed;
+                                dc.UpdateVisibility = Visibility.Visible;
+                            }
+                            else
+                            {
+                                dc.ReadonlyVisibility = Visibility.Visible;
+                                dc.UpdateVisibility = Visibility.Collapsed;
+                            }
+                        }
+                        else if (index == 1)
+                        {
+                            if (dc.ViewMode == Mode.ReadOnly)
+                            {
+                                dc.AddCertificate = Visibility.Visible;
+                                dc.ReadonlyVisibility = Visibility.Collapsed;
+                                dc.UpdateVisibility = Visibility.Collapsed;
+                            }
+                            else
+                            {
+                                dc.AddCertificate = Visibility.Collapsed;
+                                dc.ReadonlyVisibility = Visibility.Collapsed;
+                                dc.UpdateVisibility = Visibility.Collapsed;
+                            }
+                        }
+                        previousIndex = index;
+                    }
+                }
+            }
+            catch(Exception ex) { }
+
+        }
+
+        private void StudentsList_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
+        {
+            var dataContext = DataContext as AboutStudentViewModel;
+            dataContext.AboutCertificate();
         }
     }
 }

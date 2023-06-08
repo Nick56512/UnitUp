@@ -171,22 +171,47 @@ namespace GroupManager.ViewModels
             }
         }
 
+        Visibility addCertificate;
+        public Visibility AddCertificate
+        {
+            get=> addCertificate;
+            set
+            {
+                addCertificate = value;
+                NotifyOfPropertyChange(nameof(AddCertificate));
+            }
+        }
 
 
         BindableCollection<Certificate> _certificates;
         public BindableCollection<Certificate> Certificates
         {
             get => _certificates;
-
             set
             {
                 _certificates = value;
                 NotifyOfPropertyChange(() => Certificates);
             }
-
         }
 
-        public Certificate CurrentCertificate { get; set; }
+        Certificate currentCertificate;
+        public Certificate CurrentCertificate 
+        {
+            get
+            {
+                return currentCertificate;
+            }
+            set
+            {
+                currentCertificate = value;
+                NotifyOfPropertyChange(() => CurrentCertificate);
+            }
+        }
+
+
+
+
+
 
         public AboutStudentViewModel(
             IRepository<Student> _studentRepository, 
@@ -204,13 +229,12 @@ namespace GroupManager.ViewModels
 
             AllPriveleges = new BindableCollection<string>
                 (_privilegeRepository.GetAll().Select(x => x.Header));
-
-            //UploadCertificates();
-            
         }
         protected override void OnViewReady(object view)
         {
             base.OnViewReady(view);
+            if (ViewMode == Mode.Update)
+                return;
             UploadCertificates();
         }
 
@@ -384,12 +408,26 @@ namespace GroupManager.ViewModels
             ReadOnlyTextBoxes = false;
         }
 
-        public void OpenCertificatesPage()
+        public void OpenAddCertificate()
         {
-            var certificatePage = IoC.Get<ListCertificatesViewModel>();
-            certificatePage.CurrentGroup = CurrentGroup;
-            certificatePage.CurrentStudent= CurrentStudent;
-            Switcher.SwitchAsync(certificatePage, new System.Threading.CancellationToken());
+            var addCertificatePage = IoC.Get<AboutCertificateViewModel>();
+            addCertificatePage.CurrentGroup = CurrentGroup;
+            addCertificatePage.CurrentStudent = CurrentStudent;
+            addCertificatePage.ViewMode = Mode.Update;
+            Switcher.SwitchAsync(addCertificatePage, new System.Threading.CancellationToken());
+        }
+        public void AboutCertificate()
+        {
+            if (CurrentCertificate != null)
+            {
+                var addCertificatePage = IoC.Get<AboutCertificateViewModel>();
+                addCertificatePage.CurrentGroup = CurrentGroup;
+                addCertificatePage.CurrentStudent = CurrentStudent;
+                addCertificatePage.CurrentCertificate= CurrentCertificate;
+                addCertificatePage.ViewMode = Mode.ReadOnly;
+                addCertificatePage.ReadOnlyTextBoxes = true;
+                Switcher.SwitchAsync(addCertificatePage, new System.Threading.CancellationToken());
+            }
         }
     }
 }

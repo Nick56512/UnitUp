@@ -10,8 +10,6 @@
              d:DesignHeight="450" d:DesignWidth="800"
              Background="#F0F1FF">
     <UserControl.Resources>
-       
-
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Themes/Styles/RoundedScrollBarBlack.xaml"></ResourceDictionary>
@@ -104,10 +102,24 @@
                     <TextBlock VerticalAlignment="Center" FontSize="23" HorizontalAlignment="Center">Зберегти дані</TextBlock>
                 </DockPanel>
             </Button>
+            <Button Style="{DynamicResource ButtonStyle}" Height="45" Margin="0,20,0,0"
+                    Visibility="{Binding AddCertificate}"
+                    x:Name="OpenAddCertificate"
+                Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Width="{Binding ActualWidth, ElementName=AvatarImage}">
+                <DockPanel>
+                    <TextBlock VerticalAlignment="Center" FontSize="23" HorizontalAlignment="Center">Додати</TextBlock>
+                </DockPanel>
+            </Button>
 
 
 
-            <DockPanel Width="{Binding ActualWidth, ElementName=AvatarImage}">
+
+
+
+
+
+
+            <DockPanel Width="{Binding ActualWidth, ElementName=AvatarImage}" Visibility="{Binding ReadonlyVisibility}">
                 <Image Source="/Resources/Images/icons/edit2.png" Width="20"></Image>
                 <Rectangle HorizontalAlignment="Stretch" Margin="10,0,0,0" Fill="#7889FF" Height="1"/>
             </DockPanel>
@@ -123,7 +135,7 @@
                 </DockPanel>
             </Button>
 
-            <DockPanel Width="{Binding ActualWidth, ElementName=AvatarImage}" Margin="0,20,0,0">
+            <DockPanel Width="{Binding ActualWidth, ElementName=AvatarImage}" Visibility="{Binding ReadonlyVisibility}" Margin="0,20,0,0">
                 <Image Source="/Resources/Images/icons/data.png" Width="20"></Image>
                 <Rectangle HorizontalAlignment="Stretch" Margin="10,0,0,0" Fill="#7889FF" Height="1"/>
             </DockPanel>
@@ -175,6 +187,8 @@
         </StackPanel>
         <TabControl Margin="0,70,0,0" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2"
                     Background="#F0F1FF" BorderThickness="0 2 0 0" BorderBrush="#7A8BFF"
+                    x:Name="mainTab"
+                    SelectionChanged="TabControl_SelectionChanged"
                     >
             <TabControl.Resources>
                 <Style TargetType="TabItem">
@@ -183,7 +197,8 @@
                             <ControlTemplate TargetType="TabItem">
                                 <Border Name="Panel" Background="Transparent" 
                                         BorderThickness="0" 
-                                        BorderBrush="#7A8BFF">
+                                        BorderBrush="#7A8BFF"
+                                        >
                                     <ContentPresenter x:Name="ContentSite"
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Center"
@@ -211,7 +226,8 @@
 
             
                 <TabItem
-                    FontFamily="/Resources/Fonts/#PT Sans" FontSize="18">
+                    FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"
+                    >
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/Images/icons/user.png" Width="25"></Image>
@@ -461,7 +477,7 @@
             
         
                 <TabItem BorderThickness="0"
-                    
+                   
                      FontFamily="/Resources/Fonts/#PT Sans" FontSize="18">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
@@ -477,7 +493,7 @@
                   SelectedItem="{Binding CurrentCertificate}"
                   x:Name="StudentsList"
                   Margin="0,0,40,0"
-                  MouseDoubleClick="StudentsList_MouseDoubleClick"
+                  MouseDoubleClick="StudentsList_MouseDoubleClick_1"
                   ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                   ItemContainerStyle="{StaticResource _ListBoxItemStyle}">
 
