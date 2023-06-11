@@ -47,20 +47,20 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.7*"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="0.7*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.26*"></RowDefinition>
-            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="0.2*"></RowDefinition>
         </Grid.RowDefinitions>
 
 
-        <DockPanel Grid.Column="1" Width="200" HorizontalAlignment="Center">
+        <DockPanel Grid.Column="1" Width="200" HorizontalAlignment="Left">
             <Button Template="{StaticResource TransparentButton}"
                    
                  Width="35" Height="35"
@@ -72,8 +72,8 @@
 
         <Border Grid.Row="1" BorderThickness="1" Grid.Column="1"
                 CornerRadius="10" BorderBrush="#7889FF"
-                Width="230"
-                Height="260"
+                Width="390"
+                Height="300"
                 x:Name="AvatarImage"
                 >
             <Border.Background>
@@ -87,7 +87,7 @@
             <Button Style="{DynamicResource ButtonStyle}" Height="55" 
                     Visibility="{Binding UpdateVisibility}"
                     x:Name="UploadAvatar"
-                Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Width="{Binding ActualWidth, ElementName=AvatarImage}">
+                Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Width="180">
                 <DockPanel>
                     <TextBlock FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center">Завантажити фото</TextBlock>
                 </DockPanel>
@@ -95,7 +95,7 @@
             <Button Style="{DynamicResource ButtonStyle}" Height="55" Margin="0,20,0,0"
                     Visibility="{Binding UpdateVisibility}"
                     x:Name="SaveStudent"
-                Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Width="{Binding ActualWidth, ElementName=AvatarImage}">
+                Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Width="180">
                 <DockPanel>
                     <TextBlock VerticalAlignment="Center" FontSize="20" HorizontalAlignment="Center">Зберегти дані</TextBlock>
                 </DockPanel>
@@ -112,7 +112,7 @@
             <Button Style="{DynamicResource ButtonStyle}" Height="50" Margin="0,20,0,0"
                     Visibility="{Binding ReadonlyVisibility}"
                     x:Name="OpenEditMode" 
-                Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Width="{Binding ActualWidth, ElementName=AvatarImage}">
+                Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Width="180">
                 <DockPanel>
                     <TextBlock VerticalAlignment="Center" FontSize="23" HorizontalAlignment="Center" 
                                >Редагувати</TextBlock>
@@ -183,7 +183,7 @@
                             </DockPanel>
                             <DockPanel Margin="10">
                                 <TextBlock Style="{StaticResource BoldLabel}">Опис сертифіката:</TextBlock>
-                                <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentCertificate.Description}"></TextBox>
+                                <TextBox TextWrapping="Wrap" Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentCertificate.Description}"></TextBox>
                             </DockPanel>
          
                         </StackPanel>

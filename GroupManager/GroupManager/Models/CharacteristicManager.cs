@@ -22,7 +22,7 @@ namespace GroupManager.Models
         {
             try
             {
-                Word._Application word_app = new Word.Application();
+                Word.Application word_app = new Word.Application();
                 object missing = Type.Missing;
                 Word._Document word_doc = word_app.Documents.Add(ref missing, ref missing, ref missing, ref missing);
                 Word.Paragraph para = word_doc.Paragraphs.Add(ref missing);

@@ -525,7 +525,10 @@
                             Text="{Binding 
                             RelativeSource={RelativeSource AncestorType=ListViewItem, Mode=FindAncestor}
                             ,Converter={StaticResource listViewIndexConverter}}"></TextBlock>
-                                        <TextBlock Text="{Binding Header}" FontFamily="/Resources/Fonts/#PT Sans" FontSize="30"
+                                        <TextBlock Text="{Binding Header}" 
+                                                   TextWrapping="Wrap"
+                                                   FontFamily="/Resources/Fonts/#PT Sans" FontSize="30"
+                                                   Width="300"
                                        Margin="30,0,0,0"
                                        Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
                                         <Button Width="30" Height="30" Margin="0,0,20,0" 
