@@ -397,10 +397,15 @@ namespace GroupManager.ViewModels
         }
         public void CreateCharacteristic()
         {
-            var createCharacteristic = IoC.Get<CharacteristicFormViewModel>();
-            createCharacteristic.CurrentGroup = CurrentGroup;
-            createCharacteristic.CurrentStudent = CurrentStudent;
-            Switcher.SwitchAsync(createCharacteristic, new System.Threading.CancellationToken());
+            var chooseCharacteristic=IoC.Get<ChooseCharacteristicViewModel>();
+            chooseCharacteristic.CurrentGroup= CurrentGroup;
+            chooseCharacteristic.CurrentStudent= CurrentStudent;
+            Switcher.SwitchAsync(chooseCharacteristic, new System.Threading.CancellationToken());
+
+            //var createCharacteristic = IoC.Get<CharacteristicFormViewModel>();
+            //createCharacteristic.CurrentGroup = CurrentGroup;
+            //createCharacteristic.CurrentStudent = CurrentStudent;
+            //Switcher.SwitchAsync(createCharacteristic, new System.Threading.CancellationToken());
         }
         public void OpenEditMode()
         {

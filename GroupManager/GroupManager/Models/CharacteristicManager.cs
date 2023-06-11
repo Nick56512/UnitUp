@@ -63,9 +63,19 @@ namespace GroupManager.Models
             {
                 text2 += item + ", ";
             }
-            text2 += $"{model.ReadyToArmy}";
-            para.Range.Text += text2;
-            para.Range.Text += "\n\tХарактеристика видана за місцем вимоги.";
+
+            if (string.IsNullOrEmpty(model.Courses))
+            {
+                text2 += $"{model.ReadyToArmy}";
+                para.Range.Text += text2;
+                para.Range.Text += "\n\tХарактеристика видана за місцем вимоги.";
+            }
+            else
+            {
+                text2 += "Під час навчання, студент проходив такі курси:";
+                para.Range.Text += $"{text2} {model.Courses}";
+            }
+
 
             para.Range.InsertParagraphAfter();
             para.Range.InsertParagraphAfter();

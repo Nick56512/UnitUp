@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GroupManager.Core.Model
 {
-    public enum CharacteristicType
+    public enum CharacteristicMode
     {
         ForMilitary,
         ForProm
@@ -14,7 +14,7 @@ namespace GroupManager.Core.Model
     public class Characteristic
     {
         public Guid Id { get; set; }
-        public CharacteristicType Type { get; set; }
+        public CharacteristicMode Type { get; set; }
         public string Creator { get; set; }
         public DateTime Date { get; set; }
         public string Institution { get; set; }

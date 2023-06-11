@@ -39,9 +39,5 @@
                 <TextBlock VerticalAlignment="Center" FontSize="23" HorizontalAlignment="Center">Ні</TextBlock>
             </DockPanel>
         </Button>
-
-
-
-
     </Grid>
 </UserControl>

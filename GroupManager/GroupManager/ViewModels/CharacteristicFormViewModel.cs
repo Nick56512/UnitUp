@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace GroupManager.ViewModels
 {
@@ -25,7 +26,48 @@ namespace GroupManager.ViewModels
         }
         public Group CurrentGroup { get; set; }
         public Student CurrentStudent { get; set; }
+        CharacteristicMode mode;
+        public CharacteristicMode ModeCh 
+        {
+            get => mode;
+            set
+            {
+                mode= value;
+                if (mode == CharacteristicMode.ForMilitary)
+                {
+                    MilitaryVisibility= Visibility.Visible;
+                    PromVisibility= Visibility.Collapsed;
+                }
+                else
+                {
+                    MilitaryVisibility = Visibility.Collapsed;
+                    PromVisibility = Visibility.Visible;
+                }
+                NotifyOfPropertyChange(() => ModeCh);
+            }
+        }
 
+        Visibility militaryVisibility;
+        public Visibility MilitaryVisibility
+        {
+            get => militaryVisibility;
+            set
+            {
+                militaryVisibility = value;
+                NotifyOfPropertyChange(nameof(MilitaryVisibility));
+            }
+        }
+
+        Visibility promVisibility;
+        public Visibility PromVisibility
+        {
+            get => promVisibility;
+            set
+            {
+                promVisibility = value;
+                NotifyOfPropertyChange(nameof(PromVisibility));
+            }
+        }
 
         IRepository<Student> _studRepos;
         IRepository<Parents> _parentsRepos;
@@ -59,6 +101,7 @@ namespace GroupManager.ViewModels
             radio.CharacteristicModel = CharacteristicModel;
             radio.CurrentStudent = CurrentStudent;
             radio.CurrentGroup = CurrentGroup;
+            radio.ModeCh = ModeCh;
             Switcher.SwitchAsync(radio, new System.Threading.CancellationToken());
         }
     }

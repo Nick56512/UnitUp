@@ -28,6 +28,7 @@ namespace GroupManager.Models
         public string LawAndOrderViolations { get; set; }
         public string AlchogolSituations { get; set; }
         public string ReadyToArmy { get; set; }
+        public string Courses { get; set; }
 
     }
 }

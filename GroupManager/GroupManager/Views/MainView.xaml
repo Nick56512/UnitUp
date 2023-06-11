@@ -35,14 +35,10 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="1" Style="{DynamicResource CoursesLabel}" 
                    Foreground="#7284FF">UNITUP</TextBlock>
-        <Ellipse Grid.Column="2" HorizontalAlignment="Right" Width="50" Height="50" VerticalAlignment="Center">
-            <Ellipse.Fill>
-                <LinearGradientBrush StartPoint="1 1" EndPoint="0 0">
-                    <GradientStop Color="#7284FF" Offset="0.1"></GradientStop>
-                    <GradientStop Color="#A0ABFB" Offset="0.9"></GradientStop>
-                </LinearGradientBrush>
-            </Ellipse.Fill>
-        </Ellipse>
+        <Image Grid.Column="2" HorizontalAlignment="Right" Width="50" Height="50" VerticalAlignment="Center"
+               Source="/Resources/Images/icons/info.png">
+           
+        </Image>
 
         <Border Grid.ColumnSpan="2" Grid.Column="1" CornerRadius="15" Grid.Row="1">
             <Border.Background>
@@ -57,8 +53,8 @@
         
         
 
-        <Border Grid.Column="1" Grid.Row="2" Style="{DynamicResource GroupsListBorder}" 
-                Margin="0,40,25,25" Padding="20"
+        <Border Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Style="{DynamicResource GroupsListBorder}" 
+                Margin="0,40,25,0" Padding="20"
                 Name="GroupsBorder"
                 >
             <StackPanel>
@@ -89,7 +85,7 @@
                 </TextBox>
               
                
-                <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="140">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="250">
                     <DataGrid ItemsSource="{Binding Groups, NotifyOnSourceUpdated=True}"
                               SelectedItem="{Binding SelectedGroup, NotifyOnSourceUpdated=True}"
                           Width="{Binding ElementName=GroupsBorder,Path=Width}" 
@@ -158,12 +154,5 @@
                 <ContentControl  Content="{Binding CalendarItem}"></ContentControl>
             </Border>
         </Border>
-        <Button Style="{DynamicResource ButtonStyle}" Width="160" Height="50" VerticalAlignment="Bottom"
-                Grid.Row="3" HorizontalAlignment="Left" Grid.Column="1" x:Name="ExitProgram">
-            <DockPanel>
-                <Image Width="30" Height="30" VerticalAlignment="Center" Margin="10,0,0,0" Source="/Resources/Images/icons/exit.png"></Image>
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Вихід</TextBlock>
-            </DockPanel>
-        </Button>
     </Grid>
 </UserControl>

@@ -141,6 +141,27 @@
     </ControlTemplate>
 
 
+    <ControlTemplate TargetType="{x:Type TextBoxBase}" x:Key="DefaultTextBox2">
+        <Border CornerRadius="3" Background="Transparent" BorderBrush="#7284FF" BorderThickness="0,0,0,2">
+            <ScrollViewer x:Name="PART_ContentHost"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="Width" Value="Auto">
+                <Setter Property="MinWidth" Value="80"></Setter>
+            </Trigger>
+            <Trigger Property="Height" Value="Auto">
+                <Setter Property="MinHeight" Value="30"></Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+
+
+
+
+
+
+
     <Style x:Key="AnimatedTextBox" TargetType="TextBox">
         <Setter Property="TextBox.FontSize" Value="19"></Setter>
         <Setter Property="TextBox.FontWeight" Value="Normal"></Setter>

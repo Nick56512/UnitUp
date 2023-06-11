@@ -24,32 +24,63 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="110"></RowDefinition>
             <RowDefinition Height="230"></RowDefinition>
             <RowDefinition Height="100"></RowDefinition>
             <RowDefinition Height="130"></RowDefinition>
             <RowDefinition Height="0.3*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Button Template="{StaticResource TransparentButton}"
-                 Grid.Column="1"
-                 VerticalAlignment="Center"
-                 x:Name="Back"
+        <DockPanel Grid.Column="1" Width="200" HorizontalAlignment="Center">
+            <Button Template="{StaticResource TransparentButton}"
                  Width="35" Height="35"
-                 HorizontalAlignment="Left" >
-            <Image Source="/Resources/Images/icons/back-button.png" ></Image>
-        </Button>
-        <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#7A8BFF" Style="{StaticResource CoursesLabel}">UNITUP</TextBlock>
-        <Ellipse Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Right" Width="50" Height="50">
-            <Ellipse.Fill>
-                <LinearGradientBrush StartPoint="1 1" EndPoint="0 0">
-                    <GradientStop Color="#7284FF" Offset="0.1"></GradientStop>
-                    <GradientStop Color="#A0ABFB" Offset="0.9"></GradientStop>
-                </LinearGradientBrush>
-            </Ellipse.Fill>
-        </Ellipse>
-        <TextBlock VerticalAlignment="Top" Grid.ColumnSpan="5" Grid.Row="1" HorizontalAlignment="Center" FontFamily="/Resources/Fonts/#Nunito" FontSize="25">Характеристика для військкомату</TextBlock>
-       
+                 x:Name="Back" HorizontalAlignment="Left" >
+                <Image Source="/Resources/Images/icons/next2.png" ></Image>
+            </Button>
+            <TextBlock Foreground="#7A8BFF" Style="{StaticResource CoursesLabel}" HorizontalAlignment="Center">UNITUP</TextBlock>
+        </DockPanel>
+        
+        
+        <TextBlock VerticalAlignment="Top" Grid.ColumnSpan="5" Grid.Row="1" HorizontalAlignment="Center" FontFamily="/Resources/Fonts/#Nunito" FontSize="25" Visibility="{Binding MilitaryVisibility}">Характеристика для військкомату</TextBlock>
+        <TextBlock Grid.ColumnSpan="5" Grid.Row="1" HorizontalAlignment="Center" FontFamily="/Resources/Fonts/#Nunito" FontSize="25" Visibility="{Binding PromVisibility}">Характеристика на випускний</TextBlock>
+
+        <Viewbox Grid.Row="1" Grid.ColumnSpan="5" HorizontalAlignment="Center" Width="200" Height="50" VerticalAlignment="Bottom">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Ellipse Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="60" Height="60">
+                    <Ellipse.Fill>
+                        <LinearGradientBrush StartPoint="1 1" EndPoint="0 0">
+                            <GradientStop Color="#7284FF" Offset="0.1"></GradientStop>
+                            <GradientStop Color="#A0ABFB" Offset="0.9"></GradientStop>
+                        </LinearGradientBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                           FontSize="40"
+                           Foreground="White"
+                           >1</TextBlock>
+                <Rectangle Grid.Column="1" HorizontalAlignment="Stretch" Width="100" Fill="#7889FF" Height="1"/>
+                <Ellipse Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="60" Height="60">
+                    <Ellipse.Fill>
+                        <LinearGradientBrush StartPoint="1 1" EndPoint="0 0">
+                            <GradientStop Color="#7284FF" Offset="0.1"></GradientStop>
+                            <GradientStop Color="#A0ABFB" Offset="0.9"></GradientStop>
+                        </LinearGradientBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                           FontSize="40"
+                           Grid.Column="2"
+                           Foreground="White"
+                           >2</TextBlock>
+            </Grid>
+        </Viewbox>
+
+
         <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Vertical">
             <TextBlock Style="{StaticResource BoldLabel}" TextWrapping="Wrap">
             Студент зарекоментував себе, як
@@ -110,7 +141,7 @@
             <RadioButton Margin="0,5,0,0" Checked="RadioButton_Checked_5" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="не схильний"></RadioButton>
         </StackPanel>
 
-        <StackPanel Grid.Row="2" Grid.Column="3" Orientation="Vertical">
+        <StackPanel Grid.Row="2" Grid.Column="3" Orientation="Vertical" Visibility="{Binding MilitaryVisibility}">
             <TextBlock Style="{StaticResource BoldLabel}" TextWrapping="Wrap">
                До служби в Збройних Силах України відноситься
             </TextBlock>
@@ -120,6 +151,20 @@
             <RadioButton Margin="0,5,0,0" Checked="RadioButton_Checked_6" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="неохоче"></RadioButton>
             <RadioButton Margin="0,5,0,0" Checked="RadioButton_Checked_6" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="/Resources/Fonts/#PT Sans" FontSize="18"  Content="позитивно"></RadioButton>
         </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="3" Orientation="Vertical" VerticalAlignment="Center" Visibility="{Binding PromVisibility}">
+            <TextBlock Style="{StaticResource BoldLabel}" TextWrapping="Wrap">
+               Під час навчання, студент пройшов наступні курси (перерахувати через кому):
+            </TextBlock>
+            <TextBox Template="{StaticResource DefaultTextBox2}"
+                 VerticalAlignment="Center" 
+                 Height="35"
+                 Width="220"
+                 Text="{Binding CharacteristicModel.Courses}">
+            </TextBox>
+        </StackPanel>
+        
+        
         <Button Style="{DynamicResource ButtonStyle}" Height="55" 
                     Visibility="{Binding UpdateVisibility}"
                     x:Name="CreateCharacteristic"
