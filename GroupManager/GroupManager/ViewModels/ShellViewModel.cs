@@ -16,22 +16,6 @@ namespace GroupManager.ViewModels
     {
         public ShellViewModel(IRepository<Privilege>repository) {
 
-            //repository.Add(
-            //    new Privilege { Header = "Малозабезпечені сім'ї", Id = Guid.NewGuid() }
-
-            //    );
-            //repository.Add(
-            //  new Privilege { Header = "Громадяни, які постраждали внаслідок Чорнобильської катастрофи", Id = Guid.NewGuid() }
-
-            //  );
-            //repository.Add(
-            //  new Privilege { Header = "Багатодітні сім'ї", Id = Guid.NewGuid() }
-
-            //  );
-            //repository.Add(
-            //  new Privilege { Header = "Учасники бойових дій", Id = Guid.NewGuid() }
-
-            //  );
             Switcher.Conductor = this;
             SwitchToMainContent();
         }
