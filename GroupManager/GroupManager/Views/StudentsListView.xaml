@@ -47,25 +47,18 @@
             <ColumnDefinition Width="0.14*"></ColumnDefinition>
             <ColumnDefinition Width="0.13*"></ColumnDefinition>
             <ColumnDefinition Width="0.3*"></ColumnDefinition>
-            <ColumnDefinition Width="0.1*"></ColumnDefinition>
             <ColumnDefinition Width="0.14*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="1" Style="{DynamicResource CoursesLabel}"
-                   HorizontalAlignment="Center" Foreground="#7284FF">UNITUP</TextBlock>
-        <Button Grid.Column="0" Template="{StaticResource TransparentButton}"
-                HorizontalAlignment="Right"
-                Width="35" Height="35"
-                x:Name="Back">
-            <Image Source="/Resources/Images/icons/back-button.png" ></Image>
-        </Button>
-        <Ellipse Grid.Column="3" HorizontalAlignment="Center" Width="50" Height="50">
-            <Ellipse.Fill>
-                <LinearGradientBrush StartPoint="1 1" EndPoint="0 0">
-                    <GradientStop Color="#7284FF" Offset="0.1"></GradientStop>
-                    <GradientStop Color="#A0ABFB" Offset="0.9"></GradientStop>
-                </LinearGradientBrush>
-            </Ellipse.Fill>
-        </Ellipse>
+
+        <DockPanel Grid.Column="1" Width="200" HorizontalAlignment="Left">
+            <Button Template="{StaticResource TransparentButton}"  
+                 Width="35" Height="35"
+                 x:Name="Back" HorizontalAlignment="Left" >
+                <Image Source="/Resources/Images/icons/next2.png" ></Image>
+            </Button>
+            <TextBlock Foreground="#7A8BFF" Style="{StaticResource CoursesLabel}" HorizontalAlignment="Center">UNITUP</TextBlock>
+        </DockPanel>
+
         <Button Panel.ZIndex="1" Grid.Column="2" Width="30" Height="30" Background="Transparent" 
                 BorderBrush="Transparent"
                 HorizontalAlignment="Right"
@@ -80,23 +73,28 @@
             <Image Source="/Resources/Images/icons/search.png"></Image>
         </Button>
         <TextBlock Grid.Column="2" FontSize="20" 
+                   Foreground="#102349"
                    FontFamily="PT Sans"
-                   VerticalAlignment="Center" HorizontalAlignment="Left" Panel.ZIndex="1"
-                   Margin="20"
+                   VerticalAlignment="Center" Panel.ZIndex="1"
+                   Width="360"
+                   HorizontalAlignment="Right"
+                   TextAlignment="Left"
                    x:Name="placeholderTextBlock"
                    Cursor="Hand"
                    MouseLeftButtonDown="placeholderTextBlock_MouseLeftButtonDown"
                    >Пошук...</TextBlock>
         <TextBox
-                 Height="35"
+                 Height="40"
                  Grid.Column="2"
+                 Width="400"
                  Padding="5"
+                HorizontalAlignment="Right"
                  x:Name="searchTextBox"
                  PreviewGotKeyboardFocus="TextBox_PreviewGotKeyboardFocus"
                  LostFocus="TextBox_LostFocus">
             <TextBox.Template>
                 <ControlTemplate>
-                    <Border CornerRadius="10" BorderBrush="Black" BorderThickness="0.5"
+                    <Border CornerRadius="5" BorderBrush="Black" BorderThickness="0.5"
                             Background="White">
                         <ScrollViewer x:Name="PART_ContentHost"/>
                     </Border>
@@ -109,7 +107,7 @@
                    FontFamily="Nunito"
                    Foreground="#7284FF"
                    Margin="30,0,0,0" Text="{Binding CurrentGroup.Name}"></TextBlock>
-        <Button Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center"
+        <Button Grid.Column="2" Grid.Row="1" HorizontalAlignment="Right"
                 Width="35"
                 Height="35"
                 Template="{StaticResource TransparentButton}"
@@ -117,13 +115,13 @@
           
             <Image Source="/Resources/Images/icons/plus_black.png"></Image>
         </Button>
-        <ListView Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" 
+        <ListView Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" 
                   Background="Transparent"
                   BorderThickness="0"
                   ItemsSource="{Binding Students}"
                   SelectedItem="{Binding SelectedStudent}"
                   x:Name="StudentsList"
-                  Margin="0,0,40,0"
+                  
                   MouseDoubleClick="StudentsList_MouseDoubleClick"
                   ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                   ItemContainerStyle="{StaticResource _ListBoxItemStyle}">

@@ -104,6 +104,7 @@
     <Compile Include="Models\WidthConverter.cs" />
     <Compile Include="ViewModels\AboutCertificateViewModel.cs" />
     <Compile Include="ViewModels\AboutStudentViewModel.cs" />
+    <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\CharacteristicFormViewModel.cs" />
     <Compile Include="ViewModels\ChooseCharacteristicViewModel.cs" />
     <Compile Include="ViewModels\DeleteRequestCertificateViewModel.cs" />
@@ -118,6 +119,9 @@
     </Compile>
     <Compile Include="Views\AboutCertificateView.xaml.cs">
       <DependentUpon>AboutCertificateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AboutView.xaml.cs">
+      <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CharacteristicFormView.xaml.cs">
       <DependentUpon>CharacteristicFormView.xaml</DependentUpon>
@@ -213,6 +217,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AboutCertificateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AboutView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

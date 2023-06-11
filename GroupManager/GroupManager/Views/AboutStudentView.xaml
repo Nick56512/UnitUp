@@ -63,8 +63,7 @@
 
 
         <DockPanel Grid.Column="1" Width="200" HorizontalAlignment="Center">
-            <Button Template="{StaticResource TransparentButton}"
-                   
+            <Button Template="{StaticResource TransparentButton}"  
                  Width="35" Height="35"
                  x:Name="Back" HorizontalAlignment="Left" >
                 <Image Source="/Resources/Images/icons/next2.png" ></Image>

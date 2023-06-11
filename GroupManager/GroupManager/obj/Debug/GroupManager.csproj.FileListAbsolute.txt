@@ -165,3 +165,5 @@ E:\UniyUp\UnitUp\GroupManager\GroupManager\obj\Debug\Views\DeleteRequestView.bam
 E:\UniyUp\UnitUp\GroupManager\GroupManager\obj\Debug\Views\ListCertificatesView.baml
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Views\ChooseCharacteristicView.g.cs
 C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Views\ChooseCharacteristicView.baml
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Views\AboutView.g.cs
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager\obj\Debug\Views\AboutView.baml

@@ -35,10 +35,14 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="1" Style="{DynamicResource CoursesLabel}" 
                    Foreground="#7284FF">UNITUP</TextBlock>
-        <Image Grid.Column="2" HorizontalAlignment="Right" Width="50" Height="50" VerticalAlignment="Center"
+        <Button Template="{StaticResource TransparentButton}" Grid.Column="2" 
+                x:Name="AboutProgram"
+                Width="50" Height="50" HorizontalAlignment="Right">
+            <Image HorizontalAlignment="Right" Width="50" Height="50" VerticalAlignment="Center"
                Source="/Resources/Images/icons/info.png">
-           
-        </Image>
+
+            </Image>
+        </Button>
 
         <Border Grid.ColumnSpan="2" Grid.Column="1" CornerRadius="15" Grid.Row="1">
             <Border.Background>

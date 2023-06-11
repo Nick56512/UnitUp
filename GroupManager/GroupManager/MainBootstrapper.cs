@@ -35,6 +35,7 @@ namespace GroupManager
             container.PerRequest<DeleteRequestCertificateViewModel, DeleteRequestCertificateViewModel>();
             container.PerRequest<AboutCertificateViewModel,AboutCertificateViewModel>();
             container.PerRequest<ChooseCharacteristicViewModel,ChooseCharacteristicViewModel>();
+            container.PerRequest<AboutViewModel,AboutViewModel>();
 
             container.PerRequest<IRepository<Student>, StudentRepository>();
             container.PerRequest<IStudentsRepository, StudentRepository>();

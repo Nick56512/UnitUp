@@ -131,5 +131,10 @@ namespace GroupManager.ViewModels
         {
             System.Windows.Application.Current.Shutdown();
         }
+        public void AboutProgram()
+        {
+            var viewModel = IoC.Get<AboutViewModel>();
+            Switcher.SwitchAsync(viewModel, new System.Threading.CancellationToken());
+        }
     }
 }
