@@ -102,27 +102,6 @@ namespace GroupManager.ViewModels
                     {
                         Students = new BindableCollection<Student>(
                             (await _studentsRepository.GetAllAsync())
-                               .Where(x => x.Address.ToLower().Contains(str.ToLower())));
-                    }
-                    break;
-                case 3:
-                    {
-                        Students = new BindableCollection<Student>(
-                            (await _studentsRepository.GetAllAsync())
-                               .Where(x => x.PhoneNumber.ToLower().Contains(str.ToLower())));
-                    }
-                    break;
-                case 4:
-                    {
-                        Students = new BindableCollection<Student>(
-                            (await _studentsRepository.GetAllAsync())
-                               .Where(x => x.IdentificationCode.ToLower().Contains(str.ToLower())));
-                    }
-                    break;
-                case 5:
-                    {
-                        Students = new BindableCollection<Student>(
-                            (await _studentsRepository.GetAllAsync())
                                .Where(x => x.PassportEndDate.ToLower().Contains(str.ToLower())));
                     }
                     break;

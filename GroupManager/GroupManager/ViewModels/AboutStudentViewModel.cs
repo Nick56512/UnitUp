@@ -292,12 +292,12 @@ namespace GroupManager.ViewModels
         }
         public void AddParent()
         {
-            if (CurrentStudent.Id == Guid.Empty)
-            {
-                CurrentStudent.Id = Guid.NewGuid();
-                CurrentStudent.GroupId = CurrentGroup.Id;
-                _studentRepository.Add(CurrentStudent);
-            }
+            //if (CurrentStudent.Id == Guid.Empty)
+            //{
+            //    CurrentStudent.Id = Guid.NewGuid();
+            //    CurrentStudent.GroupId = CurrentGroup.Id;
+            //    _studentRepository.Add(CurrentStudent);
+            //}
             if (Parents is null)
             {
                 Parents=new BindableCollection<Parents>();
@@ -311,13 +311,13 @@ namespace GroupManager.ViewModels
         }
         public void AddPrivelege()
         {
-            if (CurrentStudent.Id == Guid.Empty)
-            {
-                CurrentStudent.Id = Guid.NewGuid();
-                CurrentStudent.GroupId = CurrentGroup.Id;
-                _studentRepository.Add(CurrentStudent);
-                CurrentStudent.Privileges= new List<Privilege>();
-            }
+            //if (CurrentStudent.Id == Guid.Empty)
+            //{
+            //    CurrentStudent.Id = Guid.NewGuid();
+            //    CurrentStudent.GroupId = CurrentGroup.Id;
+            //    _studentRepository.Add(CurrentStudent);
+            //    CurrentStudent.Privileges= new List<Privilege>();
+            //}
             if (StudentPriveleges is null)
             {
                 StudentPriveleges = new BindableCollection<string>();
