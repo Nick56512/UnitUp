@@ -30,6 +30,18 @@ namespace GroupManager.ViewModels
             }
         
         }
+
+        int selectedIndex;
+        public int SelectedIndex
+        {
+            get => selectedIndex;
+            set
+            {
+                selectedIndex=value;
+                NotifyOfPropertyChange(nameof(SelectedIndex));
+            }
+        }
+
         public Student SelectedStudent { get; set; }
         public StudentsListViewModel(
             IRepository<Student> _studentsRepository,
@@ -39,6 +51,7 @@ namespace GroupManager.ViewModels
             this._studentsRepository = _studentsRepository;
             _certificateRepository = certificateRepository;
             this._parentsRepository = parentsRepository;
+            SelectedIndex= 0;
         }
         private void UploadStudents()
         {
@@ -61,21 +74,60 @@ namespace GroupManager.ViewModels
         //    return //!string.IsNullOrEmpty(lastname);
         //}
 
-        public async void SearchByLastName(string lastname)
+        public async void SearchByLastName(string str)
         {
-            if (lastname == String.Empty)
+            if (str == String.Empty)
             {
                 Students = new BindableCollection<Student>(
                         (await _studentsRepository.GetAllAsync()));
-                       
+                return;
             }
-            else
+            switch (SelectedIndex)
             {
-                Students = new BindableCollection<Student>(
-                        (await _studentsRepository.GetAllAsync())
-                        .Where(x => x.Lastname.ToLower().Contains(lastname.ToLower()))
-                    );
+                case 0:
+                    {
+                        Students = new BindableCollection<Student>(
+                             (await _studentsRepository.GetAllAsync())
+                                .Where(x => x.Lastname.ToLower().Contains(str.ToLower())));
+                    }
+                    break;
+                case 1:
+                    {
+                        Students = new BindableCollection<Student>(
+                            (await _studentsRepository.GetAllAsync())
+                               .Where(x => x.DateOfBirth.Contains(str.ToLower())));
+                    }
+                    break;
+                case 2:
+                    {
+                        Students = new BindableCollection<Student>(
+                            (await _studentsRepository.GetAllAsync())
+                               .Where(x => x.Address.ToLower().Contains(str.ToLower())));
+                    }
+                    break;
+                case 3:
+                    {
+                        Students = new BindableCollection<Student>(
+                            (await _studentsRepository.GetAllAsync())
+                               .Where(x => x.PhoneNumber.ToLower().Contains(str.ToLower())));
+                    }
+                    break;
+                case 4:
+                    {
+                        Students = new BindableCollection<Student>(
+                            (await _studentsRepository.GetAllAsync())
+                               .Where(x => x.IdentificationCode.ToLower().Contains(str.ToLower())));
+                    }
+                    break;
+                case 5:
+                    {
+                        Students = new BindableCollection<Student>(
+                            (await _studentsRepository.GetAllAsync())
+                               .Where(x => x.PassportEndDate.ToLower().Contains(str.ToLower())));
+                    }
+                    break;
             }
+          
         }
         public void AddNewStudent()
         {

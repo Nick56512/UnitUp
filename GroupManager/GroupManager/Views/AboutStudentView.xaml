@@ -382,6 +382,12 @@
                                 <TextBox Style="{StaticResource TransparentTextBox}" 
                          Text="{Binding CurrentStudent.PromYear}"></TextBox>
                             </DockPanel>
+                            
+                            <DockPanel Margin="10">
+                                <TextBlock Style="{StaticResource BoldLabel}">Рік вступу:</TextBlock>
+                                <TextBox Style="{StaticResource TransparentTextBox}" 
+                         Text="{Binding CurrentStudent.StartStudyYear}"></TextBox>
+                            </DockPanel>
 
 
                         </StackPanel>

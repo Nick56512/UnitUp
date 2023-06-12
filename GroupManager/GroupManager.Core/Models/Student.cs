@@ -29,6 +29,7 @@ namespace GroupManager.Core.Model
         public string IdentificationCode { get; set; }
         public string Note { get; set; }
         public string PromYear { get; set; }
+        public string StartStudyYear { get; set; }
         public string PlaceLiveType { get; set; }
         public string Dormitory { get; set; }
         public string AverageGrade { get; set; }
