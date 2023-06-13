@@ -29,6 +29,8 @@ namespace GroupManager.Models
         public string AlchogolSituations { get; set; }
         public string ReadyToArmy { get; set; }
         public string Courses { get; set; }
+        public string Director { get; set; } = "Олександр ПIТЯКОВ";
+        public string Tutor { get; set; } = "Свiтлана ГРИЦЕНКО";
 
     }
 }

@@ -417,11 +417,11 @@
                             </DockPanel>
                             <DockPanel Margin="10">
                                 <TextBlock Style="{StaticResource BoldLabel}">Дата народження:</TextBlock>
-                                <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.DateOfBirth}"></TextBox>
+                                <TextBox LostFocus="TextBox_LostFocus" Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.DateOfBirth}"></TextBox>
                             </DockPanel>
                             <DockPanel Margin="10">
                                 <TextBlock Style="{StaticResource BoldLabel}">Телефон:</TextBlock>
-                                <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.PhoneNumber}"></TextBox>
+                                <TextBox LostFocus="TextBox_LostFocus_1" Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.PhoneNumber}"></TextBox>
                             </DockPanel>
                             <DockPanel Margin="10">
                                 <TextBlock Style="{StaticResource BoldLabel}">Адреса:</TextBlock>
@@ -437,11 +437,11 @@
                             </DockPanel>
                             <DockPanel Margin="10">
                                 <TextBlock Style="{StaticResource BoldLabel}">Дата видачі:</TextBlock>
-                                <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.PassportIssueDate}"></TextBox>
+                                <TextBox LostFocus="TextBox_LostFocus" Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.PassportIssueDate}"></TextBox>
                             </DockPanel>
                             <DockPanel Margin="10">
                                 <TextBlock Style="{StaticResource BoldLabel}">Строк придатн.:</TextBlock>
-                                <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.PassportEndDate}"></TextBox>
+                                <TextBox LostFocus="TextBox_LostFocus" Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.PassportEndDate}"></TextBox>
                             </DockPanel>
                             <DockPanel Margin="10">
                                 <TextBlock Style="{StaticResource BoldLabel}">Примітки:</TextBlock>

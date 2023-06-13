@@ -84,7 +84,7 @@
                    Foreground="#102349"
                    FontFamily="/Resources/Fonts/#PT Sans"
                    VerticalAlignment="Center" Panel.ZIndex="1"
-                   Width="360"
+                   Width="400"
                    HorizontalAlignment="Right"
                    TextAlignment="Left"
                    x:Name="placeholderTextBlock"
@@ -94,7 +94,7 @@
         <TextBox
                  Height="40"
                  Grid.Column="2"
-                 Width="400"
+                 Width="430"
                  Padding="5"
                 HorizontalAlignment="Right"
                  x:Name="searchTextBox"
@@ -116,7 +116,7 @@
                    Foreground="#7284FF"
                    Margin="30,0,0,0" Text="{Binding CurrentGroup.Name}"></TextBlock>
 
-        <StackPanel Grid.Column="2" Grid.Row="1" Width="400" Orientation="Horizontal" HorizontalAlignment="Right">
+        <StackPanel Grid.Column="2" Grid.Row="1" Width="430" Orientation="Horizontal" HorizontalAlignment="Right">
             <StackPanel Orientation="Vertical">
                 <TextBlock VerticalAlignment="Center" FontSize="20" FontFamily="/Resources/Fonts/#PT Sans" FontWeight="Normal" Foreground="#102349">Пошук по:</TextBlock>
                 <ComboBox FontFamily="/Resources/Fonts/#PT Sans"  
@@ -128,25 +128,40 @@
                     <ComboBoxItem>Прізвищу</ComboBoxItem>
                     <ComboBoxItem>Статі</ComboBoxItem>
                     <ComboBoxItem>Строку придатності паспорта</ComboBoxItem>
+                    <ComboBoxItem>Місцевості</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
 
 
             <StackPanel Orientation="Vertical">
-                <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" FontSize="20" FontFamily="/Resources/Fonts/#PT Sans" FontWeight="Normal" Foreground="#102349">Місцевість</TextBlock>
+                <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"
+                           FontSize="20" FontFamily="/Resources/Fonts/#PT Sans" 
+                           FontWeight="Normal" Foreground="#102349"
+                           Visibility="{Binding PlaceLiveVisibility}">Місцевість</TextBlock>
                 <ComboBox FontFamily="/Resources/Fonts/#PT Sans"  
                           HorizontalAlignment="Left"
                       Width="100"
+                      Visibility="{Binding PlaceLiveVisibility}"
                       Margin="10,0,0,0"
                       VerticalAlignment="Center"
-                      SelectedIndex="{Binding SelectedIndex}"
+                      SelectedIndex="{Binding SelectedFilterIndex}"
                       Style="{StaticResource DarkComboBox}"
                       >
                     <ComboBoxItem>Місто</ComboBoxItem>
                     <ComboBoxItem>Село</ComboBoxItem>
                 </ComboBox>
+                
+                
             </StackPanel>
-
+            <Button Style="{DynamicResource ButtonStyle}" Height="40" Margin="10,20,0,0"
+                    Visibility="{Binding PlaceLiveVisibility}"
+                    VerticalAlignment="Center"
+                    x:Name="DisableFilters"
+                Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Width="80">
+                <DockPanel>
+                    <TextBlock VerticalAlignment="Center" FontSize="15" HorizontalAlignment="Center">Скинути</TextBlock>
+                </DockPanel>
+            </Button>
         </StackPanel>
         
         <Button Grid.Column="2" Grid.Row="1" HorizontalAlignment="Right"
@@ -204,13 +219,22 @@
                             <TextBlock Text="{Binding Patronymic}" FontFamily="PT Sans" FontSize="30"
                                        Margin="15,0,0,0"
                                        Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
-                            <Button Width="30" Height="30" Margin="0,0,20,0" 
+
+                            <StackPanel HorizontalAlignment="Right" 
+                                       VerticalAlignment="Center" Orientation="Horizontal">
+                                <TextBlock Text="{Binding PassportEndDate}" 
+                                       Visibility="{Binding RelativeSource={RelativeSource AncestorType=UserControl,Mode=FindAncestor},
+                                        Path=DataContext.EndPassportDateVisible}"
+                                       FontFamily="PT Sans" FontSize="25"
+                                       Margin="0,0,15,0"
+                                     ></TextBlock>
+                                <Button Width="30" Height="30" Margin="0,0,20,0" 
                                     Template="{StaticResource TransparentButton}"
-                                    cal:Message.Attach="DeleteStudent"
-                                    HorizontalAlignment="Right" VerticalAlignment="Center">
-                                <Image Source="/Resources/Images/icons/remove.png"></Image>
-                                
-                            </Button>
+                                    cal:Message.Attach="DeleteStudent">
+                                    <Image Source="/Resources/Images/icons/remove.png"></Image>
+
+                                </Button>
+                            </StackPanel>
                         </DockPanel>
                     </Border>
                     <DataTemplate.Triggers>

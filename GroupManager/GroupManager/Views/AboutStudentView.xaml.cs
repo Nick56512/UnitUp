@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -100,6 +101,33 @@ namespace GroupManager.Views
         {
             var dataContext = DataContext as AboutStudentViewModel;
             dataContext.AboutCertificate();
+        }
+
+        private void Lost_focus(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox input = (sender as TextBox);
+            string pattern = @"^(0[1-9]|1[0-9]|2[0-9]|3[01])\.(0[1-9]|1[012])\.((19|20)\d\d)$";
+            bool isValidDate = Regex.IsMatch(input.Text, pattern);
+            if (!isValidDate)
+            {
+                input.Text = "";
+            }
+        }
+
+        private void TextBox_LostFocus_1(object sender, RoutedEventArgs e)
+        {
+            TextBox input = (sender as TextBox);
+            string pattern = @"^\d{10}$";
+            bool isValidDate = Regex.IsMatch(input.Text, pattern);
+            if (!isValidDate)
+            {
+                input.Text = "";
+            }
         }
     }
 }

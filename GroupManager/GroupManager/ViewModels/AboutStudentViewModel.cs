@@ -292,47 +292,56 @@ namespace GroupManager.ViewModels
         }
         public void AddParent()
         {
-            //if (CurrentStudent.Id == Guid.Empty)
-            //{
-            //    CurrentStudent.Id = Guid.NewGuid();
-            //    CurrentStudent.GroupId = CurrentGroup.Id;
-            //    _studentRepository.Add(CurrentStudent);
-            //}
-            if (Parents is null)
+            try
             {
-                Parents=new BindableCollection<Parents>();
+                //if (CurrentStudent.Id == Guid.Empty)
+                //{
+                //    CurrentStudent.Id = Guid.NewGuid();
+                //    CurrentStudent.GroupId = CurrentGroup.Id;
+                //    _studentRepository.Add(CurrentStudent);
+                //}
+                if (Parents is null)
+                {
+                    Parents = new BindableCollection<Parents>();
+                }
+                Parents.Add(Parent);
+                Parent.Id = Guid.NewGuid();
+                Parent.StudentId = CurrentStudent.Id;
+                _parentsRepository.Add(Parent);
+
+                Parent = new Parents();
             }
-            Parent.Id=Guid.NewGuid();
-            Parent.StudentId = CurrentStudent.Id;
-            _parentsRepository.Add(Parent);
-            Parents.Add(Parent);
-            Parent = new Parents();
+            catch { }
 
         }
         public void AddPrivelege()
         {
-            //if (CurrentStudent.Id == Guid.Empty)
-            //{
-            //    CurrentStudent.Id = Guid.NewGuid();
-            //    CurrentStudent.GroupId = CurrentGroup.Id;
-            //    _studentRepository.Add(CurrentStudent);
-            //    CurrentStudent.Privileges= new List<Privilege>();
-            //}
-            if (StudentPriveleges is null)
+            try
             {
-                StudentPriveleges = new BindableCollection<string>();
+                //if (CurrentStudent.Id == Guid.Empty)
+                //{
+                //    CurrentStudent.Id = Guid.NewGuid();
+                //    CurrentStudent.GroupId = CurrentGroup.Id;
+                //    _studentRepository.Add(CurrentStudent);
+                //    CurrentStudent.Privileges= new List<Privilege>();
+                //}
+                if (StudentPriveleges is null)
+                {
+                    StudentPriveleges = new BindableCollection<string>();
+                }
+                StudentPriveleges.Add(Privilege);
+                var priv = _privilegeRepository.GetAll()
+                    .Include(x => x.Students)
+                    .FirstOrDefault(x => x.Header == Privilege);
+                if (priv is null)
+                    return;
+                priv.Students.Add(CurrentStudent);
+                CurrentStudent.Privileges.Add(priv);
+                _privilegeRepository.Update(priv);
+                _studentRepository.Update(CurrentStudent);
+                Privilege = "";
             }
-            StudentPriveleges.Add(Privilege);
-            var priv = _privilegeRepository.GetAll()
-                .Include(x=>x.Students)
-                .FirstOrDefault(x => x.Header == Privilege);
-            if (priv is null)
-                return;
-            priv.Students.Add(CurrentStudent);
-            CurrentStudent.Privileges.Add(priv);
-            _privilegeRepository.Update(priv);
-            _studentRepository.Update(CurrentStudent);
-            Privilege = "";
+            catch { }
         }
 
         public void MoveToNext()

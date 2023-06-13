@@ -159,6 +159,29 @@
             </TextBox>
         </StackPanel>
 
+        <TextBlock Style="{StaticResource BoldLabel}" Width="200" Grid.Column="1" Margin="0,0,0,60" Grid.Row="3" VerticalAlignment="Center" TextWrapping="Wrap">Директор</TextBlock>
+        <TextBox Template="{StaticResource DefaultTextBox2}" 
+                 Text="{Binding CharacteristicModel.Director}"
+                 Width="200" VerticalAlignment="Center"
+                 Grid.Row="3" Grid.Column="1" 
+                 Height="35">
+
+        </TextBox>
+
+
+        <TextBlock Style="{StaticResource BoldLabel}" Width="200" Grid.Column="3" Margin="0,0,0,60" Grid.Row="3" VerticalAlignment="Center" TextWrapping="Wrap">Керівник групи</TextBlock>
+        <TextBox Template="{StaticResource DefaultTextBox2}" 
+                 Text="{Binding CharacteristicModel.Tutor}"
+                 Width="200" VerticalAlignment="Center"
+                 Grid.Row="3" Grid.Column="3" 
+                 Height="35">
+
+        </TextBox>
+
+
+
+
+
         <Button Grid.Row="5" Grid.Column="3" Template="{StaticResource TransparentButton}" HorizontalAlignment="Right"
                 Height="50"  Visibility="{Binding ReadonlyVisibility}"
                 x:Name="MoveToNext" Width="200">

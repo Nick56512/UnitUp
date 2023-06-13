@@ -9,6 +9,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace GroupManager.ViewModels
 {
@@ -38,9 +39,64 @@ namespace GroupManager.ViewModels
             set
             {
                 selectedIndex=value;
+                if (selectedIndex == 3)
+                {
+                    PlaceLiveVisibility = Visibility.Visible;
+                }
+                else PlaceLiveVisibility= Visibility.Hidden;
+
+                if (selectedIndex == 2)
+                {
+                    EndPassportDateVisible = Visibility.Visible;
+                }
+                else EndPassportDateVisible=Visibility.Hidden;
                 NotifyOfPropertyChange(nameof(SelectedIndex));
             }
         }
+        int selectedFilterIndex;
+        public int SelectedFilterIndex
+        {
+            get => selectedFilterIndex;
+            set
+            {
+                selectedFilterIndex=value;
+                if (selectedFilterIndex == 0)
+                {
+                    Students = new BindableCollection<Student>(
+                            (_studentsRepository.GetAll())
+                               .Where(x => x.PlaceLiveType.ToLower().Contains("Місто")));
+                }
+                else if (selectedFilterIndex == 1)
+                {
+                    Students = new BindableCollection<Student>(
+                            (_studentsRepository.GetAll())
+                               .Where(x => x.PlaceLiveType.ToLower().Contains("Село")));
+                }
+                NotifyOfPropertyChange(nameof(SelectedFilterIndex));
+            }
+        }
+        Visibility endPassportDateVisible;
+        public Visibility EndPassportDateVisible
+        {
+            get => endPassportDateVisible;
+            set
+            {
+                endPassportDateVisible=value;
+                NotifyOfPropertyChange(nameof(EndPassportDateVisible));
+            }
+        }
+        Visibility placeLiveVisibility;
+        public Visibility PlaceLiveVisibility
+        {
+            get=> placeLiveVisibility;
+            set
+            {
+                placeLiveVisibility=value;
+                NotifyOfPropertyChange(nameof(PlaceLiveVisibility));
+            }
+        }
+
+
 
         public Student SelectedStudent { get; set; }
         public StudentsListViewModel(
@@ -52,6 +108,7 @@ namespace GroupManager.ViewModels
             _certificateRepository = certificateRepository;
             this._parentsRepository = parentsRepository;
             SelectedIndex= 0;
+            SelectedFilterIndex= -1;
         }
         private void UploadStudents()
         {
@@ -100,6 +157,7 @@ namespace GroupManager.ViewModels
                     break;
                 case 2:
                     {
+
                         Students = new BindableCollection<Student>(
                             (await _studentsRepository.GetAllAsync())
                                .Where(x => x.PassportEndDate.ToLower().Contains(str.ToLower())));
@@ -153,6 +211,11 @@ namespace GroupManager.ViewModels
         {
             var mainViewModel=IoC.Get<MainViewModel>();
             Switcher.SwitchAsync(mainViewModel, new System.Threading.CancellationToken());
+        }
+        public void DisableFilters()
+        {
+            SelectedFilterIndex= -1;
+            UploadStudents();
         }
     }
 }

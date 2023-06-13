@@ -19,13 +19,13 @@ namespace GroupManager.Core.Model
         public string Name { get; set; }
         public string Lastname { get; set; }
         public string Patronymic { get; set; }
-        public string DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; } = "дд.мм.рррр";
         public string Gender { get; set; }  
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public string PassportNumber { get; set; }
-        public string PassportIssueDate { get; set; }
-        public string PassportEndDate { get; set; }
+        public string PassportIssueDate { get; set; } = "дд.мм.рррр";
+        public string PassportEndDate { get; set; } = "дд.мм.рррр";
         public string IdentificationCode { get; set; }
         public string Note { get; set; }
         public string PromYear { get; set; }

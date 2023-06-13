@@ -25,7 +25,25 @@ namespace GroupManager.ViewModels
             }
         }
         public Group CurrentGroup { get; set; }
-        public Student CurrentStudent { get; set; }
+        Student currentStudent;
+        public Student CurrentStudent
+        {
+            get
+            {
+                return currentStudent;
+            }
+
+            set
+            {
+                currentStudent= value;
+                CharacteristicModel.Student= value;
+                CharacteristicModel.Name=currentStudent.Name;
+                CharacteristicModel.Lastname=currentStudent.Lastname;
+                CharacteristicModel.Patronymic=currentStudent.Patronymic;
+                CharacteristicModel.StartStudyDate = currentStudent.StartStudyYear;
+                NotifyOfPropertyChange(() => CurrentStudent);
+            }
+        }
         CharacteristicMode mode;
         public CharacteristicMode ModeCh 
         {
@@ -80,6 +98,7 @@ namespace GroupManager.ViewModels
             this._studRepos = _studRepository;
             this._parentsRepos = _parRepository;
             CharacteristicModel=new CharacteristicModel();
+
         }
         public void Back()
         {
