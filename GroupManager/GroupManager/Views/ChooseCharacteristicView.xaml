@@ -17,6 +17,15 @@
             <RowDefinition Height="3*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
+
+        <DockPanel Grid.Column="0" Width="200" HorizontalAlignment="Right">
+            <Button Template="{StaticResource TransparentButton}"
+                 Width="35" Height="35"
+                 x:Name="Back" HorizontalAlignment="Left" >
+                <Image Source="/Resources/Images/icons/next2.png" ></Image>
+            </Button>
+            <TextBlock Foreground="#7A8BFF" Style="{StaticResource CoursesLabel}" HorizontalAlignment="Center">UNITUP</TextBlock>
+        </DockPanel>
         <TextBlock Margin="0,100,0,0" Grid.Column="1" TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Center" FontFamily="/Resources/Fonts/#Nunito" FontSize="25">
             Оберіть тип характеристики
         </TextBlock>

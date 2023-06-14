@@ -8,7 +8,8 @@
              xmlns:local="clr-namespace:GroupManager.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="#F0F1FF">
+             Background="#F0F1FF"
+             Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -417,7 +418,7 @@
                             </DockPanel>
                             <DockPanel Margin="10">
                                 <TextBlock Style="{StaticResource BoldLabel}">Дата народження:</TextBlock>
-                                <TextBox LostFocus="TextBox_LostFocus" Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.DateOfBirth}"></TextBox>
+                                <TextBox x:Name="DateOfBirth" LostFocus="TextBox_LostFocus" GotFocus="DateOfBirth_GotFocus" Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.DateOfBirth}"></TextBox>
                             </DockPanel>
                             <DockPanel Margin="10">
                                 <TextBlock Style="{StaticResource BoldLabel}">Телефон:</TextBlock>
@@ -437,11 +438,11 @@
                             </DockPanel>
                             <DockPanel Margin="10">
                                 <TextBlock Style="{StaticResource BoldLabel}">Дата видачі:</TextBlock>
-                                <TextBox LostFocus="TextBox_LostFocus" Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.PassportIssueDate}"></TextBox>
+                                <TextBox x:Name="PassportIssueDate" GotFocus="DateOfBirth_GotFocus" LostFocus="TextBox_LostFocus" Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.PassportIssueDate}"></TextBox>
                             </DockPanel>
                             <DockPanel Margin="10">
                                 <TextBlock Style="{StaticResource BoldLabel}">Строк придатн.:</TextBlock>
-                                <TextBox LostFocus="TextBox_LostFocus" Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.PassportEndDate}"></TextBox>
+                                <TextBox x:Name="PassportEndDate" GotFocus="DateOfBirth_GotFocus" LostFocus="TextBox_LostFocus" Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentStudent.PassportEndDate}"></TextBox>
                             </DockPanel>
                             <DockPanel Margin="10">
                                 <TextBlock Style="{StaticResource BoldLabel}">Примітки:</TextBlock>

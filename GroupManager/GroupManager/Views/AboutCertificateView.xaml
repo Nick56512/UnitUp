@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:GroupManager.Views"
              xmlns:cal="http://www.caliburnproject.org"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="#F0F1FF">
+             d:DesignHeight="450" d:DesignWidth="800" Background="#F0F1FF"
+             Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -175,7 +176,7 @@
                         <StackPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Margin="0,20,0,0">
                             <DockPanel Margin="10">
                                 <TextBlock Style="{StaticResource BoldLabel}">Дата видачі:</TextBlock>
-                                <TextBox Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentCertificate.Date}"></TextBox>
+                                <TextBox x:Name="DateCertificate" LostFocus="DateCertificate_LostFocus" GotFocus="DateCertificate_GotFocus"  Style="{StaticResource TransparentTextBox}" Text="{Binding CurrentCertificate.Date}"></TextBox>
                             </DockPanel>
                             <DockPanel Margin="10">
                                 <TextBlock Style="{StaticResource BoldLabel}">Заголовок:</TextBlock>

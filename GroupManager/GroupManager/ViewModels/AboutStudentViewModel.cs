@@ -292,7 +292,17 @@ namespace GroupManager.ViewModels
         }
         public void AddParent()
         {
-            try
+            if (CurrentStudent.Id == Guid.Empty)
+            {
+                if (Parents is null)
+                {
+                    Parents = new BindableCollection<Parents>();
+                }
+                Parents.Add(Parent);
+                Parent = new Parents();
+
+            }
+            else
             {
                 //if (CurrentStudent.Id == Guid.Empty)
                 //{
@@ -311,13 +321,21 @@ namespace GroupManager.ViewModels
 
                 Parent = new Parents();
             }
-            catch { }
-
         }
         public void AddPrivelege()
         {
-            try
+            if (CurrentStudent.Id == Guid.Empty)
             {
+                if (StudentPriveleges is null)
+                {
+                    StudentPriveleges = new BindableCollection<string>();
+                }
+                StudentPriveleges.Add(Privilege);
+                Privilege = "";
+            }
+            else
+            {
+
                 //if (CurrentStudent.Id == Guid.Empty)
                 //{
                 //    CurrentStudent.Id = Guid.NewGuid();
@@ -341,7 +359,6 @@ namespace GroupManager.ViewModels
                 _studentRepository.Update(CurrentStudent);
                 Privilege = "";
             }
-            catch { }
         }
 
         public void MoveToNext()
@@ -406,6 +423,33 @@ namespace GroupManager.ViewModels
                 CurrentStudent.Id = Guid.NewGuid();
                 CurrentStudent.GroupId = CurrentGroup.Id;
                 _studentRepository.Add(CurrentStudent);
+
+                if (Parents != null)
+                {
+                    foreach(var item in Parents)
+                    {
+                        item.Id = Guid.NewGuid();
+                        item.StudentId = CurrentStudent.Id;
+                        _parentsRepository.Add(item);
+                    }
+                }
+                if (StudentPriveleges != null)
+                {
+                    foreach(var item in StudentPriveleges)
+                    {
+                        var priv = _privilegeRepository.GetAll()
+                                .Include(x => x.Students)
+                                .FirstOrDefault(x => x.Header == item);
+                        if (priv is null)
+                            continue;
+                        priv.Students.Add(CurrentStudent);
+                        if(CurrentStudent.Privileges==null)
+                            CurrentStudent.Privileges= new List<Privilege>();
+                        CurrentStudent.Privileges.Add(priv);
+                        _privilegeRepository.Update(priv);
+                        _studentRepository.Update(CurrentStudent);
+                    }
+                }
                 var backPage = IoC.Get<StudentsListViewModel>();
                 backPage.CurrentGroup = CurrentGroup;
                 Switcher.SwitchAsync(backPage, new System.Threading.CancellationToken());

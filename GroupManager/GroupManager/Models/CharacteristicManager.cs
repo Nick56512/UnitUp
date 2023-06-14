@@ -87,7 +87,7 @@ namespace GroupManager.Models
                 para.Range.InsertParagraphAfter();
                 para.Range.InsertParagraphAfter();
                 para.Alignment = Word.WdParagraphAlignment.wdAlignParagraphRight;
-                para.Range.Text = "Директор коледжу                     Олександр ПIТЯКОВ\r\n\r\nКерівник групи                     Свiтлана ГРИЦЕНКО\r\n";
+                para.Range.Text = $"Директор коледжу                     {model.Director}\r\n\r\nКерівник групи                     {model.Tutor}\r\n";
 
 
                 word_doc.SaveAs(ref filename, ref missing, ref missing,

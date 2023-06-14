@@ -115,7 +115,8 @@ namespace GroupManager.Views
             bool isValidDate = Regex.IsMatch(input.Text, pattern);
             if (!isValidDate)
             {
-                input.Text = "";
+                input.Text = "дд.мм.рррр";
+                input.Foreground = Brushes.Gray;
             }
         }
 
@@ -128,6 +129,34 @@ namespace GroupManager.Views
             {
                 input.Text = "";
             }
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (DateOfBirth.Text == "дд.мм.рррр")
+            {
+                DateOfBirth.Foreground = Brushes.Gray;
+            }
+            if (PassportEndDate.Text == "дд.мм.рррр")
+            {
+                PassportEndDate.Foreground= Brushes.Gray;
+            }
+            if (PassportIssueDate.Text == "дд.мм.рррр")
+            {
+                PassportIssueDate.Foreground = Brushes.Gray;
+            }
+            
+        }
+
+        private void DateOfBirth_GotFocus(object sender, RoutedEventArgs e)
+        {
+            var textBox=sender as TextBox;
+            if(textBox.Text== "дд.мм.рррр")
+            {
+                textBox.Text = "";
+                textBox.Foreground= Brushes.Black;
+            }
+
         }
     }
 }
