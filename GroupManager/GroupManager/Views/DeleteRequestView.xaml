@@ -24,7 +24,7 @@
                     Visibility="{Binding UpdateVisibility}"
                     VerticalAlignment="Center"
                     x:Name="DeleteStudent"
-                Grid.Row="1" HorizontalAlignment="Left" Margin="50,140,0,0" Grid.Column="1" Width="100">
+                Grid.Row="1" HorizontalAlignment="Left" Margin="50,160,0,0" Grid.Column="1" Width="100">
             <DockPanel>
                 <TextBlock VerticalAlignment="Center" FontSize="23" HorizontalAlignment="Center">Так</TextBlock>
             </DockPanel>
@@ -34,7 +34,7 @@
                     Visibility="{Binding UpdateVisibility}"
                     VerticalAlignment="Center"
                     x:Name="ReturnBack"
-                Grid.Row="1" HorizontalAlignment="Right" Margin="0,140,50,0" Grid.Column="1" Width="100">
+                Grid.Row="1" HorizontalAlignment="Right" Margin="0,160,50,0" Grid.Column="1" Width="100">
             <DockPanel>
                 <TextBlock VerticalAlignment="Center" FontSize="23" HorizontalAlignment="Center">Ні</TextBlock>
             </DockPanel>

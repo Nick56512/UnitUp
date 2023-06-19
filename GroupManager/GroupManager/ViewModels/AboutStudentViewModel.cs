@@ -208,6 +208,16 @@ namespace GroupManager.ViewModels
             }
         }
 
+        int selectedPage;
+        public int SelectedPage
+        {
+            get => selectedPage;
+            set
+            {
+                selectedPage= value;
+                NotifyOfPropertyChange(() => SelectedPage);
+            }
+        }
 
 
 

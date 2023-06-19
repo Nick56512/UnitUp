@@ -192,6 +192,7 @@
                     Background="#F0F1FF" BorderThickness="0 2 0 0" BorderBrush="#7A8BFF"
                     x:Name="mainTab"
                     SelectionChanged="TabControl_SelectionChanged"
+                    SelectedIndex="{Binding SelectedPage,Mode=TwoWay}"
                     >
             <TabControl.Resources>
                 <Style TargetType="TabItem">

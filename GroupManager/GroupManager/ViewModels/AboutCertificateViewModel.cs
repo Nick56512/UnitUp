@@ -187,6 +187,7 @@ namespace GroupManager.ViewModels
             aboutStudentViewModel.Parents = new BindableCollection<Parents>(
                     _parentsRepository.GetAll().Where(x => x.StudentId == CurrentStudent.Id));
             aboutStudentViewModel.ReadOnlyTextBoxes = true;
+            aboutStudentViewModel.SelectedPage = 1;
             Switcher.SwitchAsync(aboutStudentViewModel, new System.Threading.CancellationToken());
         }
         public void OpenEditMode()

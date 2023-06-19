@@ -29,24 +29,26 @@
         <TextBlock Margin="0,100,0,0" Grid.Column="1" TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Center" FontFamily="/Resources/Fonts/#Nunito" FontSize="25">
             Оберіть тип характеристики
         </TextBlock>
-        <Button Style="{DynamicResource ButtonStyle}" Height="55"
-                    
-                    VerticalAlignment="Center"
-                    x:Name="MilitaryMode"
-                Grid.Row="1" HorizontalAlignment="Left" Margin="50,140,0,0" Grid.Column="1" Width="200">
-            <DockPanel>
-                <TextBlock VerticalAlignment="Center" FontSize="23" HorizontalAlignment="Center">Для військкомату</TextBlock>
-            </DockPanel>
-        </Button>
+        <StackPanel Margin="0,100,0,0" Orientation="Vertical" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+            <Button Style="{DynamicResource ButtonStyle}" Height="55"
+                VerticalAlignment="Center"
+                x:Name="MilitaryMode"
+              
+                Width="200">
+                <DockPanel>
+                    <TextBlock VerticalAlignment="Center" FontSize="23" HorizontalAlignment="Center">Для військкомату</TextBlock>
+                </DockPanel>
+            </Button>
 
-        <Button Style="{DynamicResource ButtonStyle}" Height="55"
+            <Button Style="{DynamicResource ButtonStyle}" Height="55"
                     VerticalAlignment="Center"
-                    x:Name="PromMode"
-                Grid.Row="1" HorizontalAlignment="Right" Margin="0,140,50,0" Grid.Column="1" Width="200">
-            <DockPanel>
-                <TextBlock VerticalAlignment="Center" FontSize="23" HorizontalAlignment="Center">На випуск</TextBlock>
-            </DockPanel>
-        </Button>
+                    x:Name="PromMode" Width="200" Margin="0,20,0,0">
+                <DockPanel>
+                    <TextBlock VerticalAlignment="Center" FontSize="23" HorizontalAlignment="Center">На випуск</TextBlock>
+                </DockPanel>
+            </Button>
+        </StackPanel>
+       
 
 
 
